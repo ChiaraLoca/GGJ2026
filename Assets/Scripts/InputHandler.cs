@@ -1,21 +1,36 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
 
 namespace GGJ26.Input
 {
+
     public class InputHandler : MonoBehaviour
     {
-        public DpadRaw dpadRaw = new DpadRaw();
-        public InputData current;
+        public InputActionAsset actionsAsset;
+        private DpadRaw dpadRaw;
+        public InputData current = new InputData();
 
-        private bool canRead = false;
+        private bool canRead = true;
+
+        private void Awake()
+        {
+            
+            dpadRaw = new DpadRaw(actionsAsset);
+        }
+
+        public void FixedUpdate()
+        {
+            Debug.Log(current);
+        }
 
         public void OnMove(InputAction.CallbackContext ctx)
         {
             if (!canRead)
                 return;
             current.Movement = ctx.ReadValue<Vector2>();
+
 
         }
 
@@ -26,7 +41,7 @@ namespace GGJ26.Input
 
             if (ctx.started)
                 current.Attack1 = true;
-            if (ctx.performed)
+            if (ctx.canceled)
                 current.Attack1 = false;
         }
 
