@@ -19,7 +19,7 @@ namespace GGJ26.Input
             
             dpadRaw = new DpadRaw(actionsAsset);
         }
-        public DpadRaw dpadRaw = new DpadRaw();
+        
         private RawInputData current;
 
         public InputData GetInputData()
