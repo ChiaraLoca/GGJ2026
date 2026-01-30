@@ -7,7 +7,12 @@ namespace GGJ26.Input
     public class InputHandler : MonoBehaviour
     {
         public DpadRaw dpadRaw = new DpadRaw();
-        public InputData current;
+        private RawInputData current;
+
+        public InputData GetInputData()
+        {
+            return new InputData(DirectionConverter.ToNumpad(current.Movement), current.Attack1);
+        }
 
         private bool canRead = false;
 
