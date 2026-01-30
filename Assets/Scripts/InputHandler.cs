@@ -10,7 +10,7 @@ namespace GGJ26.Input
     {
         public InputActionAsset actionsAsset;
         private DpadRaw dpadRaw;
-        public InputData current = new InputData();
+     
 
         private bool canRead = true;
 
@@ -18,6 +18,13 @@ namespace GGJ26.Input
         {
             
             dpadRaw = new DpadRaw(actionsAsset);
+        }
+        public DpadRaw dpadRaw = new DpadRaw();
+        private RawInputData current;
+
+        public InputData GetInputData()
+        {
+            return new InputData(DirectionConverter.ToNumpad(current.Movement), current.Attack1);
         }
 
         public void FixedUpdate()
