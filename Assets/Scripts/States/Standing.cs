@@ -12,7 +12,7 @@ namespace GGJ26.StateMachine
         private int maxFrame = 30;
         private int frame = 0;
 
-        public Standing(IPlayableCharacter character, StateMachineBehaviour sm, Motion motion)
+        public Standing(IPlayableCharacter character, StateMachineBehaviour sm)
         {
             this.character = character;
             this.sm = sm;
