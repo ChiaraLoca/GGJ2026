@@ -8,19 +8,25 @@ public class CombatUI : MonoBehaviour
     [SerializeField] private Image player1Portrait;
     [SerializeField] private Image player1SpecialSprite;
     [SerializeField] private Image player1HPBar;
-    [SerializeField] private Image player1HPBarBackground;
+    [SerializeField] private RectTransform player1HPBarRect;
     [SerializeField] private Image player1SpecialBar;
-    [SerializeField] private Image player1SpecialBarBackground;
+    [SerializeField] private RectTransform player1SpecialBarRect;
     [SerializeField] private TextMeshProUGUI player1NameText;
 
     [Header("Player 2 UI")]
     [SerializeField] private Image player2Portrait;
     [SerializeField] private Image player2SpecialSprite;
     [SerializeField] private Image player2HPBar;
-    [SerializeField] private Image player2HPBarBackground;
+    [SerializeField] private RectTransform player2HPBarRect;
     [SerializeField] private Image player2SpecialBar;
-    [SerializeField] private Image player2SpecialBarBackground;
+    [SerializeField] private RectTransform player2SpecialBarRect;
     [SerializeField] private TextMeshProUGUI player2NameText;
+
+    // Larghezza originale delle barre (salvata al start)
+    private float player1HPBarWidth;
+    private float player2HPBarWidth;
+    private float player1SpecialBarWidth;
+    private float player2SpecialBarWidth;
 
     [Header("Bar Colors")]
     [SerializeField] private Color hpFullColor = new Color(0.2f, 0.8f, 0.2f);
@@ -43,6 +49,19 @@ public class CombatUI : MonoBehaviour
     private float player1SpecialCurrent = 0f;
     private float player2SpecialCurrent = 0f;
 
+    private void Start()
+    {
+        // Salva le larghezze originali delle barre
+        if (player1HPBarRect != null)
+            player1HPBarWidth = player1HPBarRect.sizeDelta.x;
+        if (player2HPBarRect != null)
+            player2HPBarWidth = player2HPBarRect.sizeDelta.x;
+        if (player1SpecialBarRect != null)
+            player1SpecialBarWidth = player1SpecialBarRect.sizeDelta.x;
+        if (player2SpecialBarRect != null)
+            player2SpecialBarWidth = player2SpecialBarRect.sizeDelta.x;
+    }
+
     private void Update()
     {
         // Anima le barre smoothly
@@ -59,25 +78,47 @@ public class CombatUI : MonoBehaviour
         // HP Bars
         if (player1HPBar != null)
         {
-            player1HPBar.fillAmount = player1HPCurrent;
             player1HPBar.color = GetHPColor(player1HPCurrent);
         }
+        if (player1HPBarRect != null)
+        {
+            Vector2 sizeDelta = player1HPBarRect.sizeDelta;
+            sizeDelta.x = player1HPBarWidth * player1HPCurrent;
+            player1HPBarRect.sizeDelta = sizeDelta;
+        }
+
         if (player2HPBar != null)
         {
-            player2HPBar.fillAmount = player2HPCurrent;
             player2HPBar.color = GetHPColor(player2HPCurrent);
+        }
+        if (player2HPBarRect != null)
+        {
+            Vector2 sizeDelta = player2HPBarRect.sizeDelta;
+            sizeDelta.x = player2HPBarWidth * player2HPCurrent;
+            player2HPBarRect.sizeDelta = sizeDelta;
         }
 
         // Special Bars
         if (player1SpecialBar != null)
         {
-            player1SpecialBar.fillAmount = player1SpecialCurrent;
             player1SpecialBar.color = specialColor;
         }
+        if (player1SpecialBarRect != null)
+        {
+            Vector2 sizeDelta = player1SpecialBarRect.sizeDelta;
+            sizeDelta.x = player1SpecialBarWidth * player1SpecialCurrent;
+            player1SpecialBarRect.sizeDelta = sizeDelta;
+        }
+
         if (player2SpecialBar != null)
         {
-            player2SpecialBar.fillAmount = player2SpecialCurrent;
             player2SpecialBar.color = specialColor;
+        }
+        if (player2SpecialBarRect != null)
+        {
+            Vector2 sizeDelta = player2SpecialBarRect.sizeDelta;
+            sizeDelta.x = player2SpecialBarWidth * player2SpecialCurrent;
+            player2SpecialBarRect.sizeDelta = sizeDelta;
         }
     }
 
