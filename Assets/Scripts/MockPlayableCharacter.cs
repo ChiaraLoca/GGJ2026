@@ -16,6 +16,10 @@ namespace GGJ26.Input
         void SetAttacking(bool attacking);
         public Transform GetTransform();
         void SetInputHandler(InputHandler handler);
+        float GetStartingYPosition();
+        public float GetMoveSpeed();
+        public float GetJumpForce();
+        public PlayerSpriteUpdater GetPlayerSpriteUpdater();
     }
 
 
@@ -23,7 +27,7 @@ namespace GGJ26.Input
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(InputCollector))]
-    public class MockPlayableCharacter : MonoBehaviour, IPlayableCharacter
+    public class MockPlayableCharacter : MonoBehaviour
     {
         private Rigidbody2D rb;
         private InputHandler inputHandler;
@@ -33,7 +37,7 @@ namespace GGJ26.Input
 
         public TextMeshProUGUI status;
 
-        void Awake()
+        /*void Awake()
         {
             MatchManager.Instance.RegisterPlayer(this);
             rb = GetComponent<Rigidbody2D>();
@@ -41,7 +45,7 @@ namespace GGJ26.Input
             inputCollector = GetComponent<InputCollector>();
             stateMachine = new StateMachineBehaviour();
             stateMachine.ChangeState(new Move(this, stateMachine));
-        }
+        }*/
 
         void FixedUpdate()
         {

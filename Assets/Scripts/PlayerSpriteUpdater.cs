@@ -19,7 +19,7 @@ public class PlayerSpriteUpdater : MonoBehaviour
         
     }
 
-    void ChangeSprite(string state, int index)
+    public void ChangeSprite(string state, int index)
     {
         switch(state)         {
             case "block":

@@ -82,6 +82,8 @@ public class Jump : IState
         if (phase == 3 && frame >= landingStartFrame + landingFrames)
         {
             rb.linearVelocity = Vector2.zero;
+           
+     // Snap to ground
             sm.ChangeState(new Move(character, sm));
         }
     }
@@ -89,5 +91,6 @@ public class Jump : IState
     public void OnExit()
     {
         Debug.Log("Jump Exit");
+        rb.transform.position = new Vector2(rb.transform.position.x, character.GetStartingYPosition());
     }
 }
