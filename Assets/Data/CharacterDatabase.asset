@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499d1270043c0394f93022844e88c503, type: 3}
+  m_Name: CharacterDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterDatabase
+  characters:
+  - characterName: '!'
+    characterImage: {fileID: 8742876468558364925, guid: 0baec4978b4dc114a8bdad80ace10a4b, type: 3}
+    characterPortrait: {fileID: -2844079194683464479, guid: af7a1f028c3a9974c83db7537108cb67, type: 3}
+    characterId: 0
+    description: Combattente Furioso
+    speed: 4
+    power: 7
+    defense: 3
+  - characterName: '?'
+    characterImage: {fileID: 5865670524570963042, guid: 3579a377f9ef5ec4b8a89cb9ae1dd676, type: 3}
+    characterPortrait: {fileID: -2844079194683464479, guid: af7a1f028c3a9974c83db7537108cb67, type: 3}
+    characterId: 1
+    description: Specializzato in proiettili
+    speed: 6
+    power: 2
+    defense: 6
+  - characterName: '@'
+    characterImage: {fileID: 7104312088235595687, guid: 429d3e6ad1076564380aac2099dcfe06, type: 3}
+    characterPortrait: {fileID: 1869723605505727221, guid: d9087515cc13def4189f42ad07a135c6, type: 3}
+    characterId: 2
+    description: Grappler
+    speed: 8
+    power: 4
+    defense: 3
