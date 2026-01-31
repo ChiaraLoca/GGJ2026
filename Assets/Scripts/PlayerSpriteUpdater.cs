@@ -66,6 +66,9 @@ public class PlayerSpriteUpdater : MonoBehaviour
                 case "special":
                     PlayerSprite.sprite = characterData.specialSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
+                case "idle":
+                    PlayerSprite.sprite = characterData.idleSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    break;
                 default:
                     Debug.LogWarning("Unknown state: " + state);
                     break;
