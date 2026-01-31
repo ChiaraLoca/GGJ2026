@@ -43,7 +43,7 @@ public class PlayerSpriteUpdater : MonoBehaviour
                     PlayerSprite.sprite = characterData.crouchSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
                 case "jump":
-                    PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    PlayerSprite.sprite = characterData.jumpSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
                 case "hit":
                     PlayerSprite.sprite = characterData.hitSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
