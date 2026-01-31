@@ -28,6 +28,7 @@ MonoBehaviour:
     kickSprites: []
     lowhitSprites: []
     specialSprites: []
+    idleSprites: []
     characterSpecialSprite: {fileID: 0}
     description: TIZIO
     speed: 5
@@ -65,6 +66,8 @@ MonoBehaviour:
     - {fileID: 513359847921296476, guid: 7156b96e815bee9479855875418dd583, type: 3}
     - {fileID: 7519532527851756879, guid: fee32bff41573b646a88b75fc7115a21, type: 3}
     specialSprites: []
+    idleSprites:
+    - {fileID: 4741238997123618329, guid: 748bf2c70953ea84fb005c2a05da24e9, type: 3}
     characterSpecialSprite: {fileID: 6169051424762097521, guid: fa39d7c8c057b5e41a6b3df6e268807d, type: 3}
     description: CAIO
     speed: 5
@@ -102,6 +105,8 @@ MonoBehaviour:
     - {fileID: 513359847921296476, guid: cfb0817b120d2a6449bd08dbcc8ea4ee, type: 3}
     - {fileID: 7519532527851756879, guid: 8424545f1448cbe46bba0d7ffab2727e, type: 3}
     specialSprites: []
+    idleSprites:
+    - {fileID: 4741238997123618329, guid: 5ccd4ce9bb360bd4682c605f0727fb14, type: 3}
     characterSpecialSprite: {fileID: 2107204452721565602, guid: 0c5ad38c0714fd8448f33259762ca58c, type: 3}
     description: SEMPRONIO
     speed: 5
@@ -139,6 +144,8 @@ MonoBehaviour:
     - {fileID: 513359847921296476, guid: d339daf2cba6e9f4baf8d9d4b462e03a, type: 3}
     - {fileID: 7519532527851756879, guid: 4c8f32f6d3fec6344aa285f2a3d4d593, type: 3}
     specialSprites: []
+    idleSprites:
+    - {fileID: 4741238997123618329, guid: c3bed127e13cc1247b64a7e2332ee829, type: 3}
     characterSpecialSprite: {fileID: -4211581063009071647, guid: 1e298034834a73140860f3d39dd7ff3c, type: 3}
     description: CACCA
     speed: 5
