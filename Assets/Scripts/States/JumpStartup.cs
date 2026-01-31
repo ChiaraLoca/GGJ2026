@@ -1,47 +1,40 @@
 ﻿using GGJ26.Input;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Windows;
-
 
 
 namespace GGJ26.StateMachine
 {
-
-
-    public class Move : IState
+    public class JumpStartup : IState
     {
         private IPlayableCharacter character;
         private StateMachineBehaviour sm;
-        private Rigidbody2D rb;
-        private InputCollector inputCollector;
         private AttackInputHelper attackInputHandler;
+        private InputCollector inputCollector;
+        private Rigidbody2D rb;
 
-        public Move(IPlayableCharacter character, StateMachineBehaviour sm)
+        public JumpStartup(IPlayableCharacter character, StateMachineBehaviour sm)
         {
             this.character = character;
             this.sm = sm;
-            this.rb = character.GetRigidbody2D();
-            this.inputCollector = character.GetInputCollector();
             attackInputHandler = new AttackInputHelper(character);
+            inputCollector = character.GetInputCollector();
+            rb = character.GetRigidbody2D();
         }
 
         public void OnEnter()
         {
-            Debug.Log($"Move Enter:");
-            //character.SetAnimation("Idle");
+            Debug.Log($"JumpStartup Enter");
+            //Star JumpStartup animation
         }
-
         public void OnFrame()
         {
-            
             IState newState = attackInputHandler.CheckAttackInput(sm);
             if (newState != null)
             {
                 sm.ChangeState(newState);
                 return;
             }
-
-            
 
             // Movimento base
             InputData input = inputCollector.GetLastInputInBuffer();
@@ -52,17 +45,14 @@ namespace GGJ26.StateMachine
                 move = NumpadHelper.NumpadToMove(input.Movement) * 1;
 
             rb.linearVelocity = move;
+            sm.ChangeState(new Jump(character,sm));
 
-            // Animazione
-            //character.SetAnimation(move == Vector2.zero ? "Idle" : "Walk");
+
+
         }
-
         public void OnExit()
         {
-            Debug.Log($"Move Exit:");
-            rb.linearVelocity = Vector2.zero;
+            Debug.Log($"JumpStartup Exit");
         }
-
-        
     }
 }

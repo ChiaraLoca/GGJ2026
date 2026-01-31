@@ -1,4 +1,5 @@
 ﻿using GGJ26.StateMachine;
+using TMPro;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
@@ -7,12 +8,13 @@ namespace GGJ26.Input
 {
     public interface IPlayableCharacter 
     {
-        public bool IsFacingRight();
+        
         public InputCollector GetInputCollector();
         public InputHandler GetInputHandler();
         public Rigidbody2D GetRigidbody2D();
         public bool IsAttacking();
         void SetAttacking(bool attacking);
+        public Transform GetTransform();
     }
 
 
@@ -27,9 +29,12 @@ namespace GGJ26.Input
         private StateMachineBehaviour stateMachine;
         private InputCollector inputCollector;
         public bool isAttacking = false;
+
+        public TextMeshProUGUI status;
+
         void Awake()
         {
-            
+            MatchManager.Instance.RegisterPlayer(this);
             rb = GetComponent<Rigidbody2D>();
             inputHandler = GetComponent<InputHandler>();
             inputCollector = GetComponent<InputCollector>();
@@ -39,9 +44,11 @@ namespace GGJ26.Input
 
         void FixedUpdate()
         {
-           
+
             stateMachine.Tick();
-            
+            status.text = stateMachine.current.GetType().Name;
+
+
         }
 
         public bool IsAttacking()
@@ -53,13 +60,10 @@ namespace GGJ26.Input
             isAttacking = attacking;
         }
 
-        public bool IsFacingRight()
-        {
-            return true;
-        }
+        
 
         public InputCollector GetInputCollector()
-        { 
+        {
             return inputCollector;
         }
         public InputHandler GetInputHandler()
@@ -67,8 +71,13 @@ namespace GGJ26.Input
             return inputHandler;
         }
         public Rigidbody2D GetRigidbody2D()
-        { 
+        {
             return rb;
+        }
+
+        public Transform GetTransform()
+        {
+            return gameObject.transform;
         }
     }
 

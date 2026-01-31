@@ -23,42 +23,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "DpUp",
-                    "type": "Button",
-                    "id": "44ab3ed7-fbd8-4137-ab92-c707cd2143de",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "DpDown",
-                    "type": "Button",
-                    "id": "9c0c95de-a4f2-40e5-be1f-ae8de9912a85",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "DpLeft",
-                    "type": "Button",
-                    "id": "fde5a1e2-5a91-4067-92f6-8cb1135aa8a2",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "DpRight",
-                    "type": "Button",
-                    "id": "c4177678-7c67-4d02-9ffa-8a18b3448859",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -191,50 +155,6 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "428256e5-c561-48e3-a679-901c9387cfee",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "DpUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1322272b-baa5-4517-b125-fe838db1f2dd",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "DpDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "874b3b56-a6b4-4e1a-943b-a75fc71124eb",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "DpLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "da2f3a7c-602d-4553-bc4c-d4ced1dee5e7",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "DpRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

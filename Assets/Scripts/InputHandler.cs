@@ -6,15 +6,14 @@ namespace GGJ26.Input
     public class InputHandler : MonoBehaviour
     {
         public InputActionAsset actionsAsset;
-        private DpadRaw dpadRaw;
+        //private DpadRaw dpadRaw;
         public RawInputData current = new RawInputData();
 
         
         private void Awake()
         {
-            Application.targetFrameRate = 60;
-            QualitySettings.vSyncCount = 0;
-            dpadRaw = new DpadRaw(actionsAsset);
+            
+            //dpadRaw = new DpadRaw(actionsAsset);
         }
 
         public InputData GetInputData()
@@ -37,7 +36,7 @@ namespace GGJ26.Input
 
         
 
-        public void Update()
+       /* public void Update()
         {
             // Combina input analogico e dpad
             Vector2 updatedByOnMove = current.Movement;
@@ -48,6 +47,6 @@ namespace GGJ26.Input
                 combined.Normalize();
 
             current.Movement = combined;
-        }
+        }*/
     }
 }
