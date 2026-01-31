@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerNumber = 1; // 1 o 2
     [SerializeField] private float moveSpeed = 5f;
 
+
     [Header("Visual")]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float transformationThreshold = 20f; // HP sotto il quale si trasforma
 
     private CharacterData currentCharacter;
-    private float currentHP;
+    [SerializeField] private float currentHP;
     private bool isTransformed = false;
     private float moveInput = 0f;
 
