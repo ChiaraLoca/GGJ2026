@@ -18,6 +18,8 @@ public class RoundTimer : MonoBehaviour
     [Header("Sound")]
     [SerializeField] private SoundController soundController;
 
+    [Header("GameController")]
+    [SerializeField] private GameSceneController gameController;
     private float currentTime;
     private int currentExclamations;
     private float nextExclamationTime;
@@ -83,42 +85,9 @@ public class RoundTimer : MonoBehaviour
 
         Debug.Log("=== ROUND TERMINATO - TEMPO SCADUTO ===");
 
-        float p1HP = 0f;
-        float p2HP = 0f;
+        gameController.EndGame();
 
-        if (player1 != null)
-        {
-            p1HP = player1.GetCurrentHP();
-            Debug.Log($"Player 1 HP: {p1HP}/{player1.GetMaxHP()}");
-        }
-        else
-        {
-            Debug.LogWarning("Player 1 non assegnato!");
-        }
-
-        if (player2 != null)
-        {
-            p2HP = player2.GetCurrentHP();
-            Debug.Log($"Player 2 HP: {p2HP}/{player2.GetMaxHP()}");
-        }
-        else
-        {
-            Debug.LogWarning("Player 2 non assegnato!");
-        }
-
-        // Determina il vincitore
-        if (p1HP > p2HP)
-        {
-            Debug.Log(">>> PLAYER 1 VINCE IL ROUND! <<<");
-        }
-        else if (p2HP > p1HP)
-        {
-            Debug.Log(">>> PLAYER 2 VINCE IL ROUND! <<<");
-        }
-        else
-        {
-            Debug.Log(">>> PAREGGIO! <<<");
-        }
+        
     }
 
     // Metodo pubblico per terminare il round anticipatamente (es. KO)

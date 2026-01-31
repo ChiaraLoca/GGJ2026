@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class GameSceneController : MonoBehaviour
 
     [Header("Music")]
     [SerializeField] private SoundController soundController;
+
+
 
     // Indice del personaggio trasformazione (quando HP basso)
     public const int TRANSFORMATION_CHARACTER_INDEX = 0;
@@ -105,6 +108,10 @@ public class GameSceneController : MonoBehaviour
     {
         // Aggiorna HP nella UI
         UpdateCombatUI();
+        if(player1Controller.GetCurrentHP() <= 0 || player2Controller.GetCurrentHP() <= 0)
+        {
+            EndGame();
+        }
     }
 
     private void UpdateCombatUI()
@@ -152,5 +159,17 @@ public class GameSceneController : MonoBehaviour
     public CharacterData GetPlayer2Character()
     {
         return characterDatabase?.GetCharacter(player2CharacterIndex);
+    }
+
+    public void EndGame()
+    {
+        if (player1Controller.GetCurrentHP() <= 0)
+        {
+            SceneManager.LoadScene("Player2Win");
+        }
+        if (player2Controller.GetCurrentHP() <= 0)
+        {
+            SceneManager.LoadScene("Player1Win");
+        }
     }
 }
