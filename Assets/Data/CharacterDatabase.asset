@@ -37,7 +37,8 @@ MonoBehaviour:
     characterImage: {fileID: 21300000, guid: 9fbbdeac174ee944db73958843e7ac5d, type: 3}
     characterPortrait: {fileID: 6550519409748291696, guid: e8df6648d9c07fe45ae8d52e731d4765, type: 3}
     characterId: 1
-    movementSprites: []
+    movementSprites:
+    - {fileID: 8603814972420610461, guid: 8f7681e05caccd747bd5cd80918908fe, type: 3}
     blockSprites:
     - {fileID: 8603814972420610461, guid: 528b9d6a6f6609147a27f67a9a9fd53c, type: 3}
     crouchSprites:
@@ -68,7 +69,7 @@ MonoBehaviour:
     description: CAIO
     speed: 5
     power: 5
-    hp: 5
+    hp: 0
   - characterName: '@@@'
     characterImage: {fileID: -3218519891966651117, guid: 87254c37f88789b45b063c9f3a395ee4, type: 3}
     characterPortrait: {fileID: 4281637774074219296, guid: 060cc83b0ca93554dbe9f558baa8a7a3, type: 3}
