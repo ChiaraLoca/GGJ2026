@@ -11,18 +11,21 @@ namespace GGJ26.StateMachine
        
         private int maxFrame = 30;
         private int frame = 0;
-
-        public Hit(IPlayableCharacter character, StateMachineBehaviour sm, Motion motion)
+        private Motion hitByMotion;
+        public Hit(IPlayableCharacter character, StateMachineBehaviour sm, Motion hitByMotion)
         {
             this.character = character;
             this.sm = sm;
-            
+            this.hitByMotion = hitByMotion;
+
         }
 
         public void OnEnter()
         {
             Debug.Log($"Hit Enter");
             character.GetPlayerSpriteUpdater().ChangeSprite("hit", 0);
+
+            
         }
         public void OnFrame()
         {

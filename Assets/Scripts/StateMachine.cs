@@ -25,8 +25,19 @@ namespace GGJ26.StateMachine
             {
                 return attack.motion;
             }
-
             return null;
+        }
+
+        public void GotHit(Motion hitByMotion)
+        {
+            if (current is Block block)
+            {
+                //BlockStun
+            }
+            else 
+            {
+                //Hit
+            }
         }
 
         
