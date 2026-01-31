@@ -10,17 +10,17 @@ public class CharacterData
     public Sprite characterPortrait; // Immagine ritratto per la selezione
     public int characterId;
 
-    public List<Sprite> movementSprites;
-    public List<Sprite> blockSprites;
-    public List<Sprite> crouchSprites;
-    public List<Sprite> jumpSprites;
-    public List<Sprite> hitSprites;
-    public List<Sprite> downSprites;
-    public List<Sprite> standingSprites;
-    public List<Sprite> punchSprites;
-    public List<Sprite> kickSprites;
-    public List<Sprite> lowhitSprites;
-    public List<Sprite> specialSprites;
+    public List<GameObject> movementSprites;
+    public List<GameObject> blockSprites;
+    public List<GameObject> crouchSprites;
+    public List<GameObject> jumpSprites;
+    public List<GameObject> hitSprites;
+    public List<GameObject> downSprites;
+    public List<GameObject> standingSprites;
+    public List<GameObject> punchSprites;
+    public List<GameObject> kickSprites;
+    public List<GameObject> lowhitSprites;
+    public List<GameObject> specialSprites;
 
     public Sprite characterSpecialSprite; // Sprite speciale per mosse o trasformazioni
     

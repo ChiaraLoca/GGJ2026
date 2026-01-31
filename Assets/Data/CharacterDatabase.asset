@@ -17,35 +17,95 @@ MonoBehaviour:
     characterImage: {fileID: 9146828156179646807, guid: ff54e7e5d2e40e647b54f12b2875536f, type: 3}
     characterPortrait: {fileID: -3218519891966651117, guid: 87254c37f88789b45b063c9f3a395ee4, type: 3}
     characterId: 0
+    movementSprites: []
+    blockSprites: []
+    crouchSprites: []
+    jumpSprites: []
+    hitSprites: []
+    downSprites: []
+    standingSprites: []
+    punchSprites: []
+    kickSprites: []
+    lowhitSprites: []
+    specialSprites: []
     characterSpecialSprite: {fileID: 0}
     description: TIZIO
     speed: 5
     power: 5
-    defense: 5
+    hp: 5
   - characterName: ???
-    characterImage: {fileID: 8793639957104055765, guid: 250d80db5b0c73147b668c82f3559090, type: 3}
+    characterImage: {fileID: 21300000, guid: 9fbbdeac174ee944db73958843e7ac5d, type: 3}
     characterPortrait: {fileID: 6550519409748291696, guid: e8df6648d9c07fe45ae8d52e731d4765, type: 3}
     characterId: 1
+    movementSprites: []
+    blockSprites:
+    - {fileID: 8603814972420610461, guid: 528b9d6a6f6609147a27f67a9a9fd53c, type: 3}
+    crouchSprites:
+    - {fileID: 8910220269318005630, guid: bb57ce610d5da524ebf661809853ad5a, type: 3}
+    jumpSprites:
+    - {fileID: 9088676808887347343, guid: 21f9b0c774117ab4ebeaa74e8645bfe6, type: 3}
+    - {fileID: 1771108631874929897, guid: f52868ba2e858ce4b9a382d7f9bef840, type: 3}
+    hitSprites:
+    - {fileID: 1814336502112444237, guid: 08bf30b57c6d1ba4bae346121d480284, type: 3}
+    downSprites:
+    - {fileID: 8770508845719098149, guid: 8dc04d1793fdec244b6faff09c732518, type: 3}
+    standingSprites:
+    - {fileID: 4741238997123618329, guid: 0382415f3f16625499c3171c034f98ab, type: 3}
+    punchSprites:
+    - {fileID: 1854636421667274103, guid: f136937c6fed4224193588a001da5e63, type: 3}
+    - {fileID: 871591086528271897, guid: 70775bbe200a9ba4fba2526b3f8e3f21, type: 3}
+    - {fileID: 5914177704232961089, guid: 919bba8f2f488894a80b2539b558a160, type: 3}
+    kickSprites:
+    - {fileID: 1339799145304381802, guid: f78703c6642d5f244b87df9042293f31, type: 3}
+    - {fileID: 7696660464945962983, guid: f204d76c62bc5be41804a5083413ff3e, type: 3}
+    - {fileID: 2343759900677460291, guid: c678945c40761cf40a56b3e27a7fbfa9, type: 3}
+    lowhitSprites:
+    - {fileID: 2222513863768082743, guid: 1673e227e50bb0e448a3ff24be4b6365, type: 3}
+    - {fileID: 513359847921296476, guid: 7156b96e815bee9479855875418dd583, type: 3}
+    - {fileID: 7519532527851756879, guid: fee32bff41573b646a88b75fc7115a21, type: 3}
+    specialSprites: []
     characterSpecialSprite: {fileID: 6169051424762097521, guid: fa39d7c8c057b5e41a6b3df6e268807d, type: 3}
     description: CAIO
     speed: 5
     power: 5
-    defense: 5
+    hp: 5
   - characterName: '@@@'
     characterImage: {fileID: -3218519891966651117, guid: 87254c37f88789b45b063c9f3a395ee4, type: 3}
     characterPortrait: {fileID: 4281637774074219296, guid: 060cc83b0ca93554dbe9f558baa8a7a3, type: 3}
     characterId: 2
+    movementSprites: []
+    blockSprites: []
+    crouchSprites: []
+    jumpSprites: []
+    hitSprites: []
+    downSprites: []
+    standingSprites: []
+    punchSprites: []
+    kickSprites: []
+    lowhitSprites: []
+    specialSprites: []
     characterSpecialSprite: {fileID: 2107204452721565602, guid: 0c5ad38c0714fd8448f33259762ca58c, type: 3}
     description: SEMPRONIO
     speed: 5
     power: 5
-    defense: 5
+    hp: 5
   - characterName: '!!!'
     characterImage: {fileID: -3520668151646419534, guid: c5071f78399f74d478d9d56e17415fd9, type: 3}
     characterPortrait: {fileID: 0}
     characterId: 3
+    movementSprites: []
+    blockSprites: []
+    crouchSprites: []
+    jumpSprites: []
+    hitSprites: []
+    downSprites: []
+    standingSprites: []
+    punchSprites: []
+    kickSprites: []
+    lowhitSprites: []
+    specialSprites: []
     characterSpecialSprite: {fileID: -4211581063009071647, guid: 1e298034834a73140860f3d39dd7ff3c, type: 3}
     description: CACCA
     speed: 5
     power: 5
-    defense: 5
+    hp: 5
