@@ -10,9 +10,7 @@ namespace GGJ26.Input
     {
         public InputActionAsset actionsAsset;
         private DpadRaw dpadRaw;
-     
-
-        private bool canRead = true;
+        public RawInputData current = new RawInputData();
 
         private void Awake()
         {
@@ -21,7 +19,7 @@ namespace GGJ26.Input
             
         }
         
-        public RawInputData current = new RawInputData();
+        
 
         public InputData GetInputData()
         {
@@ -32,8 +30,7 @@ namespace GGJ26.Input
 
         public void OnMove(InputAction.CallbackContext ctx)
         {
-            if (!canRead)
-                return;
+            
             current.Movement = ctx.ReadValue<Vector2>();
 
 
@@ -41,9 +38,7 @@ namespace GGJ26.Input
 
         public void OnAttack(InputAction.CallbackContext ctx)
         {
-            if (!canRead)
-                return;
-
+           
             if (ctx.started)
                 current.Attack1 = true;
             if (ctx.canceled)
@@ -52,9 +47,7 @@ namespace GGJ26.Input
 
         public void Update()
         {
-            if (!canRead)
-                return;
-
+            
             Vector2 updatedByOnMove = current.Movement;
             Vector2 dpadMove = ((Vector2)dpadRaw.GetDPadRaw()).normalized;
             Vector2 combined = updatedByOnMove + dpadMove;
@@ -66,10 +59,7 @@ namespace GGJ26.Input
 
         }
 
-        public void SetRead(bool value)
-        {
-            canRead = value;
-        }
+       
 
     }
 

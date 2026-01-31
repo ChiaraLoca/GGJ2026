@@ -5,44 +5,67 @@ using UnityEngine;
 
 namespace GGJ26.StateMachine
 {
-    public class Attack : BaseState {
+    public class Attack : IState
+    {
+        private IPlayableCharacter character;
+        private StateMachineBehaviour sm;
+        private Motion motion;
+        private int frame;
+        private int phase; // 0=startup, 1=active, 2=recovery
+        private string motionName;
 
-        public Motion motion;
-        public string nameMotion;
-
-        public Attack(Motion motion, IPlayableCharacter playableCharacter, StateMachineBehaviour stateMachineBehaviour) {
-
-            StateMachineBehaviour = stateMachineBehaviour;
-            PlayableCharacter = playableCharacter;
-            this.motion = motion;
-            nameMotion = string.Join(",", motion.Inputs.Select(x => x.ToString()));
-
-
-        }
-        public override void OnFrame()
+        public Attack(Motion motion, IPlayableCharacter character, StateMachineBehaviour sm)
         {
-            base.OnFrame();
+            this.motion = motion;
+            this.character = character;
+            this.sm = sm;
+            frame = 0;
+            phase = -1;
+            motionName = string.Join(",", motion.Inputs.Select(x => x.ToString()));
+        }
 
-            if (Frame < motion.startupEnd)
-            {
-                Debug.Log($"startup " + nameMotion);
-            }
-            else if (Frame < motion.activeEnd)
-            {
-                Debug.Log($"Active "+ nameMotion);
-            }
-            else if (Frame < motion.totalFrames)
-            {
-                Debug.Log($"Recovery " + nameMotion);
-            }
-            else
-            {
-                StateMachineBehaviour.ChangeState(new Move(PlayableCharacter, StateMachineBehaviour));
-            }
-                   
-            
+        public void OnEnter()
+        {
+            Debug.Log($"Attack Enter: {motionName}");
+            //character.SetAnimation("Attack");
+        }
 
-                
+        public void OnFrame()
+        {
+            frame++;
+
+            int newPhase = frame < motion.startupEnd ? 0 :
+                           frame < motion.activeEnd ? 1 :
+                           frame < motion.totalFrames ? 2 : 3;
+
+            // Log fase solo quando cambia
+            if (newPhase != phase)
+            {
+                switch (newPhase)
+                {
+                    case 0: Debug.Log($"Startup {motionName}"); break;
+                    case 1: Debug.Log($"Active {motionName}"); break;
+                    case 2: Debug.Log($"Recovery {motionName}"); break;
+                }
+                phase = newPhase;
+            }
+
+            // Durante active puoi gestire hitbox qui
+            if (phase == 1)
+            {
+                // character.SpawnHitbox(motion.hitboxData);
+            }
+
+            // Fine attacco → ritorno a Move
+            if (newPhase == 3)
+            {
+                sm.ChangeState(new Move(character, sm));
+            }
+        }
+
+        public void OnExit()
+        {
+            Debug.Log($"Attack Exit: {motionName}");
         }
     }
 }

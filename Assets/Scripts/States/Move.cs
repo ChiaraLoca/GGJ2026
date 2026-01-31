@@ -5,78 +5,71 @@ using UnityEngine.Windows;
 
 namespace GGJ26.StateMachine
 {
-
-    public class Move : BaseState
+    public class Move : IState
     {
-
+        private IPlayableCharacter character;
+        private StateMachineBehaviour sm;
+        private Rigidbody2D rb;
         private InputCollector inputCollector;
-        private InputHandler inputHandler;
-        private Rigidbody2D rigidbody2D;
 
-        public Move(IPlayableCharacter playableCharacter, StateMachineBehaviour stateMachineBehaviour)
+        public Move(IPlayableCharacter character, StateMachineBehaviour sm)
         {
-            StateMachineBehaviour = stateMachineBehaviour;
-            PlayableCharacter = playableCharacter;
-            inputCollector = PlayableCharacter.GetInputCollector();
-            rigidbody2D = playableCharacter.GetRigidbody2D();
-            inputHandler = PlayableCharacter.GetInputHandler();
-
-        }
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            inputHandler.SetRead(true);
+            this.character = character;
+            this.sm = sm;
+            this.rb = character.GetRigidbody2D();
+            this.inputCollector = character.GetInputCollector();
         }
 
-        public override void OnExit()
+        public void OnEnter()
         {
-            base.OnExit();
-            inputHandler.SetRead(false);
+            Debug.Log($"Move Enter:");
+            //character.SetAnimation("Idle");
         }
 
-        public override void OnFrame()
+        public void OnFrame()
         {
-            base.OnFrame();
-
-            if (inputCollector.lastFrameHasButton())
+            // Controllo motion da attacco
+            Motion motion = inputCollector.GetMotion(character.IsFacingRight());
+            if (motion != null && !(sm.current is Attack))
             {
-                Motion motion = inputCollector.GetMotion(PlayableCharacter.IsFacingRight());
-                StateMachineBehaviour.ChangeState(new Attack(motion, PlayableCharacter, StateMachineBehaviour));
-            }
-            else
-            {
-                InputData input = inputCollector.GetLastInputInBuffer();
-                if (input != null)
-                {
-                    Debug.Log(input);
-                    Vector2 move = NumpadToMove(input.Movement);
-                    rigidbody2D.linearVelocity = move;
-                }
+                sm.ChangeState(new Attack(motion, character, sm));
+                return;
             }
 
+            // Movimento base
+            InputData input = inputCollector.GetLastInputInBuffer();
+            Vector2 move = Vector2.zero;
+
+            if (input != null)
+                move = NumpadToMove(input.Movement) * 1;
+
+            rb.linearVelocity = move;
+
+            // Animazione
+            //character.SetAnimation(move == Vector2.zero ? "Idle" : "Walk");
         }
 
-        
-
-        public Vector2 NumpadToMove(NumpadDirection direction)
+        public void OnExit()
         {
-            switch (direction)
-            {
-                case NumpadDirection.Up: return new Vector2(0, 1);
-                case NumpadDirection.Down: return new Vector2(0, -1);
-                case NumpadDirection.Left: return new Vector2(-1, 0);
-                case NumpadDirection.Right: return new Vector2(1, 0);
+            Debug.Log($"Move Exit:");
+            rb.linearVelocity = Vector2.zero;
+        }
 
+        private Vector2 NumpadToMove(NumpadDirection dir)
+        {
+            switch (dir)
+            {
+                case NumpadDirection.Up: return Vector2.up;
+                case NumpadDirection.Down: return Vector2.down;
+                case NumpadDirection.Left: return Vector2.left;
+                case NumpadDirection.Right: return Vector2.right;
                 case NumpadDirection.UpLeft: return new Vector2(-1, 1).normalized;
                 case NumpadDirection.UpRight: return new Vector2(1, 1).normalized;
                 case NumpadDirection.DownLeft: return new Vector2(-1, -1).normalized;
                 case NumpadDirection.DownRight: return new Vector2(1, -1).normalized;
-
                 case NumpadDirection.Neutral:
-                default:
-                    return Vector2.zero;
+                default: return Vector2.zero;
             }
         }
     }
-
 }

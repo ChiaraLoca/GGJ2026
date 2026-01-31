@@ -4,7 +4,7 @@ using UnityEngine;
 public class Motion
 {
     public InputData[] Inputs;
-    InputData[] FlippedInputs;
+    public InputData[] FlippedInputs;
     public int totalFrames;
     public int startupEnd;
     public  int activeEnd;
