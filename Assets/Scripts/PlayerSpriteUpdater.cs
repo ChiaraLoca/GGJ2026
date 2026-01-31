@@ -23,37 +23,37 @@ public class PlayerSpriteUpdater : MonoBehaviour
     {
         switch(state)         {
             case "block":
-                PlayerSprite.sprite = characterData.blockSprites[index];
+                PlayerSprite.sprite = characterData.blockSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "movement":
-                PlayerSprite.sprite = characterData.movementSprites[index];
+                PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "crouch":
-                PlayerSprite.sprite = characterData.crouchSprites[index];
+                PlayerSprite.sprite = characterData.crouchSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "jump":
-                PlayerSprite.sprite = characterData.movementSprites[index];
+                PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "hit":
-                PlayerSprite.sprite = characterData.hitSprites[index];
+                PlayerSprite.sprite = characterData.hitSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "down":
-                PlayerSprite.sprite = characterData.movementSprites[index];
+                PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "standing":
-                PlayerSprite.sprite = characterData.movementSprites[index];
+                PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "punch":
-                PlayerSprite.sprite = characterData.movementSprites[index];
+                PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "kick":
-                PlayerSprite.sprite = characterData.movementSprites[index];
+                PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "lowHit":
-                PlayerSprite.sprite = characterData.movementSprites[index];
+                PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             case "special":
-                PlayerSprite.sprite = characterData.movementSprites[index];
+                PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                 break;
             default:
                 Debug.LogWarning("Unknown state: " + state);
