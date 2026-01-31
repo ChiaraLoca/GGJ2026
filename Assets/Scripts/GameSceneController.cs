@@ -9,6 +9,9 @@ public class GameSceneController : MonoBehaviour
     [SerializeField] private PlayerController player1Controller;
     [SerializeField] private PlayerController player2Controller;
 
+    [Header("UI")]
+    [SerializeField] private CombatUI combatUI;
+
     [Header("Debug Settings")]
     [SerializeField] private bool useDebugCharacters = false;
     [SerializeField] private int debugPlayer1Index = 1;
@@ -64,6 +67,40 @@ public class GameSceneController : MonoBehaviour
         {
             player2Controller.Initialize(p2Character, 2);
         }
+
+        // Inizializza la UI di combattimento
+        InitializeCombatUI(p1Character, p2Character);
+    }
+
+    private void InitializeCombatUI(CharacterData p1Character, CharacterData p2Character)
+    {
+        if (combatUI == null) return;
+
+        // Imposta i ritratti
+        combatUI.SetPlayer1Portrait(p1Character);
+        combatUI.SetPlayer2Portrait(p2Character);
+
+        // Imposta HP iniziale al massimo
+        if (player1Controller != null)
+            combatUI.SetPlayer1HPInstant(player1Controller.GetCurrentHP(), player1Controller.GetMaxHP());
+        if (player2Controller != null)
+            combatUI.SetPlayer2HPInstant(player2Controller.GetCurrentHP(), player2Controller.GetMaxHP());
+    }
+
+    private void Update()
+    {
+        // Aggiorna HP nella UI
+        UpdateCombatUI();
+    }
+
+    private void UpdateCombatUI()
+    {
+        if (combatUI == null) return;
+
+        if (player1Controller != null)
+            combatUI.SetPlayer1HP(player1Controller.GetCurrentHP(), player1Controller.GetMaxHP());
+        if (player2Controller != null)
+            combatUI.SetPlayer2HP(player2Controller.GetCurrentHP(), player2Controller.GetMaxHP());
     }
 
     // Metodo per trasformare un player quando HP scende sotto soglia

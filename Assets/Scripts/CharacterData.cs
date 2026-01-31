@@ -7,6 +7,8 @@ public class CharacterData
     public Sprite characterImage;
     public Sprite characterPortrait; // Immagine ritratto per la selezione
     public int characterId;
+
+    public Sprite characterSpecialSprite; // Sprite speciale per mosse o trasformazioni
     
     [TextArea(2, 4)]
     public string description; // Descrizione opzionale del personaggio

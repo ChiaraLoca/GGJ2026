@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: CharacterDatabase
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDatabase
   characters:
-  - characterName: '!!!'
+  - characterName: NORAMLE
     characterImage: {fileID: 9146828156179646807, guid: ff54e7e5d2e40e647b54f12b2875536f, type: 3}
     characterPortrait: {fileID: -3218519891966651117, guid: 87254c37f88789b45b063c9f3a395ee4, type: 3}
     characterId: 0
+    characterSpecialSprite: {fileID: 0}
     description: TIZIO
     speed: 5
     power: 5
@@ -25,6 +26,7 @@ MonoBehaviour:
     characterImage: {fileID: 8793639957104055765, guid: 250d80db5b0c73147b668c82f3559090, type: 3}
     characterPortrait: {fileID: 6550519409748291696, guid: e8df6648d9c07fe45ae8d52e731d4765, type: 3}
     characterId: 1
+    characterSpecialSprite: {fileID: 6169051424762097521, guid: fa39d7c8c057b5e41a6b3df6e268807d, type: 3}
     description: CAIO
     speed: 5
     power: 5
@@ -33,6 +35,7 @@ MonoBehaviour:
     characterImage: {fileID: -3218519891966651117, guid: 87254c37f88789b45b063c9f3a395ee4, type: 3}
     characterPortrait: {fileID: 4281637774074219296, guid: 060cc83b0ca93554dbe9f558baa8a7a3, type: 3}
     characterId: 2
+    characterSpecialSprite: {fileID: 2107204452721565602, guid: 0c5ad38c0714fd8448f33259762ca58c, type: 3}
     description: SEMPRONIO
     speed: 5
     power: 5
@@ -41,6 +44,7 @@ MonoBehaviour:
     characterImage: {fileID: -3520668151646419534, guid: c5071f78399f74d478d9d56e17415fd9, type: 3}
     characterPortrait: {fileID: 0}
     characterId: 3
+    characterSpecialSprite: {fileID: -4211581063009071647, guid: 1e298034834a73140860f3d39dd7ff3c, type: 3}
     description: CACCA
     speed: 5
     power: 5
