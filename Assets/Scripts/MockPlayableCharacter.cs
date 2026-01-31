@@ -8,6 +8,7 @@ namespace GGJ26.Input
     public interface IPlayableCharacter 
     {
         public bool IsFacingRight();
+        public InputCollector GetInputCollector();
         public InputHandler GetInputHandler();
         public Rigidbody2D GetRigidbody2D();
     }
@@ -16,19 +17,22 @@ namespace GGJ26.Input
     [RequireComponent(typeof(InputHandler))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Rigidbody2D))]
-
+    [RequireComponent(typeof(InputCollector))]
     public class MockPlayableCharacter : MonoBehaviour, IPlayableCharacter
     {
         private Rigidbody2D rb;
         private InputHandler inputHandler;
         private StateMachineBehaviour stateMachine;
+        private InputCollector inputCollector;
 
         void Awake()
         {
+            
             rb = GetComponent<Rigidbody2D>();
             inputHandler = GetComponent<InputHandler>();
+            inputCollector = GetComponent<InputCollector>();
             stateMachine = new StateMachineBehaviour();
-            stateMachine.ChangeState(new Idle(this, stateMachine));
+            stateMachine.ChangeState(new Move(this, stateMachine));
         }
 
         void FixedUpdate()
@@ -44,8 +48,12 @@ namespace GGJ26.Input
             return true;
         }
 
-        public InputHandler GetInputHandler()
+        public InputCollector GetInputCollector()
         { 
+            return inputCollector;
+        }
+        public InputHandler GetInputHandler()
+        {
             return inputHandler;
         }
         public Rigidbody2D GetRigidbody2D()

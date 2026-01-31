@@ -16,7 +16,9 @@ namespace GGJ26.Input
 
         private void Awake()
         {
+            Application.targetFrameRate = 60;
             dpadRaw = new DpadRaw(actionsAsset);
+            
         }
         
         public RawInputData current = new RawInputData();
