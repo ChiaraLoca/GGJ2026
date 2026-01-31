@@ -12,8 +12,8 @@ namespace GGJ26.Input
             Attack1 = attack1;
         }
 
-    }
-}
+    
+
         public override string ToString()
         {
             return $"Movement: {Movement}, Attack1: {Attack1}";
