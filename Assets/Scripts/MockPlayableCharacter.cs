@@ -11,6 +11,8 @@ namespace GGJ26.Input
         public InputCollector GetInputCollector();
         public InputHandler GetInputHandler();
         public Rigidbody2D GetRigidbody2D();
+        public bool IsAttacking();
+        void SetAttacking(bool attacking);
     }
 
 
@@ -24,7 +26,7 @@ namespace GGJ26.Input
         private InputHandler inputHandler;
         private StateMachineBehaviour stateMachine;
         private InputCollector inputCollector;
-
+        public bool isAttacking = false;
         void Awake()
         {
             
@@ -41,7 +43,14 @@ namespace GGJ26.Input
             
         }
 
-
+        public bool IsAttacking()
+        {
+            return isAttacking;
+        }
+        public void SetAttacking(bool attacking)
+        {
+            isAttacking = attacking;
+        }
 
         public bool IsFacingRight()
         {

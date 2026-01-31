@@ -11,7 +11,7 @@ public class InputCollector : MonoBehaviour
     private InputBuffer InputBuffer = new InputBuffer(60);
     private List<Motion> motions = new List<Motion>();
 
-    public TextMeshProUGUI buffer;
+    //public TextMeshProUGUI buffer;
 
 
     private void setupMoves()
@@ -30,23 +30,20 @@ public class InputCollector : MonoBehaviour
     void FixedUpdate()
     {
         InputBuffer.Enqueue(_inputHandler.GetInputData());
-        buffer.text = InputBuffer.print();
+        //  buffer.text = InputBuffer.print();
 
 
     }
 
     public Motion GetMotion(bool isFacingRight)
     {
-        InputBuffer.Clear();
-        return MotionCreator.get5A();
-
-        /*foreach (Motion motion in motions)
+        Motion res = InputBuffer.FindBestMatch(motions.ToArray(), isFacingRight);
+        if (res != null)
         {
-            if (InputBuffer.MatchesMotion(motion, isFacingRight))
-            {
-                return motion;
-            }
-        }*/
+            // Consuma solo i frame utilizzati da questo motion
+            InputBuffer.ConsumeMotion(res, isFacingRight);
+        }
+        return res;
     }
 
     public bool lastFrameHasButton()

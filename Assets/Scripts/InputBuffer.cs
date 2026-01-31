@@ -2,8 +2,7 @@ using GGJ26.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using static UnityEditor.Experimental.GraphView.Port;
+
 public class InputBuffer
 {
     private  InputData[] buffer;
@@ -220,4 +219,49 @@ public class InputBuffer
        
         return string.Join(Environment.NewLine, buffer.Select(x => x.ToString()));
     }
+
+    public void ConsumeMotion(Motion motion, bool isFacingRight)
+    {
+        if (motion == null || count == 0)
+            return;
+
+        // Prendi gli input richiesti dalla motion (rispettando la direzione)
+        InputData[] requiredInputs = isFacingRight ? motion.Inputs : motion.FlippedInputs;
+        if (requiredInputs == null || requiredInputs.Length == 0)
+            return;
+
+        int inputIndex = requiredInputs.Length - 1; // partiamo dall’ultimo input richiesto
+
+        // Scorri il buffer dal più recente al più vecchio
+        for (int i = 0; i < count && inputIndex >= 0; i++)
+        {
+            int idx = (tail - 1 - i + buffer.Length) % buffer.Length;
+
+            if (buffer[idx] != null && MatchesWithLeniency(buffer[idx], requiredInputs[inputIndex]))
+            {
+                // Consuma questo frame
+                buffer[idx] = null;
+                inputIndex--;
+            }
+        }
+
+        // Ricompattiamo il buffer rimuovendo i null
+        InputData[] newBuffer = new InputData[buffer.Length];
+        int newCount = 0;
+        for (int i = 0; i < count; i++)
+        {
+            int idx = (head + i) % buffer.Length;
+            if (buffer[idx] != null)
+            {
+                newBuffer[newCount] = buffer[idx];
+                newCount++;
+            }
+        }
+
+        buffer = newBuffer;
+        head = 0;
+        tail = newCount % buffer.Length;
+        count = newCount;
+    }
+
 }
