@@ -33,6 +33,8 @@ public class Jump : IState
         phase = -1;
         landingStartFrame = -1;
         Debug.Log("Jump Enter");
+
+        character.GetPlayerSpriteUpdater().ChangeSprite("jump", 0);
     }
 
     public void OnFrame()
@@ -75,6 +77,7 @@ public class Jump : IState
         // Fall: gravità extra
         if (phase == 2)
         {
+            character.GetPlayerSpriteUpdater().ChangeSprite("jump", 1);
             rb.linearVelocity += new Vector2(0, Physics2D.gravity.y * Time.deltaTime * 2);
         }
 
@@ -82,6 +85,8 @@ public class Jump : IState
         if (phase == 3 && frame >= landingStartFrame + landingFrames)
         {
             rb.linearVelocity = Vector2.zero;
+           
+     // Snap to ground
             sm.ChangeState(new Move(character, sm));
         }
     }
@@ -89,5 +94,6 @@ public class Jump : IState
     public void OnExit()
     {
         Debug.Log("Jump Exit");
+        rb.transform.position = new Vector2(rb.transform.position.x, character.GetStartingYPosition());
     }
 }

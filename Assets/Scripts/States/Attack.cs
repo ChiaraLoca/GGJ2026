@@ -30,7 +30,8 @@ namespace GGJ26.StateMachine
             //Debug.Log($"Attack Enter: {motionName}");
             Debug.Log($"ATTACK {character.GetInputCollector().Print()}");
             character.SetAttacking(true);
-            //character.SetAnimation("Attack");
+
+            character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 0);
         }
 
         public void OnFrame()
@@ -56,6 +57,12 @@ namespace GGJ26.StateMachine
             // Durante active puoi gestire hitbox qui
             if (phase == 1)
             {
+                character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 1);
+                // character.SpawnHitbox(motion.hitboxData);
+            }
+            if (phase == 2)
+            {
+                character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 2);
                 // character.SpawnHitbox(motion.hitboxData);
             }
 
@@ -70,6 +77,7 @@ namespace GGJ26.StateMachine
         {
             Debug.Log($"Attack Exit: {motionName}");
             character.SetAttacking(false);
+            character.GetPlayerSpriteUpdater().ChangeSprite("idle",0);
         }
     }
 }

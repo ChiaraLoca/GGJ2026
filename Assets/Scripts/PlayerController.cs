@@ -1,11 +1,12 @@
 using GGJ26.Input;
 using GGJ26.StateMachine;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using StateMachineBehaviour = GGJ26.StateMachine.StateMachineBehaviour;
 
-public class PlayerController : MonoBehaviour,IPlayableCharacter
+public class PlayerController : MonoBehaviour, IPlayableCharacter
 {
     private Rigidbody2D rb;
     private InputHandler inputHandler;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour,IPlayableCharacter
     [Header("Player Settings")]
     [SerializeField] private int playerNumber = 1; // 1 o 2
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpforce = 5f;
     [SerializeField] private float baseMoveSpeed = 5f;
     [SerializeField] private float power = 5f;
 
@@ -49,6 +51,19 @@ public class PlayerController : MonoBehaviour,IPlayableCharacter
     // Riferimenti ai gamepad
     private Gamepad assignedGamepad;
 
+    public PlayerSpriteUpdater GetPlayerSpriteUpdater()
+    {
+        return GetComponent<PlayerSpriteUpdater>();
+    }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+    public float GetJumpForce()
+    {
+        return jumpforce;
+    }
     private void Awake()
     {
         if (spriteRenderer == null)
@@ -56,14 +71,16 @@ public class PlayerController : MonoBehaviour,IPlayableCharacter
 
         gameSceneController = FindFirstObjectByType<GameSceneController>();
 
-        
+
         rb = GetComponent<Rigidbody2D>();
 
         inputCollector = GetComponent<InputCollector>();
-        
+
 
         stateMachine = new StateMachineBehaviour();
         stateMachine.ChangeState(new Move(this, stateMachine));
+        startingYPosition = transform.position.y;
+
 
     }
 
@@ -74,12 +91,13 @@ public class PlayerController : MonoBehaviour,IPlayableCharacter
         currentSpecial = 0f; // Special parte da 0
 
         
-        
+
+
     }
 
     private void FixedUpdate()
     {
-        
+
         stateMachine.Tick();
         status.text = stateMachine.current.GetType().Name;
     }
@@ -101,7 +119,7 @@ public class PlayerController : MonoBehaviour,IPlayableCharacter
     }
 
 
-    
+
 
     public void Initialize(CharacterData character, int playerNum)
     {
@@ -127,7 +145,7 @@ public class PlayerController : MonoBehaviour,IPlayableCharacter
             spriteRenderer.flipX = true;
         }
 
-        
+
 
         Debug.Log($"Player {playerNumber} inizializzato con: {character?.characterName}");
     }
@@ -326,4 +344,24 @@ public class PlayerController : MonoBehaviour,IPlayableCharacter
     {
         inputHandler = handler;
     }
+
+
+    public float startingYPosition;
+
+    public float GetStartingYPosition()
+    {
+        return startingYPosition;
+    }
+
+    private int characterIndex;
+
+    internal void SetCharacterIndex(int player1CharacterIndex)
+    {
+        characterIndex = player1CharacterIndex;
+    }
+    internal int GetCharacterIndex()
+    {
+        return  characterIndex;
+    }
 }
+

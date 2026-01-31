@@ -7,7 +7,7 @@ public class MotionCreator
     {
         InputData[] inputs = { new InputData(NumpadDirection.Neutral, true) };
         InputData[] flippedInputs = { new InputData(NumpadDirection.Neutral, true) };
-        return new Motion(inputs, flippedInputs, 60, 20, 40, 0, 5, 12);
+        return new Motion("punch",inputs, flippedInputs, 60, 20, 40, 0, 5, 12);
     }
 
     public static Motion get6A() {

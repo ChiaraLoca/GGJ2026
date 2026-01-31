@@ -35,9 +35,10 @@ MonoBehaviour:
     hp: 5
   - characterName: ???
     characterImage: {fileID: 21300000, guid: 9fbbdeac174ee944db73958843e7ac5d, type: 3}
-    characterPortrait: {fileID: 6550519409748291696, guid: e8df6648d9c07fe45ae8d52e731d4765, type: 3}
+    characterPortrait: {fileID: -5670608011827506249, guid: a327e9afc91f0244e8e05bb19d25a6bb, type: 3}
     characterId: 1
-    movementSprites: []
+    movementSprites:
+    - {fileID: 8603814972420610461, guid: 8f7681e05caccd747bd5cd80918908fe, type: 3}
     blockSprites:
     - {fileID: 8603814972420610461, guid: 528b9d6a6f6609147a27f67a9a9fd53c, type: 3}
     crouchSprites:
@@ -68,21 +69,38 @@ MonoBehaviour:
     description: CAIO
     speed: 5
     power: 5
-    hp: 5
+    hp: 0
   - characterName: '@@@'
-    characterImage: {fileID: -3218519891966651117, guid: 87254c37f88789b45b063c9f3a395ee4, type: 3}
-    characterPortrait: {fileID: 4281637774074219296, guid: 060cc83b0ca93554dbe9f558baa8a7a3, type: 3}
+    characterImage: {fileID: 21300000, guid: a1b40364906d62c46bbeea4bc98b309b, type: 3}
+    characterPortrait: {fileID: 4579442837771477331, guid: 6554f95f1827c93429b4ccdd95d8ee2c, type: 3}
     characterId: 2
-    movementSprites: []
-    blockSprites: []
-    crouchSprites: []
-    jumpSprites: []
-    hitSprites: []
-    downSprites: []
-    standingSprites: []
-    punchSprites: []
-    kickSprites: []
-    lowhitSprites: []
+    movementSprites:
+    - {fileID: 8603814972420610461, guid: aaf6a3cd2c1c6114cb2bc3daff9eb8d4, type: 3}
+    blockSprites:
+    - {fileID: 8603814972420610461, guid: cfbfb98627e9e8949b700621cfcc774b, type: 3}
+    crouchSprites:
+    - {fileID: 8910220269318005630, guid: d842bf933c1281d468b882b105f49e26, type: 3}
+    jumpSprites:
+    - {fileID: 9088676808887347343, guid: 7c48429ea9635f344a5fe166053ca6cd, type: 3}
+    - {fileID: 1771108631874929897, guid: e4d55ce985798754baadb79c4aa3d960, type: 3}
+    hitSprites:
+    - {fileID: 1814336502112444237, guid: 89c7d5902e5d29d488f96a43108532a0, type: 3}
+    downSprites:
+    - {fileID: 8770508845719098149, guid: b0f854b6d9af3c9469bed198ebd9cc00, type: 3}
+    standingSprites:
+    - {fileID: 4741238997123618329, guid: 6ff76a2119eab7d4d876eb50b20c4340, type: 3}
+    punchSprites:
+    - {fileID: 1854636421667274103, guid: c51c8576f9e4f0e458bc5d8cd4f57618, type: 3}
+    - {fileID: 871591086528271897, guid: dfc7f73282c3e2949a96dbb007aed4f6, type: 3}
+    - {fileID: 5914177704232961089, guid: 6e28f07b57d0f7e4dad5af7dc213e963, type: 3}
+    kickSprites:
+    - {fileID: 1339799145304381802, guid: 500971b1e8c96104dabb37ff53ba15bd, type: 3}
+    - {fileID: 7696660464945962983, guid: e8b491a5b821b3a449c5c6d4e159e82d, type: 3}
+    - {fileID: 2343759900677460291, guid: 7ef01b78e3a9c9f47a99540ab220f76b, type: 3}
+    lowhitSprites:
+    - {fileID: 2222513863768082743, guid: 2641e1fe498aa6b40bb6c3405428c03f, type: 3}
+    - {fileID: 513359847921296476, guid: cfb0817b120d2a6449bd08dbcc8ea4ee, type: 3}
+    - {fileID: 7519532527851756879, guid: 8424545f1448cbe46bba0d7ffab2727e, type: 3}
     specialSprites: []
     characterSpecialSprite: {fileID: 2107204452721565602, guid: 0c5ad38c0714fd8448f33259762ca58c, type: 3}
     description: SEMPRONIO
@@ -90,10 +108,11 @@ MonoBehaviour:
     power: 5
     hp: 5
   - characterName: '!!!'
-    characterImage: {fileID: -3520668151646419534, guid: c5071f78399f74d478d9d56e17415fd9, type: 3}
-    characterPortrait: {fileID: 0}
+    characterImage: {fileID: 21300000, guid: dc7efbbdf1fabda498cee7cf2d98f46b, type: 3}
+    characterPortrait: {fileID: -6440471216836430238, guid: c6050956c0b11f54b95b6af8cec0d667, type: 3}
     characterId: 3
-    movementSprites: []
+    movementSprites:
+    - {fileID: 0}
     blockSprites: []
     crouchSprites: []
     jumpSprites: []

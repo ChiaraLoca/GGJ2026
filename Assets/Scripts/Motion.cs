@@ -11,9 +11,11 @@ public class Motion
     public int cancelWindowStart;
     public int cancelWindowEnd;
     public int priority { get; set; }
+    public string name { get; set; }
 
 
-    public Motion(InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int cancelWindowStart = -1, int cancelWindowEnd = -1) {         
+    public Motion(string name,InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int cancelWindowStart = -1, int cancelWindowEnd = -1) {         
+        this.name = name;
         this.Inputs = inputs;
         this.FlippedInputs = flippedInputs;
         this.totalFrames = totalFrames;

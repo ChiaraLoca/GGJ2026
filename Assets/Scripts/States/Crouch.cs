@@ -20,7 +20,7 @@ namespace GGJ26.StateMachine
         public void OnEnter()
         {
             Debug.Log($"LowBlock Enter");
-            //Star LowBlock animation
+            
         }
         public void OnFrame()
         {
@@ -34,6 +34,7 @@ namespace GGJ26.StateMachine
         public void OnExit()
         {
             Debug.Log($"LowBlock Exit");
+            character.GetPlayerSpriteUpdater().ChangeSprite("idle", 0);
         }
     }
 
@@ -54,7 +55,7 @@ namespace GGJ26.StateMachine
         public void OnEnter()
         {
             Debug.Log($"Block Enter");
-            //Star Block animation
+            character.GetPlayerSpriteUpdater().ChangeSprite("block", 0);
         }
         public void OnFrame()
         {
@@ -87,7 +88,7 @@ namespace GGJ26.StateMachine
         public void OnEnter()
         {
             Debug.Log($"Neutral Enter");
-            //Star Neutral animation
+            character.GetPlayerSpriteUpdater().ChangeSprite("idle", 0);
         }
         public void OnFrame()
         {
@@ -122,7 +123,7 @@ namespace GGJ26.StateMachine
         public void OnEnter()
         {
             Debug.Log($"Crouch Enter");
-            //Star Crouch animation
+            character.GetPlayerSpriteUpdater().ChangeSprite("crouch", 0);
         }
         public void OnFrame()
         {
