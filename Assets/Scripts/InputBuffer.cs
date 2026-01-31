@@ -21,7 +21,7 @@ public class InputBuffer
         count = 0;
     }
 
-    /// <summary>
+    /// <summary>   
     /// Enqueue newest input frame.
     /// Automatically overwrites the oldest when full.
     /// </summary>
@@ -216,8 +216,8 @@ public class InputBuffer
 
     internal string print()
     {
-       
-        return string.Join(Environment.NewLine, buffer.Select(x => x.ToString()));
+
+        return string.Join(Environment.NewLine, buffer.Where(x => x != null).Select(x => x.ToString()));
     }
 
     public void ConsumeMotion(Motion motion, bool isFacingRight)
