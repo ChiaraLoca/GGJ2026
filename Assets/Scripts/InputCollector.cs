@@ -22,14 +22,25 @@ public class InputCollector : MonoBehaviour
 
     void Awake()
     {
-        _inputHandler = GetComponent<InputHandler>();
+       
         setupMoves();
+    }
+
+    public void SetInputHandler(InputHandler inputHandler)
+    {
+        _inputHandler = inputHandler;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        InputBuffer.Enqueue(_inputHandler.GetInputData());
+        InputData input = _inputHandler.GetInputData();
+
+        
+
+        InputBuffer.Enqueue(input);
+
+        Debug.Log(InputBuffer.print());
         //  buffer.text = InputBuffer.print();
 
 

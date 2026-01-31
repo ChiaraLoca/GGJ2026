@@ -1,26 +1,43 @@
 ﻿using GGJ26.Input;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+using static UnityEngine.InputManagerEntry;
+using static UnityEngine.LowLevelPhysics2D.PhysicsComposer;
 
 namespace GGJ26.StateMachine
 {
     public class MatchManager : MonoBehaviour
     {
-
         public static MatchManager Instance { get; private set; }
 
-        void Awake()
+
+
+        private void Awake()
         {
+            // Gestione singleton
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+
             Application.targetFrameRate = 60;
             QualitySettings.vSyncCount = 0;
         }
 
-        IPlayableCharacter player1;
-        IPlayableCharacter player2;
+        private IPlayableCharacter player1;
+        private IPlayableCharacter player2;
+
+        public InputHandler playerInput1;
+        public InputHandler playerInput2;
 
         public bool IsOppeonentAttcking(IPlayableCharacter me)
-        { 
-            if(player1==null || player2==null)
+        {
+            if (player1 == null || player2 == null || me == null)
                 return false;
 
             if (me.Equals(player1))
@@ -31,19 +48,10 @@ namespace GGJ26.StateMachine
 
         public bool IsFacingRight(IPlayableCharacter me)
         {
-            // Se non esiste player2, per design ritorniamo true
-            if (player2 == null)
+            // fallback sicuri
+            if (player1 == null || player2 == null || me == null)
                 return true;
 
-            // Se me è null, fallback sicuro
-            if (me == null)
-                return true;
-
-            // Se manca player1, fallback
-            if (player1 == null)
-                return true;
-
-            // Sicurezza extra sui Transform
             Transform t1 = player1.GetTransform();
             Transform t2 = player2.GetTransform();
 
@@ -56,14 +64,43 @@ namespace GGJ26.StateMachine
                 return t2.position.x < t1.position.x;
         }
 
-
-        internal void RegisterPlayer(MockPlayableCharacter mockPlayableCharacter)
+        internal void RegisterPlayer(IPlayableCharacter character)
         {
-            if(player1==null)
-                player1 = mockPlayableCharacter;
+            if (player1 == null)
+            {
+
+
+                player1 = character;
+
+                Bind(playerInput1, player1);
+
+                
+
+
+
+            }
             else if (player2 == null)
-                player2 = mockPlayableCharacter;
+            {
+                player2 = character;
+                Bind(playerInput2, player2);
+            }
+
+
 
         }
+
+
+        public static void Bind(InputHandler handler, IPlayableCharacter playableCharacter)
+        {
+            playableCharacter.SetInputHandler(handler);
+        }
+
+
     }
+
+
 }
+
+
+
+    

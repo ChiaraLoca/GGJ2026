@@ -92,6 +92,8 @@ namespace GGJ26.StateMachine
         public void OnFrame()
         {
             IState newState = attackInputHandler.CheckAttackInput(sm);
+            
+
             if (newState != null)
             {
                 sm.ChangeState(newState);

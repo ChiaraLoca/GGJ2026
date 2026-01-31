@@ -1,52 +1,37 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace GGJ26.Input
 {
     public class InputHandler : MonoBehaviour
     {
-        public InputActionAsset actionsAsset;
-        //private DpadRaw dpadRaw;
+        public PlayerInput playerInput;
+        private InputAction moveAction;
+        private InputAction attackAction;
+
         public RawInputData current = new RawInputData();
 
-        
-        private void Awake()
+        private void Start()
         {
             
-            //dpadRaw = new DpadRaw(actionsAsset);
+
+            // QUESTE sono per-player
+            moveAction = playerInput.actions["Move"];
+            attackAction = playerInput.actions["Attack"];
+        }
+
+        private void FixedUpdate()
+        {
+            current.Movement = moveAction.ReadValue<Vector2>();
+            current.Attack1 = attackAction.IsPressed();
         }
 
         public InputData GetInputData()
         {
-            return new InputData(DirectionConverter.ToNumpad(current.Movement), current.Attack1);
+            return new InputData(
+                DirectionConverter.ToNumpad(current.Movement),
+                current.Attack1
+            );
         }
-
-        public void OnMove(InputAction.CallbackContext ctx)
-        {
-            current.Movement = ctx.ReadValue<Vector2>();
-        }
-
-        public void OnAttack(InputAction.CallbackContext ctx)
-        {
-            if (ctx.started)
-                current.Attack1 = true;
-            if (ctx.canceled)
-                current.Attack1 = false;
-        }
-
-        
-
-       /* public void Update()
-        {
-            // Combina input analogico e dpad
-            Vector2 updatedByOnMove = current.Movement;
-            Vector2 dpadMove = ((Vector2)dpadRaw.GetDPadRaw()).normalized;
-            Vector2 combined = updatedByOnMove + dpadMove;
-
-            if (combined.magnitude > 1f)
-                combined.Normalize();
-
-            current.Movement = combined;
-        }*/
     }
 }

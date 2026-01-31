@@ -1,6 +1,8 @@
 ﻿using GGJ26.Input;
 using JetBrains.Annotations;
 using System;
+using UnityEngine;
+
 
 namespace GGJ26.StateMachine
 {
@@ -20,6 +22,7 @@ namespace GGJ26.StateMachine
         public IState CheckAttackInput(StateMachineBehaviour sm)
         {
             InputData input = inputCollector.GetLastInputInBuffer();
+            
             if (input == null) {
                 return null;
             }

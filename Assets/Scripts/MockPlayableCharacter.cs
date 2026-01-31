@@ -15,6 +15,7 @@ namespace GGJ26.Input
         public bool IsAttacking();
         void SetAttacking(bool attacking);
         public Transform GetTransform();
+        void SetInputHandler(InputHandler handler);
     }
 
 
@@ -78,6 +79,11 @@ namespace GGJ26.Input
         public Transform GetTransform()
         {
             return gameObject.transform;
+        }
+
+        public void SetInputHandler(InputHandler handler)
+        {
+            inputHandler = handler;
         }
     }
 

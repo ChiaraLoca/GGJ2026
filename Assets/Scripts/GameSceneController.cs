@@ -1,3 +1,4 @@
+using GGJ26.Input;
 using UnityEngine;
 
 public class GameSceneController : MonoBehaviour
@@ -26,8 +27,22 @@ public class GameSceneController : MonoBehaviour
     private void Start()
     {
         LoadSelectedCharacters();
+        SetupPlayersInScene();
         InitializePlayers();
     }
+
+    void SetupPlayersInScene()
+    {
+        // Trova gli InputHandler dei prefab creati in scena 1
+        InputHandler[] handlers = GameObject.FindObjectsOfType<InputHandler>();
+
+        // Assumi che handlers[0] = player 1, handlers[1] = player 2
+        PlayerController[] controllers = GameObject.FindObjectsOfType<PlayerController>();
+
+        controllers[0].InitializeHandler(handlers[0]);
+        controllers[1].InitializeHandler(handlers[1]);
+    }
+
 
     private void LoadSelectedCharacters()
     {

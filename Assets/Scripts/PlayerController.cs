@@ -1,8 +1,20 @@
+using GGJ26.Input;
+using GGJ26.StateMachine;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using StateMachineBehaviour = GGJ26.StateMachine.StateMachineBehaviour;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour,IPlayableCharacter
 {
+    private Rigidbody2D rb;
+    private InputHandler inputHandler;
+    private StateMachineBehaviour stateMachine;
+    private InputCollector inputCollector;
+    public bool isAttacking = false;
+
+    public TextMeshProUGUI status;
+
     [Header("Player Settings")]
     [SerializeField] private int playerNumber = 1; // 1 o 2
     [SerializeField] private float moveSpeed = 5f;
@@ -43,6 +55,16 @@ public class PlayerController : MonoBehaviour
             spriteRenderer = GetComponent<SpriteRenderer>();
 
         gameSceneController = FindFirstObjectByType<GameSceneController>();
+
+        
+        rb = GetComponent<Rigidbody2D>();
+
+        inputCollector = GetComponent<InputCollector>();
+        
+
+        stateMachine = new StateMachineBehaviour();
+        stateMachine.ChangeState(new Move(this, stateMachine));
+
     }
 
     private void Start()
@@ -50,6 +72,16 @@ public class PlayerController : MonoBehaviour
         AssignGamepad();
         currentHP = maxHP;
         currentSpecial = 0f; // Special parte da 0
+
+        
+        
+    }
+
+    private void FixedUpdate()
+    {
+        
+        stateMachine.Tick();
+        status.text = stateMachine.current.GetType().Name;
     }
 
     private void AssignGamepad()
@@ -60,6 +92,16 @@ public class PlayerController : MonoBehaviour
         else if (playerNumber == 2 && gamepads.Count > 1)
             assignedGamepad = gamepads[1];
     }
+    public void InitializeHandler(InputHandler handler)
+    {
+
+        inputHandler = handler;
+        inputCollector.SetInputHandler(inputHandler);
+        MatchManager.Instance.RegisterPlayer(this);
+    }
+
+
+    
 
     public void Initialize(CharacterData character, int playerNum)
     {
@@ -85,6 +127,8 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
+        
+
         Debug.Log($"Player {playerNumber} inizializzato con: {character?.characterName}");
     }
 
@@ -105,8 +149,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleInput();
-        Move();
+        //HandleInput();
+        //Move();
         UpdateSpecial();
     }
 
@@ -120,7 +164,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HandleInput()
+    /*private void HandleInput()
     {
         var keyboard = Keyboard.current;
         moveInput = 0f;
@@ -165,7 +209,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     private void Move()
     {
@@ -247,4 +291,39 @@ public class PlayerController : MonoBehaviour
     public float GetPower() => power;
     public bool IsTransformed() => isTransformed;
     public CharacterData GetCurrentCharacter() => currentCharacter;
+
+    public InputCollector GetInputCollector()
+    {
+        return inputCollector;
+    }
+
+    public InputHandler GetInputHandler()
+    {
+        return inputHandler;
+    }
+
+    public Rigidbody2D GetRigidbody2D()
+    {
+        return rb;
+    }
+
+    public bool IsAttacking()
+    {
+        return isAttacking;
+    }
+
+    public void SetAttacking(bool attacking)
+    {
+        isAttacking = attacking;
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
+    }
+
+    public void SetInputHandler(InputHandler handler)
+    {
+        inputHandler = handler;
+    }
 }
