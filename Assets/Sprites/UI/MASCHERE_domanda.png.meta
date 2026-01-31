@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 462b2667755a49c49a2bc8e8111cf969
+guid: a327e9afc91f0244e8e05bb19d25a6bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4534872430750550929
-    second: start-button_0
+      213: -5670608011827506249
+    second: MASCHERE_domanda_0
+  - first:
+      213: -218390781391320259
+    second: MASCHERE_domanda_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: start-button_0
+      name: MASCHERE_domanda_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 501
-        height: 156
+        x: 95
+        y: 119
+        width: 96
+        height: 110
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f64b66f0d85e011c0800000000000000
-      internalID: -4534872430750550929
+      spriteID: 7b39982be04fd41b0800000000000000
+      internalID: -5670608011827506249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MASCHERE_domanda_1
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 61
+        width: 58
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3b43fccdbe18fcf0800000000000000
+      internalID: -218390781391320259
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      start-button_0: -4534872430750550929
+      MASCHERE_domanda_0: -5670608011827506249
+      MASCHERE_domanda_1: -218390781391320259
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
