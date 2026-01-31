@@ -29,8 +29,11 @@ public class CharacterSelectController : MonoBehaviour
     [Header("Scene Settings")]
     [SerializeField] private string gameSceneName = "GameScene";
 
-    private int player1SelectedIndex = 0;
-    private int player2SelectedIndex = 1;
+    // L'indice 0 è riservato al personaggio "trasformazione" (non selezionabile)
+    private const int FIRST_SELECTABLE_INDEX = 1;
+
+    private int player1SelectedIndex = 1;
+    private int player2SelectedIndex = 2;
 
     private float player1InputTimer = 0f;
     private float player2InputTimer = 0f;
@@ -210,10 +213,11 @@ public class CharacterSelectController : MonoBehaviour
     {
         index += direction;
 
-        if (index < 0)
+        // Salta l'indice 0 (personaggio trasformazione non selezionabile)
+        if (index < FIRST_SELECTABLE_INDEX)
             index = CharacterCount - 1;
         else if (index >= CharacterCount)
-            index = 0;
+            index = FIRST_SELECTABLE_INDEX;
     }
 
     private void ConfirmPlayer1Selection()
@@ -260,9 +264,9 @@ public class CharacterSelectController : MonoBehaviour
             return;
         }
 
-        // Limita gli indici al range valido
-        player1SelectedIndex = Mathf.Clamp(player1SelectedIndex, 0, CharacterCount - 1);
-        player2SelectedIndex = Mathf.Clamp(player2SelectedIndex, 0, CharacterCount - 1);
+        // Limita gli indici al range valido (escludendo indice 0)
+        player1SelectedIndex = Mathf.Clamp(player1SelectedIndex, FIRST_SELECTABLE_INDEX, CharacterCount - 1);
+        player2SelectedIndex = Mathf.Clamp(player2SelectedIndex, FIRST_SELECTABLE_INDEX, CharacterCount - 1);
 
         var player1Character = characterDatabase.GetCharacter(player1SelectedIndex);
         var player2Character = characterDatabase.GetCharacter(player2SelectedIndex);

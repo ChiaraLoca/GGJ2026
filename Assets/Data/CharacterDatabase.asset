@@ -13,27 +13,35 @@ MonoBehaviour:
   m_Name: CharacterDatabase
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDatabase
   characters:
-  - characterName: '!'
-    characterImage: {fileID: 8742876468558364925, guid: 0baec4978b4dc114a8bdad80ace10a4b, type: 3}
-    characterPortrait: {fileID: -2844079194683464479, guid: af7a1f028c3a9974c83db7537108cb67, type: 3}
+  - characterName: '!!!'
+    characterImage: {fileID: 9146828156179646807, guid: ff54e7e5d2e40e647b54f12b2875536f, type: 3}
+    characterPortrait: {fileID: -3218519891966651117, guid: 87254c37f88789b45b063c9f3a395ee4, type: 3}
     characterId: 0
-    description: Combattente Furioso
-    speed: 4
-    power: 7
-    defense: 3
-  - characterName: '?'
-    characterImage: {fileID: 5865670524570963042, guid: 3579a377f9ef5ec4b8a89cb9ae1dd676, type: 3}
-    characterPortrait: {fileID: -2844079194683464479, guid: af7a1f028c3a9974c83db7537108cb67, type: 3}
+    description: TIZIO
+    speed: 5
+    power: 5
+    defense: 5
+  - characterName: ???
+    characterImage: {fileID: 8793639957104055765, guid: 250d80db5b0c73147b668c82f3559090, type: 3}
+    characterPortrait: {fileID: 6550519409748291696, guid: e8df6648d9c07fe45ae8d52e731d4765, type: 3}
     characterId: 1
-    description: Specializzato in proiettili
-    speed: 6
-    power: 2
-    defense: 6
-  - characterName: '@'
-    characterImage: {fileID: 7104312088235595687, guid: 429d3e6ad1076564380aac2099dcfe06, type: 3}
-    characterPortrait: {fileID: 1869723605505727221, guid: d9087515cc13def4189f42ad07a135c6, type: 3}
+    description: CAIO
+    speed: 5
+    power: 5
+    defense: 5
+  - characterName: '@@@'
+    characterImage: {fileID: -3218519891966651117, guid: 87254c37f88789b45b063c9f3a395ee4, type: 3}
+    characterPortrait: {fileID: 4281637774074219296, guid: 060cc83b0ca93554dbe9f558baa8a7a3, type: 3}
     characterId: 2
-    description: Grappler
-    speed: 8
-    power: 4
-    defense: 3
+    description: SEMPRONIO
+    speed: 5
+    power: 5
+    defense: 5
+  - characterName: '!!!'
+    characterImage: {fileID: -3520668151646419534, guid: c5071f78399f74d478d9d56e17415fd9, type: 3}
+    characterPortrait: {fileID: 0}
+    characterId: 3
+    description: CACCA
+    speed: 5
+    power: 5
+    defense: 5
