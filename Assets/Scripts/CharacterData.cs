@@ -30,5 +30,11 @@ public class CharacterData
     // Stats base del personaggio (opzionali)
     [Range(1, 10)] public int speed = 5;
     [Range(1, 10)] public int power = 5;
-    [Range(1, 10)] public int defense = 5;
+    [Range(0, 1000)] public int hp = 5;
+    
+    //due metodi public di callback che si attivano quando viene colpito il personaggio e quando colpisce
+     public Action<CharacterData> OnHit;
+     public Action<CharacterData> OnAttack;
+
+
 }
