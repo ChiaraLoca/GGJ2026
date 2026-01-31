@@ -71,6 +71,13 @@ public class GameSceneController : MonoBehaviour
             player2CharacterIndex = PlayerPrefs.GetInt("Player2CharacterIndex", 2);
             Debug.Log($"Personaggi caricati da PlayerPrefs: P1={player1CharacterIndex}, P2={player2CharacterIndex}");
         }
+
+        player1Controller.SetCharacterIndex(player1CharacterIndex);
+        player2Controller.SetCharacterIndex(player2CharacterIndex);
+
+        player1Controller.GetPlayerSpriteUpdater().SetCharacterIndex(player1CharacterIndex);
+        player2Controller.GetPlayerSpriteUpdater().SetCharacterIndex(player2CharacterIndex);
+
     }
 
     private void InitializePlayers()

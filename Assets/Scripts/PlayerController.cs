@@ -1,5 +1,6 @@
 using GGJ26.Input;
 using GGJ26.StateMachine;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -350,6 +351,17 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     public float GetStartingYPosition()
     {
         return startingYPosition;
+    }
+
+    private int characterIndex;
+
+    internal void SetCharacterIndex(int player1CharacterIndex)
+    {
+        characterIndex = player1CharacterIndex;
+    }
+    internal int GetCharacterIndex()
+    {
+        return  characterIndex;
     }
 }
 

@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: combatUI
       value: 
       objectReference: {fileID: 2146272981}
+    - target: {fileID: 4290336636492472275, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
+      propertyPath: soundController
+      value: 
+      objectReference: {fileID: 103101546}
     - target: {fileID: 5199055410690543709, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
       propertyPath: m_Name
       value: Scena
@@ -208,12 +212,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2712466379949087241, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 747638132}
+    - targetCorrespondingSourceObject: {fileID: 2712466379949087241, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 747638134}
     - targetCorrespondingSourceObject: {fileID: 5477334594755164303, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1335839899}
     - targetCorrespondingSourceObject: {fileID: 5477334594755164303, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1335839898}
+    - targetCorrespondingSourceObject: {fileID: 5477334594755164303, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1335839900}
   m_SourcePrefab: {fileID: 100100000, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
 --- !u!1 &103101542 stripped
 GameObject:
@@ -235,6 +245,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4844294293581536893, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
   m_PrefabInstance: {fileID: 103101541}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &103101546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7744630845418407767, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
+  m_PrefabInstance: {fileID: 103101541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560ab937a0cfaf34898aecd5ac4ef325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &103101547 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4290336636492472275, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
+  m_PrefabInstance: {fileID: 103101541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb76fe6193b7ea47b3d03d6eb1e6509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameSceneController
 --- !u!1 &192423103
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +419,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847eb0db410b1ee428085cdf651b9bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputCollector
+--- !u!114 &747638134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103101543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a76c412cb1f3124c80d69c8fa4ae18d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpriteUpdater
+  CharacterDatabase: {fileID: 11400000, guid: aa564e0aab900ce49b31f39d33214d86, type: 2}
 --- !u!1001 &914470171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -395,6 +440,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 709175087762286534, guid: b347fcebe43e3a449a7e16b32ffee53e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -166
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404898699137976507, guid: b347fcebe43e3a449a7e16b32ffee53e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -19
+      objectReference: {fileID: 0}
     - target: {fileID: 4089411273920565150, guid: b347fcebe43e3a449a7e16b32ffee53e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -487,6 +540,14 @@ PrefabInstance:
       propertyPath: player2
       value: 
       objectReference: {fileID: 1335839896}
+    - target: {fileID: 8809834639724469770, guid: b347fcebe43e3a449a7e16b32ffee53e, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 103101547}
+    - target: {fileID: 8809834639724469770, guid: b347fcebe43e3a449a7e16b32ffee53e, type: 3}
+      propertyPath: soundController
+      value: 
+      objectReference: {fileID: 103101546}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -644,6 +705,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1335839900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103101542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a76c412cb1f3124c80d69c8fa4ae18d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpriteUpdater
+  CharacterDatabase: {fileID: 11400000, guid: aa564e0aab900ce49b31f39d33214d86, type: 2}
 --- !u!1 &1411310282
 GameObject:
   m_ObjectHideFlags: 0
