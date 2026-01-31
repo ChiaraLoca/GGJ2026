@@ -18,6 +18,11 @@ namespace GGJ26.Input
         {
             return $"Movement: {Movement}, Attack1: {Attack1}";
         }
+
+        public bool matches(InputData other)
+        {
+            return Movement == other.Movement && Attack1 == other.Attack1;
+        }
     }
 
     
