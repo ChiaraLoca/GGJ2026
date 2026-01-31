@@ -31,10 +31,10 @@ public class InputCollector : MonoBehaviour
     {
         foreach (Motion motion in motions)
         {
-            if (InputBuffer.Matches(motion, isFacingRight))
-            {
-                return motion;
-            }
+            //if (InputBuffer.Matches(motion, isFacingRight))
+            //{
+            //    return motion;
+            //}
         }
 
         return null;
