@@ -1,5 +1,6 @@
 using GGJ26.Input;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class GameSceneController : MonoBehaviour
     [SerializeField] private int debugPlayer1Index = 1;
     [SerializeField] private int debugPlayer2Index = 2;
 
+    [Header("Music")]
+    [SerializeField] private SoundController soundController;
+
+
+
     // Indice del personaggio trasformazione (quando HP basso)
     public const int TRANSFORMATION_CHARACTER_INDEX = 0;
 
@@ -29,6 +35,11 @@ public class GameSceneController : MonoBehaviour
         LoadSelectedCharacters();
         SetupPlayersInScene();
         InitializePlayers();
+        // Avvia la musica di background
+        if (soundController != null)
+        {
+            soundController.PlayBackgroundMusic();
+        }
     }
 
     void SetupPlayersInScene()
@@ -112,6 +123,10 @@ public class GameSceneController : MonoBehaviour
     {
         // Aggiorna HP nella UI
         UpdateCombatUI();
+        if(player1Controller.GetCurrentHP() <= 0 || player2Controller.GetCurrentHP() <= 0)
+        {
+            EndGame();
+        }
     }
 
     private void UpdateCombatUI()
@@ -159,5 +174,17 @@ public class GameSceneController : MonoBehaviour
     public CharacterData GetPlayer2Character()
     {
         return characterDatabase?.GetCharacter(player2CharacterIndex);
+    }
+
+    public void EndGame()
+    {
+        if (player1Controller.GetCurrentHP() <= 0)
+        {
+            SceneManager.LoadScene("Player2Win");
+        }
+        if (player2Controller.GetCurrentHP() <= 0)
+        {
+            SceneManager.LoadScene("Player1Win");
+        }
     }
 }

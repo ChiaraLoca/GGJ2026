@@ -119,40 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &467881612 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9030967701207747347, guid: b347fcebe43e3a449a7e16b32ffee53e, type: 3}
-  m_PrefabInstance: {fileID: 5549392608656857173}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a70f1bb85c3cc4097ff0433bcabe6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CombatUI
---- !u!114 &1204298470 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2950809333596616358, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
-  m_PrefabInstance: {fileID: 6438639268331213642}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4cabd4b8d895b748b78444c7ada8086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
---- !u!114 &1449637463 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3392227218899201479, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
-  m_PrefabInstance: {fileID: 6438639268331213642}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4cabd4b8d895b748b78444c7ada8086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
---- !u!1001 &5549392608656857173
+--- !u!1001 &107494788
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -252,11 +219,59 @@ PrefabInstance:
       propertyPath: player2
       value: 
       objectReference: {fileID: 1204298470}
+    - target: {fileID: 8809834639724469770, guid: b347fcebe43e3a449a7e16b32ffee53e, type: 3}
+      propertyPath: soundController
+      value: 
+      objectReference: {fileID: 673164942}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b347fcebe43e3a449a7e16b32ffee53e, type: 3}
+--- !u!114 &673164942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7744630845418407767, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
+  m_PrefabInstance: {fileID: 6438639268331213642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560ab937a0cfaf34898aecd5ac4ef325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &1204298470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2950809333596616358, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
+  m_PrefabInstance: {fileID: 6438639268331213642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cabd4b8d895b748b78444c7ada8086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+--- !u!114 &1290423901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9030967701207747347, guid: b347fcebe43e3a449a7e16b32ffee53e, type: 3}
+  m_PrefabInstance: {fileID: 107494788}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a70f1bb85c3cc4097ff0433bcabe6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatUI
+--- !u!114 &1449637463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3392227218899201479, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
+  m_PrefabInstance: {fileID: 6438639268331213642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cabd4b8d895b748b78444c7ada8086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1001 &6438639268331213642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -308,7 +323,11 @@ PrefabInstance:
     - target: {fileID: 4290336636492472275, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
       propertyPath: combatUI
       value: 
-      objectReference: {fileID: 467881612}
+      objectReference: {fileID: 1290423901}
+    - target: {fileID: 4290336636492472275, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
+      propertyPath: soundController
+      value: 
+      objectReference: {fileID: 673164942}
     - target: {fileID: 5199055410690543709, guid: 236d517fdfd7df349870d0c918b144ac, type: 3}
       propertyPath: m_Name
       value: Scena
@@ -323,4 +342,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 6438639268331213642}
-  - {fileID: 5549392608656857173}
+  - {fileID: 107494788}
