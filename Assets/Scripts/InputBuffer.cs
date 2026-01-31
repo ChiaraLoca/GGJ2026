@@ -73,8 +73,25 @@ public class InputBuffer
         head = tail = count = 0;
     }
 
-    public bool Matches(Motion motion)
+    public bool Matches(Motion motion, bool isFacingRight)
     {
-        return true;
+        InputData[] inputData = isFacingRight ? motion.Inputs : motion.FlippedInputs;
+        
+        foreach (var input in inputData)
+        {
+            bool completeMatch = false;
+            bool partialMatch = false;
+            int bufferIndex = 0;
+            foreach (var frame in NewestFirst())
+            {
+                bufferIndex++;
+                if (frame.matches(input))
+                {
+                    partialMatch = true;
+                    continue;
+                }
+                
+            }
+        }
     }
 }

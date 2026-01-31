@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Motion
 {
-    InputData[] Inputs;
-    InputData[] FlippedInputs;
+    public InputData[] Inputs { get; set; }
+    public InputData[] FlippedInputs { get; set; }
     int totalFrames;
     int startupEnd;
     int activeEnd;
