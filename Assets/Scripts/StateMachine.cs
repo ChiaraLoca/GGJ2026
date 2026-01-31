@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using GGJ26.Input;
+using System.Diagnostics;
 
 namespace GGJ26.StateMachine
 {
@@ -28,7 +29,7 @@ namespace GGJ26.StateMachine
             return null;
         }
 
-        public void GotHit(Motion hitByMotion)
+        public void GotHit(Motion hitByMotion,IPlayableCharacter character)
         {
             if (current is Block block)
             {
@@ -36,7 +37,7 @@ namespace GGJ26.StateMachine
             }
             else 
             {
-                //Hit
+                ChangeState(new Hit(character, this, hitByMotion));
             }
         }
 
