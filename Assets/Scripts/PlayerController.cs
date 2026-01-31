@@ -6,13 +6,15 @@ public class PlayerController : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] private int playerNumber = 1; // 1 o 2
     [SerializeField] private float moveSpeed = 5f;
-
+    [SerializeField] private float baseMoveSpeed = 5f;
+    [SerializeField] private float power = 5f;
 
     [Header("Visual")]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("HP Settings")]
     [SerializeField] private float maxHP = 100f;
+    [SerializeField] private float baseMaxHP = 100f;
     [SerializeField] private float transformationThreshold = 20f; // HP sotto il quale si trasforma
 
     [Header("Special Settings")]
@@ -64,9 +66,17 @@ public class PlayerController : MonoBehaviour
         currentCharacter = character;
         playerNumber = playerNum;
 
-        if (character != null && spriteRenderer != null && character.characterImage != null)
+        if (character != null)
         {
-            spriteRenderer.sprite = character.characterImage;
+            // Applicare i modificatori da CharacterData
+            maxHP = baseMaxHP + character.hp;
+            moveSpeed = baseMoveSpeed + (0.2f * character.speed);
+            power = 5f + character.power;
+
+            if (spriteRenderer != null && character.characterImage != null)
+            {
+                spriteRenderer.sprite = character.characterImage;
+            }
         }
 
         // Flip dello sprite per player 2 (guarda a sinistra)
@@ -170,6 +180,9 @@ public class PlayerController : MonoBehaviour
     // Metodo per ricevere danno (da usare poi nel combat system)
     public void TakeDamage(float damage)
     {
+        // Invoca il callback OnHit quando viene colpito
+        currentCharacter?.OnHit?.Invoke(currentCharacter);
+
         currentHP -= damage;
         currentHP = Mathf.Max(0, currentHP);
 
@@ -191,6 +204,9 @@ public class PlayerController : MonoBehaviour
     // Chiamato quando colpisci un avversario
     public void OnHitEnemy()
     {
+        // Invoca il callback OnAttack quando colpisce
+        currentCharacter?.OnAttack?.Invoke(currentCharacter);
+
         AddSpecial(specialGainOnHit);
     }
 
@@ -228,6 +244,7 @@ public class PlayerController : MonoBehaviour
     public float GetMaxHP() => maxHP;
     public float GetCurrentSpecial() => currentSpecial;
     public float GetMaxSpecial() => maxSpecial;
+    public float GetPower() => power;
     public bool IsTransformed() => isTransformed;
     public CharacterData GetCurrentCharacter() => currentCharacter;
 }
