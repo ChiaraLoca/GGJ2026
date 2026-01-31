@@ -2,12 +2,17 @@ using UnityEngine;
 using GGJ26.Input;
 using NUnit.Framework;
 using System.Collections.Generic;
+using TMPro;
+using System.Linq;
 
 public class InputCollector : MonoBehaviour
 {
     InputHandler _inputHandler;
     private InputBuffer InputBuffer = new InputBuffer(60);
-    private List<Motion> motions;
+    private List<Motion> motions = new List<Motion>();
+
+    public TextMeshProUGUI buffer;
+
 
     private void setupMoves()
     {
@@ -25,24 +30,34 @@ public class InputCollector : MonoBehaviour
     void FixedUpdate()
     {
         InputBuffer.Enqueue(_inputHandler.GetInputData());
+        buffer.text = InputBuffer.print();
+
+
     }
 
     public Motion GetMotion(bool isFacingRight)
     {
-        foreach (Motion motion in motions)
-        {
-            //if (InputBuffer.Matches(motion, isFacingRight))
-            //{
-            //    return motion;
-            //}
-        }
+        InputBuffer.Clear();
+        return MotionCreator.get5A();
 
-        return null;
+        /*foreach (Motion motion in motions)
+        {
+            if (InputBuffer.MatchesMotion(motion, isFacingRight))
+            {
+                return motion;
+            }
+        }*/
     }
 
     public bool lastFrameHasButton()
     {
+        if (InputBuffer.getNewest()==null)
+            return false;
         return InputBuffer.getNewest().Attack1;
     }
-    
+
+    internal InputData GetLastInputInBuffer()
+    {
+        return InputBuffer.getNewest();
+    }
 }

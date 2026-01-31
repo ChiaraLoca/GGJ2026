@@ -16,7 +16,9 @@ namespace GGJ26.Input
 
         private void Awake()
         {
+            Application.targetFrameRate = 60;
             dpadRaw = new DpadRaw(actionsAsset);
+            
         }
         
         public RawInputData current = new RawInputData();
@@ -26,10 +28,7 @@ namespace GGJ26.Input
             return new InputData(DirectionConverter.ToNumpad(current.Movement), current.Attack1);
         }
 
-        public void FixedUpdate()
-        {
-            Debug.Log(current);
-        }
+        
 
         public void OnMove(InputAction.CallbackContext ctx)
         {
@@ -56,16 +55,15 @@ namespace GGJ26.Input
             if (!canRead)
                 return;
 
-            Vector2 stickMove = current.Movement;
-
+            Vector2 updatedByOnMove = current.Movement;
             Vector2 dpadMove = ((Vector2)dpadRaw.GetDPadRaw()).normalized;
-
-            Vector2 combined = stickMove + dpadMove;
+            Vector2 combined = updatedByOnMove + dpadMove;
 
             if (combined.magnitude > 1f)
                 combined.Normalize();
 
             current.Movement = combined;
+
         }
 
         public void SetRead(bool value)

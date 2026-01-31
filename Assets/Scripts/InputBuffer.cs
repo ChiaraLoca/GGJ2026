@@ -1,10 +1,12 @@
 using GGJ26.Input;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.Port;
 public class InputBuffer
 {
-    private readonly InputData[] buffer;
+    private  InputData[] buffer;
     private int head; // oldest
     private int tail; // next write
     private int count;
@@ -71,6 +73,7 @@ public class InputBuffer
     public void Clear()
     {
         head = tail = count = 0;
+        buffer = new InputData[Capacity];
     }
 
     /// <summary>
@@ -210,5 +213,11 @@ public class InputBuffer
         }
         
         return bestMatch;
+    }
+
+    internal string print()
+    {
+       
+        return string.Join(Environment.NewLine, buffer.Select(x => x.ToString()));
     }
 }

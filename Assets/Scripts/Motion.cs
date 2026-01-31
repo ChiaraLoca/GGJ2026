@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class Motion
 {
-    public InputData[] Inputs { get; set; }
-    public InputData[] FlippedInputs { get; set; }
-    int totalFrames;
-    int startupEnd;
-    int activeEnd;
-    int cancelWindowStart;
-    int cancelWindowEnd;
+    public InputData[] Inputs;
+    InputData[] FlippedInputs;
+    public int totalFrames;
+    public int startupEnd;
+    public  int activeEnd;
+    public int cancelWindowStart;
+    public int cancelWindowEnd;
     public int priority { get; set; }
 
 
