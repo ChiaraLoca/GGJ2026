@@ -16,7 +16,6 @@ namespace GGJ26.Input
 
         private void Awake()
         {
-            
             dpadRaw = new DpadRaw(actionsAsset);
         }
         

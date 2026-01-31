@@ -63,8 +63,18 @@ public class InputBuffer
         }
     }
 
+    public InputData getNewest()
+    {
+        return buffer[(tail - 1 + buffer.Length) % buffer.Length];
+    }
+
     public void Clear()
     {
         head = tail = count = 0;
+    }
+
+    public bool Matches(Motion motion)
+    {
+        return true;
     }
 }
