@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 using UnityEngine.InputSystem;
@@ -13,12 +13,13 @@ namespace GGJ26.Input
      
 
         private bool canRead = true;
-        public RawInputData current;
 
         private void Awake()
         {
             dpadRaw = new DpadRaw(actionsAsset);
         }
+        
+        public RawInputData current = new RawInputData();
 
         public InputData GetInputData()
         {
