@@ -26,7 +26,10 @@ namespace GGJ26.StateMachine
 
         public void OnEnter()
         {
-            Debug.Log($"Attack Enter: {motionName}");
+            
+            //Debug.Log($"Attack Enter: {motionName}");
+            Debug.Log($"ATTACK");
+            character.SetAttacking(true);
             //character.SetAnimation("Attack");
         }
 
@@ -66,6 +69,7 @@ namespace GGJ26.StateMachine
         public void OnExit()
         {
             Debug.Log($"Attack Exit: {motionName}");
+            character.SetAttacking(false);
         }
     }
 }

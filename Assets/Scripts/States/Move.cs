@@ -30,7 +30,7 @@ namespace GGJ26.StateMachine
         {
             // Controllo motion da attacco
             Motion motion = inputCollector.GetMotion(character.IsFacingRight());
-            if (motion != null && !(sm.current is Attack))
+            if (motion != null && !(sm.current is Attack) && !character.IsAttacking())
             {
                 sm.ChangeState(new Attack(motion, character, sm));
                 return;
