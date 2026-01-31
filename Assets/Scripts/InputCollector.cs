@@ -12,7 +12,7 @@ public class InputCollector : MonoBehaviour
     private void setupMoves()
     {
         motions.Add(MotionCreator.get5A());
-        motions.Sort((a, b) => a.priority.CompareTo(b.priority);
+        motions.Sort((a, b) => a.priority.CompareTo(b.priority));
     }
 
     void Awake()
@@ -31,11 +31,13 @@ public class InputCollector : MonoBehaviour
     {
         foreach (Motion motion in motions)
         {
-            if (InputBuffer.MatchesMotion(motion, isFacingRight))
+            if (InputBuffer.Matches(motion, isFacingRight))
             {
                 return motion;
             }
         }
+
+        return null;
     }
 
     public bool lastFrameHasButton()
