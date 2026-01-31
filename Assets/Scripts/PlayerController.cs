@@ -6,17 +6,28 @@ public class PlayerController : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] private int playerNumber = 1; // 1 o 2
     [SerializeField] private float moveSpeed = 5f;
-
+    [SerializeField] private float baseMoveSpeed = 5f;
+    [SerializeField] private float power = 5f;
 
     [Header("Visual")]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("HP Settings")]
     [SerializeField] private float maxHP = 100f;
+    [SerializeField] private float baseMaxHP = 100f;
     [SerializeField] private float transformationThreshold = 20f; // HP sotto il quale si trasforma
 
-    private CharacterData currentCharacter;
+    [Header("Special Settings")]
+    [SerializeField] private float maxSpecial = 100f;
+    [SerializeField] private float specialGainPerSecond = 5f; // Guadagno passivo di special
+    [SerializeField] private float specialGainOnHit = 10f; // Guadagno quando colpisci
+    [SerializeField] private float specialGainOnDamage = 15f; // Guadagno quando vieni colpito
+
+    [Header("Debug - Current Values")]
     [SerializeField] private float currentHP;
+    [SerializeField] private float currentSpecial;
+
+    private CharacterData currentCharacter;
     private bool isTransformed = false;
     private float moveInput = 0f;
 
@@ -38,6 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         AssignGamepad();
         currentHP = maxHP;
+        currentSpecial = 0f; // Special parte da 0
     }
 
     private void AssignGamepad()
@@ -54,9 +66,17 @@ public class PlayerController : MonoBehaviour
         currentCharacter = character;
         playerNumber = playerNum;
 
-        if (character != null && spriteRenderer != null && character.characterImage != null)
+        if (character != null)
         {
-            spriteRenderer.sprite = character.characterImage;
+            // Applicare i modificatori da CharacterData
+            maxHP = baseMaxHP + character.hp;
+            moveSpeed = baseMoveSpeed + (0.2f * character.speed);
+            power = 5f + character.power;
+
+            if (spriteRenderer != null && character.characterImage != null)
+            {
+                spriteRenderer.sprite = character.characterImage;
+            }
         }
 
         // Flip dello sprite per player 2 (guarda a sinistra)
@@ -87,6 +107,17 @@ public class PlayerController : MonoBehaviour
     {
         HandleInput();
         Move();
+        UpdateSpecial();
+    }
+
+    private void UpdateSpecial()
+    {
+        // Guadagno passivo di special nel tempo
+        if (currentSpecial < maxSpecial)
+        {
+            currentSpecial += specialGainPerSecond * Time.deltaTime;
+            currentSpecial = Mathf.Min(currentSpecial, maxSpecial);
+        }
     }
 
     private void HandleInput()
@@ -149,8 +180,14 @@ public class PlayerController : MonoBehaviour
     // Metodo per ricevere danno (da usare poi nel combat system)
     public void TakeDamage(float damage)
     {
+        // Invoca il callback OnHit quando viene colpito
+        currentCharacter?.OnHit?.Invoke(currentCharacter);
+
         currentHP -= damage;
         currentHP = Mathf.Max(0, currentHP);
+
+        // Guadagna special quando vieni colpito
+        AddSpecial(specialGainOnDamage);
 
         // Controlla se deve trasformarsi
         if (!isTransformed && currentHP <= transformationThreshold && gameSceneController != null)
@@ -164,6 +201,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Chiamato quando colpisci un avversario
+    public void OnHitEnemy()
+    {
+        // Invoca il callback OnAttack quando colpisce
+        currentCharacter?.OnAttack?.Invoke(currentCharacter);
+
+        AddSpecial(specialGainOnHit);
+    }
+
+    // Aggiunge special (con clamp)
+    public void AddSpecial(float amount)
+    {
+        currentSpecial += amount;
+        currentSpecial = Mathf.Clamp(currentSpecial, 0f, maxSpecial);
+    }
+
+    // Usa la special (ritorna true se aveva abbastanza)
+    public bool UseSpecial(float amount)
+    {
+        if (currentSpecial >= amount)
+        {
+            currentSpecial -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    // Controlla se la special è piena
+    public bool IsSpecialFull()
+    {
+        return currentSpecial >= maxSpecial;
+    }
+
     private void OnDeath()
     {
         Debug.Log($"Player {playerNumber} è stato sconfitto!");
@@ -172,6 +242,9 @@ public class PlayerController : MonoBehaviour
 
     public float GetCurrentHP() => currentHP;
     public float GetMaxHP() => maxHP;
+    public float GetCurrentSpecial() => currentSpecial;
+    public float GetMaxSpecial() => maxSpecial;
+    public float GetPower() => power;
     public bool IsTransformed() => isTransformed;
     public CharacterData GetCurrentCharacter() => currentCharacter;
 }

@@ -7,7 +7,7 @@ public class Motion
     public InputData[] FlippedInputs;
     public int totalFrames;
     public int startupEnd;
-    public  int activeEnd;
+    public int activeEnd;
     public int cancelWindowStart;
     public int cancelWindowEnd;
     public int priority { get; set; }
