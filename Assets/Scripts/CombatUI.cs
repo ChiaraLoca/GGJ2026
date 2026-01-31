@@ -147,6 +147,20 @@ public class CombatUI : MonoBehaviour
         player2HPTarget = Mathf.Clamp01(currentHP / maxHP);
     }
 
+    public void SetPlayer1SpecialInstant(float currentSpecial, float maxSpecial)
+    {
+        player1SpecialTarget = Mathf.Clamp01(currentSpecial / maxSpecial);
+        player1SpecialCurrent = player1SpecialTarget;
+        UpdateBars();
+    }
+
+    public void SetPlayer2SpecialInstant(float currentSpecial, float maxSpecial)
+    {
+        player2SpecialTarget = Mathf.Clamp01(currentSpecial / maxSpecial);
+        player2SpecialCurrent = player2SpecialTarget;
+        UpdateBars();
+    }
+
     public void SetPlayer1Special(float currentSpecial, float maxSpecial)
     {
         player1SpecialTarget = Mathf.Clamp01(currentSpecial / maxSpecial);

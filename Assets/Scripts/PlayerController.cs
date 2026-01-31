@@ -15,8 +15,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float transformationThreshold = 20f; // HP sotto il quale si trasforma
 
-    private CharacterData currentCharacter;
+    [Header("Special Settings")]
+    [SerializeField] private float maxSpecial = 100f;
+    [SerializeField] private float specialGainPerSecond = 5f; // Guadagno passivo di special
+    [SerializeField] private float specialGainOnHit = 10f; // Guadagno quando colpisci
+    [SerializeField] private float specialGainOnDamage = 15f; // Guadagno quando vieni colpito
+
+    [Header("Debug - Current Values")]
     [SerializeField] private float currentHP;
+    [SerializeField] private float currentSpecial;
+
+    private CharacterData currentCharacter;
     private bool isTransformed = false;
     private float moveInput = 0f;
 
@@ -38,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         AssignGamepad();
         currentHP = maxHP;
+        currentSpecial = 0f; // Special parte da 0
     }
 
     private void AssignGamepad()
@@ -87,6 +97,17 @@ public class PlayerController : MonoBehaviour
     {
         HandleInput();
         Move();
+        UpdateSpecial();
+    }
+
+    private void UpdateSpecial()
+    {
+        // Guadagno passivo di special nel tempo
+        if (currentSpecial < maxSpecial)
+        {
+            currentSpecial += specialGainPerSecond * Time.deltaTime;
+            currentSpecial = Mathf.Min(currentSpecial, maxSpecial);
+        }
     }
 
     private void HandleInput()
@@ -152,6 +173,9 @@ public class PlayerController : MonoBehaviour
         currentHP -= damage;
         currentHP = Mathf.Max(0, currentHP);
 
+        // Guadagna special quando vieni colpito
+        AddSpecial(specialGainOnDamage);
+
         // Controlla se deve trasformarsi
         if (!isTransformed && currentHP <= transformationThreshold && gameSceneController != null)
         {
@@ -164,6 +188,36 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Chiamato quando colpisci un avversario
+    public void OnHitEnemy()
+    {
+        AddSpecial(specialGainOnHit);
+    }
+
+    // Aggiunge special (con clamp)
+    public void AddSpecial(float amount)
+    {
+        currentSpecial += amount;
+        currentSpecial = Mathf.Clamp(currentSpecial, 0f, maxSpecial);
+    }
+
+    // Usa la special (ritorna true se aveva abbastanza)
+    public bool UseSpecial(float amount)
+    {
+        if (currentSpecial >= amount)
+        {
+            currentSpecial -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    // Controlla se la special è piena
+    public bool IsSpecialFull()
+    {
+        return currentSpecial >= maxSpecial;
+    }
+
     private void OnDeath()
     {
         Debug.Log($"Player {playerNumber} è stato sconfitto!");
@@ -172,6 +226,8 @@ public class PlayerController : MonoBehaviour
 
     public float GetCurrentHP() => currentHP;
     public float GetMaxHP() => maxHP;
+    public float GetCurrentSpecial() => currentSpecial;
+    public float GetMaxSpecial() => maxSpecial;
     public bool IsTransformed() => isTransformed;
     public CharacterData GetCurrentCharacter() => currentCharacter;
 }

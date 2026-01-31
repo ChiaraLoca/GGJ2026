@@ -85,6 +85,12 @@ public class GameSceneController : MonoBehaviour
             combatUI.SetPlayer1HPInstant(player1Controller.GetCurrentHP(), player1Controller.GetMaxHP());
         if (player2Controller != null)
             combatUI.SetPlayer2HPInstant(player2Controller.GetCurrentHP(), player2Controller.GetMaxHP());
+
+        // Imposta Special iniziale a 0
+        if (player1Controller != null)
+            combatUI.SetPlayer1SpecialInstant(player1Controller.GetCurrentSpecial(), player1Controller.GetMaxSpecial());
+        if (player2Controller != null)
+            combatUI.SetPlayer2SpecialInstant(player2Controller.GetCurrentSpecial(), player2Controller.GetMaxSpecial());
     }
 
     private void Update()
@@ -97,10 +103,17 @@ public class GameSceneController : MonoBehaviour
     {
         if (combatUI == null) return;
 
+        // Aggiorna HP
         if (player1Controller != null)
             combatUI.SetPlayer1HP(player1Controller.GetCurrentHP(), player1Controller.GetMaxHP());
         if (player2Controller != null)
             combatUI.SetPlayer2HP(player2Controller.GetCurrentHP(), player2Controller.GetMaxHP());
+
+        // Aggiorna Special
+        if (player1Controller != null)
+            combatUI.SetPlayer1Special(player1Controller.GetCurrentSpecial(), player1Controller.GetMaxSpecial());
+        if (player2Controller != null)
+            combatUI.SetPlayer2Special(player2Controller.GetCurrentSpecial(), player2Controller.GetMaxSpecial());
     }
 
     // Metodo per trasformare un player quando HP scende sotto soglia
