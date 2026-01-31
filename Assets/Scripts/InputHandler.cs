@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 using UnityEngine.InputSystem;
@@ -20,7 +20,7 @@ namespace GGJ26.Input
             dpadRaw = new DpadRaw(actionsAsset);
         }
         
-        public RawInputData current;
+        public RawInputData current = new RawInputData();
 
         public InputData GetInputData()
         {
