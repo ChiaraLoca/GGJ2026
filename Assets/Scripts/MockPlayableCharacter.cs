@@ -24,7 +24,7 @@ namespace GGJ26.Input
             Move(inputHandler.current);
         }
 
-        void Move(InputData input)
+        void Move(RawInputData input)
         {
             Vector2 velocity = input.Movement * 5;
             rb.linearVelocity = velocity;
