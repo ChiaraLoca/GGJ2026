@@ -21,6 +21,7 @@ public class CharacterData
     public List<GameObject> kickSprites;
     public List<GameObject> lowhitSprites;
     public List<GameObject> specialSprites;
+    public List<GameObject> idleSprites;
 
     public Sprite characterSpecialSprite; // Sprite speciale per mosse o trasformazioni
     

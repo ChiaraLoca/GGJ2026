@@ -112,16 +112,32 @@ MonoBehaviour:
     characterPortrait: {fileID: -6440471216836430238, guid: c6050956c0b11f54b95b6af8cec0d667, type: 3}
     characterId: 3
     movementSprites:
-    - {fileID: 0}
-    blockSprites: []
-    crouchSprites: []
-    jumpSprites: []
-    hitSprites: []
-    downSprites: []
-    standingSprites: []
-    punchSprites: []
-    kickSprites: []
-    lowhitSprites: []
+    - {fileID: 8603814972420610461, guid: b25a9ec573d196d47a04478cb9a3e3aa, type: 3}
+    blockSprites:
+    - {fileID: 8603814972420610461, guid: d6732f890bd601642aa13080df89d90b, type: 3}
+    crouchSprites:
+    - {fileID: 8910220269318005630, guid: dfc5bd0aada718d45a578cd45e8ebb34, type: 3}
+    jumpSprites:
+    - {fileID: 9088676808887347343, guid: bf14e9d1cc3d98d4cae9b4aaa64022ec, type: 3}
+    - {fileID: 1771108631874929897, guid: f0c9c36f45cc4584e987a066eb365984, type: 3}
+    hitSprites:
+    - {fileID: 1814336502112444237, guid: 674d106554bc31e4ebb98463a73a1cf6, type: 3}
+    downSprites:
+    - {fileID: 8770508845719098149, guid: 7085ff35a593f914da088172ddad0096, type: 3}
+    standingSprites:
+    - {fileID: 4741238997123618329, guid: d50d1079c9c89ed4f844aa7eea2d1135, type: 3}
+    punchSprites:
+    - {fileID: 1854636421667274103, guid: f99a5656cd526b94a94eb15833910257, type: 3}
+    - {fileID: 871591086528271897, guid: cc2c4d5059142a54da1722f3f6b7e945, type: 3}
+    - {fileID: 5914177704232961089, guid: 0373d80a18ddcbf47a9752e4b2eea67d, type: 3}
+    kickSprites:
+    - {fileID: 1339799145304381802, guid: e5d142cb89af1f847b43a6a3210c1454, type: 3}
+    - {fileID: 7696660464945962983, guid: a1c2c5bf4061e1e45b34b34ab6ac4faf, type: 3}
+    - {fileID: 2343759900677460291, guid: 758343f7b7811a949b805ff7db73aafb, type: 3}
+    lowhitSprites:
+    - {fileID: 2222513863768082743, guid: f2dfd3c62db10f046b915b59db9cc833, type: 3}
+    - {fileID: 513359847921296476, guid: d339daf2cba6e9f4baf8d9d4b462e03a, type: 3}
+    - {fileID: 7519532527851756879, guid: 4c8f32f6d3fec6344aa285f2a3d4d593, type: 3}
     specialSprites: []
     characterSpecialSprite: {fileID: -4211581063009071647, guid: 1e298034834a73140860f3d39dd7ff3c, type: 3}
     description: CACCA
