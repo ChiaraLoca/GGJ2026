@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using GGJ26.Input;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -46,15 +46,28 @@ public class InputCollector : MonoBehaviour
         return res;
     }
 
-    public bool lastFrameHasButton()
+    private bool lastAttackState = false;
+
+    public bool AttackPressedThisFrame()
     {
-        if (InputBuffer.getNewest()==null)
+        InputData newest = InputBuffer.getNewest();
+        if (newest == null)
             return false;
-        return InputBuffer.getNewest().Attack1;
+
+        // Edge detection: true solo se il tasto passa da false → true
+        bool pressedThisFrame = newest.Attack1 && !lastAttackState;
+        lastAttackState = newest.Attack1;
+        return pressedThisFrame;
     }
 
     internal InputData GetLastInputInBuffer()
     {
         return InputBuffer.getNewest();
+    }
+
+    internal object Print()
+    {
+        return InputBuffer.print();
+
     }
 }

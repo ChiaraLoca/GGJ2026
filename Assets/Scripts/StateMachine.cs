@@ -1,4 +1,6 @@
-﻿namespace GGJ26.StateMachine
+﻿using System.Diagnostics;
+
+namespace GGJ26.StateMachine
 {
     public class StateMachineBehaviour
     { 
@@ -13,6 +15,7 @@
 
         public void Tick()
         {
+            
             current.OnFrame();
         }
 

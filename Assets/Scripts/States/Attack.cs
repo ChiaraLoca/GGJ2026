@@ -28,7 +28,7 @@ namespace GGJ26.StateMachine
         {
             
             //Debug.Log($"Attack Enter: {motionName}");
-            Debug.Log($"ATTACK");
+            Debug.Log($"ATTACK {character.GetInputCollector().Print()}");
             character.SetAttacking(true);
             //character.SetAnimation("Attack");
         }

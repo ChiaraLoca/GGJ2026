@@ -29,11 +29,14 @@ namespace GGJ26.StateMachine
         public void OnFrame()
         {
             // Controllo motion da attacco
-            Motion motion = inputCollector.GetMotion(character.IsFacingRight());
-            if (motion != null && !(sm.current is Attack) && !character.IsAttacking())
+            if (inputCollector.AttackPressedThisFrame() && !character.IsAttacking() && !(sm.current is Attack))
             {
-                sm.ChangeState(new Attack(motion, character, sm));
-                return;
+                Motion motion = inputCollector.GetMotion(character.IsFacingRight());
+                if (motion != null )
+                {
+                    sm.ChangeState(new Attack(motion, character, sm));
+                    return;
+                }
             }
 
             // Movimento base

@@ -39,6 +39,7 @@ namespace GGJ26.Input
 
         void FixedUpdate()
         {
+           
             stateMachine.Tick();
             
         }
