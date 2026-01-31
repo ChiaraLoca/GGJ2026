@@ -15,6 +15,9 @@ public class RoundTimer : MonoBehaviour
     [SerializeField] private PlayerController player1;
     [SerializeField] private PlayerController player2;
 
+    [Header("Sound")]
+    [SerializeField] private SoundController soundController;
+
     private float currentTime;
     private int currentExclamations;
     private float nextExclamationTime;
@@ -41,6 +44,16 @@ public class RoundTimer : MonoBehaviour
             currentExclamations -= 2;
             if (currentExclamations < 1) currentExclamations = 1;
             
+            if(currentExclamations == 15)
+            {
+                soundController.StretchMusic(soundController.GetCurrentPitch() * 1.2f); 
+            }
+
+            if (currentExclamations == 7)
+            {
+                soundController.StretchMusic(soundController.GetCurrentPitch() * 1.2f);
+            }
+
             nextExclamationTime -= exclamationInterval;
             UpdateTimerDisplay();
         }

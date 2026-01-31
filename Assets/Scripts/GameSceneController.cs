@@ -17,6 +17,9 @@ public class GameSceneController : MonoBehaviour
     [SerializeField] private int debugPlayer1Index = 1;
     [SerializeField] private int debugPlayer2Index = 2;
 
+    [Header("Music")]
+    [SerializeField] private SoundController soundController;
+
     // Indice del personaggio trasformazione (quando HP basso)
     public const int TRANSFORMATION_CHARACTER_INDEX = 0;
 
@@ -27,6 +30,11 @@ public class GameSceneController : MonoBehaviour
     {
         LoadSelectedCharacters();
         InitializePlayers();
+        // Avvia la musica di background
+        if (soundController != null)
+        {
+            soundController.PlayBackgroundMusic();
+        }
     }
 
     private void LoadSelectedCharacters()
