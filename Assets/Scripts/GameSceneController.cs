@@ -40,6 +40,16 @@ public class GameSceneController : MonoBehaviour
         {
             soundController.PlayBackgroundMusic();
         }
+        
+        // Trova il CombatUI se non assegnato
+        if (combatUI == null)
+        {
+            combatUI = FindObjectOfType<CombatUI>();
+            if (combatUI != null)
+            {
+                Debug.Log("[GameSceneController] CombatUI trovato automaticamente");
+            }
+        }
     }
 
     void SetupPlayersInScene()
@@ -107,23 +117,35 @@ public class GameSceneController : MonoBehaviour
 
     private void InitializeCombatUI(CharacterData p1Character, CharacterData p2Character)
     {
-        if (combatUI == null) return;
+        if (combatUI == null)
+        {
+            Debug.LogWarning("[GameSceneController] CombatUI è null in InitializeCombatUI!");
+            return;
+        }
 
         // Imposta i ritratti
         combatUI.SetPlayer1Portrait(p1Character);
         combatUI.SetPlayer2Portrait(p2Character);
 
+        // Usa Invoke per ritardare di un frame e assicurare che tutto sia pronto
+        Invoke(nameof(DelayedUIInitialization), 0.05f);
+    }
+
+    private void DelayedUIInitialization()
+    {
         // Imposta HP iniziale al massimo
-        if (player1Controller != null)
+        if (player1Controller != null && combatUI != null)
             combatUI.SetPlayer1HPInstant(player1Controller.GetCurrentHP(), player1Controller.GetMaxHP());
-        if (player2Controller != null)
+        if (player2Controller != null && combatUI != null)
             combatUI.SetPlayer2HPInstant(player2Controller.GetCurrentHP(), player2Controller.GetMaxHP());
 
         // Imposta Special iniziale a 0
-        if (player1Controller != null)
+        if (player1Controller != null && combatUI != null)
             combatUI.SetPlayer1SpecialInstant(player1Controller.GetCurrentSpecial(), player1Controller.GetMaxSpecial());
-        if (player2Controller != null)
+        if (player2Controller != null && combatUI != null)
             combatUI.SetPlayer2SpecialInstant(player2Controller.GetCurrentSpecial(), player2Controller.GetMaxSpecial());
+
+        Debug.Log("[GameSceneController] CombatUI inizializzata correttamente");
     }
 
     private void Update()
