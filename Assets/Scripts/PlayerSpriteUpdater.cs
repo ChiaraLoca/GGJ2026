@@ -49,22 +49,22 @@ public class PlayerSpriteUpdater : MonoBehaviour
                     PlayerSprite.sprite = characterData.hitSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
                 case "down":
-                    PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    PlayerSprite.sprite = characterData.downSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
                 case "standing":
-                    PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    PlayerSprite.sprite = characterData.standingSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
                 case "punch":
-                    PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    PlayerSprite.sprite = characterData.punchSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
                 case "kick":
-                    PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    PlayerSprite.sprite = characterData.kickSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
                 case "lowHit":
-                    PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    PlayerSprite.sprite = characterData.lowhitSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
                 case "special":
-                    PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    PlayerSprite.sprite = characterData.specialSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     break;
                 default:
                     Debug.LogWarning("Unknown state: " + state);
