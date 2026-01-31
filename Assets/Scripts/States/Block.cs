@@ -4,14 +4,13 @@ using UnityEngine;
 
 namespace GGJ26.StateMachine
 {
-
-    public class Crouch : IState
+    public class Block : IState
     {
         private IPlayableCharacter character;
         private StateMachineBehaviour sm;
         private AttackInputHelper attackInputHandler;
 
-        public Crouch(IPlayableCharacter character, StateMachineBehaviour sm)
+        public Block(IPlayableCharacter character, StateMachineBehaviour sm)
         {
             this.character = character;
             this.sm = sm;
@@ -20,8 +19,8 @@ namespace GGJ26.StateMachine
 
         public void OnEnter()
         {
-            Debug.Log($"Crouch Enter");
-            character.GetPlayerSpriteUpdater().ChangeSprite("crouch", 0);
+            Debug.Log($"Block Enter");
+            character.GetPlayerSpriteUpdater().ChangeSprite("block", 0);
         }
         public void OnFrame()
         {
@@ -34,7 +33,7 @@ namespace GGJ26.StateMachine
         }
         public void OnExit()
         {
-            Debug.Log($"Crouch Exit");
+            Debug.Log($"Block Exit");
         }
     }
 }

@@ -19,6 +19,16 @@ namespace GGJ26.StateMachine
             current.OnFrame();
         }
 
+        public Motion GetMotion() 
+        {
+            if (current is Attack attack)
+            {
+                return attack.motion;
+            }
+
+            return null;
+        }
+
         
     }
 
