@@ -14,9 +14,20 @@ public class HitboxManager : MonoBehaviour
 
     public void SetupColliderFromDB(BoxCollider2D collider)
     {
-        if(collider == null) return;
-        HitboxCollider.offset = collider.offset;
-        HitboxCollider.size = (collider).size;
+        if (collider == null) return;
+
+        if (MatchManager.Instance.IsFacingRight(PlayerController))
+        {
+            
+            HitboxCollider.offset = collider.offset;
+            HitboxCollider.size = (collider).size; 
+        }
+        else
+        {
+            
+            HitboxCollider.offset = new Vector2(-collider.offset.x, collider.offset.y);
+            HitboxCollider.size = new Vector2(-collider.size.x, collider.size.y);
+        }
         HitboxCollider.edgeRadius = collider.edgeRadius;
 
     }
