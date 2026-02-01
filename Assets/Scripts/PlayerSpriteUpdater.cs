@@ -1,3 +1,4 @@
+using GGJ26.StateMachine;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class PlayerSpriteUpdater : MonoBehaviour
     CharacterData characterData;
     public HitboxManager HitboxManager;
     public HurtboxManager HurtboxManager;
-
+    AnimationSetController animationSetController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -29,6 +30,9 @@ public class PlayerSpriteUpdater : MonoBehaviour
         {
             Debug.Log($"[PlayerSpriteUpdater] Personaggio caricato: {characterData.characterName} (indice: {index})");
         }
+
+        animationSetController = GetComponent<AnimationSetController>();
+        animationSetController.SetAnimationSet(index);
     }
 
     // Update is called once per frame
@@ -45,7 +49,9 @@ public class PlayerSpriteUpdater : MonoBehaviour
             Debug.LogError($"[PlayerSpriteUpdater] ChangeSprite chiamato ma characterData è NULL! State: {state}, Index: {index}, GameObject: {gameObject.name}");
             return;
         }
-        
+        if (animationSetController)
+            animationSetController.animator.enabled = false;
+
         try
         {
             // Debug: verifica che i manager siano assegnati
@@ -65,12 +71,16 @@ public class PlayerSpriteUpdater : MonoBehaviour
             switch (state)
             {
                 case "block":
+
+                    
+                    
                     PlayerSprite.sprite = characterData.blockSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     HitboxManager.SetupColliderFromDB(GetBoxCollider2D("HitBox", characterData.blockSprites[index].transform));
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.blockSprites[index].transform));
                     break;
                 case "movement":
-                    PlayerSprite.sprite = characterData.movementSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    animationSetController.animator.enabled = true;
+                    animationSetController.animator.SetBool("isMoving", true);
                     HitboxManager.SetupColliderFromDB(GetBoxCollider2D("HitBox", characterData.movementSprites[index].transform));
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.movementSprites[index].transform));
                     break;
@@ -120,6 +130,8 @@ public class PlayerSpriteUpdater : MonoBehaviour
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.specialSprites[index].transform));
                     break;
                 case "idle":
+                    animationSetController.animator.enabled = true;
+                    animationSetController.animator.SetBool("isMoving", false);
                     PlayerSprite.sprite = characterData.idleSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     HitboxManager.SetupColliderFromDB(GetBoxCollider2D("HitBox", characterData.idleSprites[index].transform));
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.idleSprites[index].transform));

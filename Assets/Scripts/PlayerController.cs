@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     private InputCollector inputCollector;
     public bool isAttacking = false;
 
+    AnimationSetController _animationSetController;
+
     public TextMeshProUGUI status;
 
     [Header("Player Settings")]
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
         stateMachine.ChangeState(new Move(this, stateMachine));
         startingYPosition = transform.position.y;
 
-
+        _animationSetController = GetComponent<AnimationSetController>();
     }
 
     private void Start()

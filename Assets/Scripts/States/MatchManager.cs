@@ -1,9 +1,6 @@
 ﻿using GGJ26.Input;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using static UnityEngine.InputManagerEntry;
-using static UnityEngine.LowLevelPhysics2D.PhysicsComposer;
+
 
 namespace GGJ26.StateMachine
 {

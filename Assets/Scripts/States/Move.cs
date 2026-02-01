@@ -28,7 +28,7 @@ namespace GGJ26.StateMachine
         public void OnEnter()
         {
             Debug.Log($"Move Enter:");
-            //character.SetAnimation("Idle");
+            character.GetPlayerSpriteUpdater().ChangeSprite("movement", 0);
         }
 
         public void OnFrame()
@@ -49,7 +49,7 @@ namespace GGJ26.StateMachine
             Vector2 move = Vector2.zero;
 
             if (input != null)
-                move = NumpadHelper.NumpadToMove(input.Movement) * 1;
+                move = NumpadHelper.NumpadToMove(input.Movement) * character.GetMoveSpeed();
 
             rb.linearVelocity = move;
 
