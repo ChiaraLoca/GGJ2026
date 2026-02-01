@@ -29,7 +29,7 @@ namespace GGJ26.StateMachine
             return null;
         }
 
-        public void GotHit(Motion hitByMotion, IPlayableCharacter character)
+        public void GotHit(Motion hitByMotion, IPlayableCharacter character, int finalDamage)
         {
             if (current is Block block)
             {
@@ -38,9 +38,9 @@ namespace GGJ26.StateMachine
             else 
             {
                 if(hitByMotion.knockDown)
-                    ChangeState(new Down(character, this, hitByMotion));
+                    ChangeState(new Down(character, this, hitByMotion, finalDamage));
                 else
-                    ChangeState(new Hit(character, this, hitByMotion));
+                    ChangeState(new Hit(character, this, hitByMotion, finalDamage));
             }
         }
 

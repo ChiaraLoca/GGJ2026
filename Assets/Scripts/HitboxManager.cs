@@ -46,9 +46,10 @@ public class HitboxManager : MonoBehaviour
             Motion attack = PlayerController.stateMachine.GetMotion();
             if (attack != null)
             {
-                attack.damage = attack.damage + (int)( (attack.damage / 100) * PlayerController.GetPower());
-                Debug.Log($"{PlayerController.name} hit {hurtboxManager.PlayerController.name} with {attack.name} for {attack.damage} damage!");
-                hurtboxManager.PlayerController.stateMachine.GotHit(attack, hurtboxManager.PlayerController);
+                // Calcola il danno finale senza modificare l'oggetto Motion originale
+                int finalDamage = attack.damage + (int)((attack.damage / 100f) * PlayerController.GetPower());
+                Debug.Log($"{PlayerController.name} hit {hurtboxManager.PlayerController.name} with {attack.name} for {finalDamage} damage!");
+                hurtboxManager.PlayerController.stateMachine.GotHit(attack, hurtboxManager.PlayerController, finalDamage);
             }
         }
     }

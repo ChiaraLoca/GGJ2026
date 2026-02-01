@@ -32,19 +32,20 @@ namespace GGJ26.StateMachine
         
         private int frame = 0;
         private Motion hitByMotion;
-        public Down(IPlayableCharacter character, StateMachineBehaviour sm,Motion hitByMotion)
+        private int finalDamage;
+        public Down(IPlayableCharacter character, StateMachineBehaviour sm, Motion hitByMotion, int finalDamage)
         {
             this.character = character;
             this.sm = sm;
-
             this.hitByMotion = hitByMotion;
+            this.finalDamage = finalDamage;
         }
 
         public void OnEnter()
         {
             Debug.Log($"Down Enter");
             character.GetPlayerSpriteUpdater().ChangeSprite("down", 0);
-            character.TakeDamage(hitByMotion.damage);
+            character.TakeDamage(finalDamage);
             KnockBackHelper.ApplyKnockBack(character, hitByMotion);
         }
         public void OnFrame()

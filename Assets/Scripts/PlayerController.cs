@@ -132,8 +132,9 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
         {
             // Applicare i modificatori da CharacterData
             maxHP = baseMaxHP + character.hp;
+            currentHP = maxHP; // Imposta HP corrente al massimo dopo aver calcolato maxHP
             moveSpeed = baseMoveSpeed + (0.2f * character.speed);
-            power =  character.power;
+            power = character.power;
 
             if (spriteRenderer != null && character.characterImage != null)
             {
