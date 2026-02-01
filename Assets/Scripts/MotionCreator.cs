@@ -36,6 +36,26 @@ public class MotionCreator
             new InputData(NumpadDirection.DownLeft, false),
             new InputData(NumpadDirection.Left, true),
         };
-        return new Motion("special", inputs, flippedInputs, 20, 12, 14, 1, 40, 12, 3, true, 1f, 17, 100, 5, 12);
+        // Esempio: 2 sprite startup, 3 sprite active, 2 sprite recovery = 7 sprite totali
+        // Parametri: name, inputs, flippedInputs, totalFrames, startupEnd, activeEnd, priority, 
+        //            damage, hitStunFrames, blockStunFrames, knockDown, knockBack, recoveryFrameSwitch, 
+        //            specialRequiredPower, startupSpriteCount, activeSpriteCount, recoverySpriteCount, cancelWindowStart, cancelWindowEnd
+        return new Motion("special", inputs, flippedInputs, 
+            totalFrames: 40, 
+            startupEnd: 12, 
+            activeEnd: 24, 
+            priority: 2, 
+            damage: 40, 
+            hitStunFrames: 10, 
+            blockStunFrames: 5, 
+            knockDown: true, 
+            knockBack: 2f, 
+            recoveryFrameSwitch: 30, 
+            specialRequiredPower: 100,
+            startupSpriteCount: 2,   // sprite 0, 1
+            activeSpriteCount: 4,    // sprite 2, 3, 4, 5
+            recoverySpriteCount: 2,  // sprite 6, 7
+            cancelWindowStart: 5, 
+            cancelWindowEnd: 12);
     }
 }

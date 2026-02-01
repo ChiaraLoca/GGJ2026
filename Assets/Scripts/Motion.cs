@@ -19,10 +19,19 @@ public class Motion
     public string name { get; set; }
     public int recoveryFrameSwitch { get; set; }
     
-    public int specialRequiredPower { get; set; } = 0;  
+    public int specialRequiredPower { get; set; } = 0;
+    
+    // Numero di sprite per ogni fase (per supportare animazioni multi-frame)
+    public int startupSpriteCount { get; set; } = 1;
+    public int activeSpriteCount { get; set; } = 1;
+    public int recoverySpriteCount { get; set; } = 1;
 
+    // Costruttore originale (retrocompatibile)
+    public Motion(string name,InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int damage, int hitStunFrames, int blockStunFrames, bool knockDown, float knockBack,int recoveryFrameSwitch, int specialRequiredPower, int cancelWindowStart = -1, int cancelWindowEnd = -1) 
+        : this(name, inputs, flippedInputs, totalFrames, startupEnd, activeEnd, priority, damage, hitStunFrames, blockStunFrames, knockDown, knockBack, recoveryFrameSwitch, specialRequiredPower, 1, 1, 1, cancelWindowStart, cancelWindowEnd) { }
 
-    public Motion(string name,InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int damage, int hitStunFrames, int blockStunFrames, bool knockDown, float knockBack,int recoveryFrameSwitch, int specialRequiredPower, int cancelWindowStart = -1, int cancelWindowEnd = -1) {         
+    // Nuovo costruttore con supporto multi-frame
+    public Motion(string name, InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int damage, int hitStunFrames, int blockStunFrames, bool knockDown, float knockBack, int recoveryFrameSwitch, int specialRequiredPower, int startupSpriteCount, int activeSpriteCount, int recoverySpriteCount, int cancelWindowStart = -1, int cancelWindowEnd = -1) {         
         this.name = name;
         this.Inputs = inputs;
         this.FlippedInputs = flippedInputs;
@@ -39,6 +48,9 @@ public class Motion
         this.cancelWindowEnd = cancelWindowEnd;
         this.recoveryFrameSwitch = recoveryFrameSwitch;
         this.specialRequiredPower = specialRequiredPower;
+        this.startupSpriteCount = startupSpriteCount;
+        this.activeSpriteCount = activeSpriteCount;
+        this.recoverySpriteCount = recoverySpriteCount;
     }
 
     public bool isCancellable(int frame) {
