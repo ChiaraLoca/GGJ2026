@@ -11,7 +11,8 @@ namespace GGJ26.StateMachine
         {
 
             
-            float distance = hitByMotion.knockBack;
+            //float distance = hitByMotion.knockBack;
+            float distance = 1.5f;
             Debug.Log($"Applying KnockBack of {distance}");
             Rigidbody2D rb = character.GetRigidbody2D();
 
