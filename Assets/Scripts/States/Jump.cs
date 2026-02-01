@@ -1,6 +1,7 @@
 ﻿using GGJ26.Input;
 using GGJ26.StateMachine;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using StateMachineBehaviour = GGJ26.StateMachine.StateMachineBehaviour;
 
 public class Jump : IState
@@ -33,6 +34,8 @@ public class Jump : IState
         phase = -1;
         landingStartFrame = -1;
         Debug.Log("Jump Enter");
+
+        
 
         character.GetPlayerSpriteUpdater().ChangeSprite("jump", 0);
     }
@@ -95,5 +98,7 @@ public class Jump : IState
     {
         Debug.Log("Jump Exit");
         rb.transform.position = new Vector2(rb.transform.position.x, character.GetStartingYPosition());
+
+       
     }
 }
