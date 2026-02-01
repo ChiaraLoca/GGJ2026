@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CharacterDatabase
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDatabase
   characters:
-  - characterName: NORAMLE
+  - characterName: ...
     characterImage: {fileID: 8793639957104055765, guid: 437b88df55324bc4eaf2c24f0bea3350, type: 3}
     characterPortrait: {fileID: -218390781391320259, guid: a327e9afc91f0244e8e05bb19d25a6bb, type: 3}
     characterId: 0
@@ -126,7 +126,15 @@ MonoBehaviour:
     - {fileID: 2222513863768082743, guid: 2641e1fe498aa6b40bb6c3405428c03f, type: 3}
     - {fileID: 513359847921296476, guid: cfb0817b120d2a6449bd08dbcc8ea4ee, type: 3}
     - {fileID: 7519532527851756879, guid: 8424545f1448cbe46bba0d7ffab2727e, type: 3}
-    specialSprites: []
+    specialSprites:
+    - {fileID: 4741238997123618329, guid: c091caa76029a0144a9819b5c807cfb3, type: 3}
+    - {fileID: 4741238997123618329, guid: e0ddfdc857b05c14e9dc2a936809ca14, type: 3}
+    - {fileID: 4741238997123618329, guid: 9e751e82767e041429f835e157eb3929, type: 3}
+    - {fileID: 4741238997123618329, guid: 3a240c576e0b6fc4484d84d017fa1a70, type: 3}
+    - {fileID: 4741238997123618329, guid: 32910e84171cf554e8c1b28a5e317c5f, type: 3}
+    - {fileID: 4741238997123618329, guid: 32910e84171cf554e8c1b28a5e317c5f, type: 3}
+    - {fileID: 4741238997123618329, guid: ca0bcb32467f32f43a71478f37ca2f99, type: 3}
+    - {fileID: 4741238997123618329, guid: ca0bcb32467f32f43a71478f37ca2f99, type: 3}
     idleSprites:
     - {fileID: 4741238997123618329, guid: 5ccd4ce9bb360bd4682c605f0727fb14, type: 3}
     characterSpecialSprite: {fileID: 2107204452721565602, guid: 0c5ad38c0714fd8448f33259762ca58c, type: 3}
@@ -172,7 +180,7 @@ MonoBehaviour:
     - {fileID: 8603814972420610461, guid: b1c82c7d3cdd57443829e9288914e708, type: 3}
     - {fileID: 8603814972420610461, guid: 094adc78822d1ca419fce52784edc963, type: 3}
     - {fileID: 8603814972420610461, guid: 29a0624c2561af64aa76fbba94920cb8, type: 3}
-    - {fileID: 8603814972420610461, guid: 29a0624c2561af64aa76fbba94920cb8, type: 3}
+    - {fileID: 8603814972420610461, guid: 9bb5d85f113b7f546bff7c25ff872112, type: 3}
     - {fileID: 8603814972420610461, guid: 9b2db082a99988348828e8185fe02eeb, type: 3}
     idleSprites:
     - {fileID: 4741238997123618329, guid: c3bed127e13cc1247b64a7e2332ee829, type: 3}
