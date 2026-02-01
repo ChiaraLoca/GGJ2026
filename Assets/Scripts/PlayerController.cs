@@ -155,16 +155,37 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     public void TransformTo(CharacterData transformationCharacter)
     {
         if (isTransformed) return;
+        if (transformationCharacter == null)
+        {
+            Debug.LogError($"[Player {playerNumber}] TransformTo: CharacterData è null!");
+            return;
+        }
 
         currentCharacter = transformationCharacter;
         isTransformed = true;
 
+        // Aggiorna le stats del personaggio (mantenendo l'HP attuale proporzionalmente)
+        float hpPercentage = currentHP / maxHP;
+        maxHP = baseMaxHP + transformationCharacter.hp;
+        currentHP = maxHP * hpPercentage; // Mantiene la stessa percentuale di HP
+        moveSpeed = baseMoveSpeed + (0.2f * transformationCharacter.speed);
+        power = transformationCharacter.power;
+
+        // Aggiorna PlayerSpriteUpdater con il nuovo personaggio (indice 0 = trasformazione)
+        PlayerSpriteUpdater spriteUpdater = GetPlayerSpriteUpdater();
+        if (spriteUpdater != null)
+        {
+            spriteUpdater.SetCharacterData(transformationCharacter, 0); // 0 è l'indice del personaggio trasformazione
+        }
+
+        // Aggiorna lo sprite principale
         if (spriteRenderer != null && transformationCharacter.characterImage != null)
         {
             spriteRenderer.sprite = transformationCharacter.characterImage;
         }
 
-        Debug.Log($"Player {playerNumber} si è trasformato in: {transformationCharacter.characterName}");
+        Debug.Log($"[Player {playerNumber}] TRASFORMAZIONE COMPLETATA in: {transformationCharacter.characterName}");
+        Debug.Log($"[Player {playerNumber}] Nuove stats - HP: {currentHP}/{maxHP} | Power: {power} | Speed: {moveSpeed}");
     }
 
     private void Update()
