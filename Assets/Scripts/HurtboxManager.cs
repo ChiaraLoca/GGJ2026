@@ -1,3 +1,4 @@
+using GGJ26.StateMachine;
 using System;
 using UnityEngine;
 
@@ -11,10 +12,24 @@ public class HurtboxManager : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void SetupColliderFromDB(BoxCollider2D collider)
     {
-        
+        if (collider == null) return;
+
+        if (MatchManager.Instance.IsFacingRight(PlayerController))
+        {
+            
+            HurtboxCollider.offset = collider.offset;
+            HurtboxCollider.size = (collider).size;
+        }
+        else
+        {
+            
+            HurtboxCollider.offset = new Vector2(-collider.offset.x, collider.offset.y);
+            HurtboxCollider.size = new Vector2(-collider.size.x, collider.size.y);
+        }
+        HurtboxCollider.edgeRadius = collider.edgeRadius;
+
     }
 
     // Update is called once per frame
