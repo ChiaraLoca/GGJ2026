@@ -25,6 +25,8 @@ public class Motion
     public int startupSpriteCount { get; set; } = 1;
     public int activeSpriteCount { get; set; } = 1;
     public int recoverySpriteCount { get; set; } = 1;
+    public bool isGrab { get; set; } = false;
+    public bool isLauncher { get; set; } = false;
 
     // Costruttore originale (retrocompatibile)
     public Motion(string name,InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int damage, int hitStunFrames, int blockStunFrames, bool knockDown, float knockBack,int recoveryFrameSwitch, int specialRequiredPower, int cancelWindowStart = -1, int cancelWindowEnd = -1) 

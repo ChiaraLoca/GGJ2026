@@ -1,4 +1,5 @@
 ﻿using GGJ26.StateMachine;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ namespace GGJ26.Input
         public void TakeDamage(int damage);
 
         public int GetSpecialEnergy();
+        void StartCoroutine(IEnumerator enumerator);
     }
 
 

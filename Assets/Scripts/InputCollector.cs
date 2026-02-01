@@ -19,6 +19,7 @@ public class InputCollector : MonoBehaviour
         motions.Add(MotionCreator.get2A());
         motions.Add(MotionCreator.get5A());
         motions.Add(MotionCreator.getSpecialMove());
+        
         motions.Sort((a, b) => a.priority.CompareTo(b.priority));
     }
 

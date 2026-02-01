@@ -39,8 +39,10 @@ namespace GGJ26.StateMachine
             {
                 if(hitByMotion.knockDown)
                     ChangeState(new Down(character, this, hitByMotion, finalDamage));
-                else
-                    ChangeState(new Hit(character, this, hitByMotion, finalDamage));
+                else if(hitByMotion.isGrab)
+                    ChangeState(new GrabbedHit(character, this, hitByMotion, finalDamage));
+                else if(hitByMotion.isLauncher)
+                    ChangeState(new AirborneHit(character, this, hitByMotion, finalDamage));
             }
         }
 

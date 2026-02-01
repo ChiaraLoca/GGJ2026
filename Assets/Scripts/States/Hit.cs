@@ -43,6 +43,9 @@ namespace GGJ26.StateMachine
         }
     }
 
+
+
+
     public class Hit : IState
     {
         private IPlayableCharacter character;
@@ -76,6 +79,89 @@ namespace GGJ26.StateMachine
             if (frame>=hitByMotion.hitStunFrames)
             {
                 sm.ChangeState(new Neutral(character, sm));
+            }
+        }
+        public void OnExit()
+        {
+            Debug.Log($"Crouch Hit");
+        }
+    }
+
+    public class GrabbedHit : IState
+    {
+        private IPlayableCharacter character;
+        private StateMachineBehaviour sm;
+
+
+        private int frame = 0;
+        private Motion hitByMotion;
+        private int finalDamage;
+        public GrabbedHit(IPlayableCharacter character, StateMachineBehaviour sm, Motion hitByMotion, int finalDamage)
+        {
+            this.character = character;
+            this.sm = sm;
+            this.hitByMotion = hitByMotion;
+            this.finalDamage = finalDamage;
+        }
+
+        public void OnEnter()
+        {
+            Debug.Log($"Hit Enter");
+            character.GetPlayerSpriteUpdater().ChangeSprite("down", 0);
+            frame = 0;
+            character.TakeDamage(finalDamage);
+
+            KnockBackHelper.ApplyKnockBack(character, hitByMotion);
+
+        }
+        public void OnFrame()
+        {
+            frame++;
+
+            if (frame >= hitByMotion.hitStunFrames)
+            {
+                sm.ChangeState(new Down(character, sm,null,0));
+            }
+        }
+        public void OnExit()
+        {
+            Debug.Log($"Crouch Hit");
+        }
+    }
+    public class AirborneHit : IState
+    {
+        private IPlayableCharacter character;
+        private StateMachineBehaviour sm;
+
+
+        private int frame = 0;
+        private Motion hitByMotion;
+        private int finalDamage;
+        public AirborneHit(IPlayableCharacter character, StateMachineBehaviour sm, Motion hitByMotion, int finalDamage)
+        {
+            this.character = character;
+            this.sm = sm;
+            this.hitByMotion = hitByMotion;
+            this.finalDamage = finalDamage;
+        }
+
+        public void OnEnter()
+        {
+            Debug.Log($"AirborneHit Enter");
+            character.GetPlayerSpriteUpdater().ChangeSprite("down", 0);
+            frame = 0;
+            character.TakeDamage(finalDamage);
+
+            KnockBackHelper.ApplyKnockBack(character, hitByMotion);
+
+        }
+        public void OnFrame()
+        {
+            frame++;
+
+            if (frame >= hitByMotion.hitStunFrames)
+            {
+                sm.ChangeState(new Down(character, sm, null, 0));
             }
         }
         public void OnExit()

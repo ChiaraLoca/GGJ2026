@@ -1,10 +1,13 @@
 using GGJ26.Input;
 using GGJ26.StateMachine;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using StateMachineBehaviour = GGJ26.StateMachine.StateMachineBehaviour;
+
 
 public class PlayerController : MonoBehaviour, IPlayableCharacter
 {
@@ -394,6 +397,16 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     internal int GetCharacterIndex()
     {
         return  characterIndex;
+    }
+
+    public void StartCharacterCoroutine(IEnumerator routine)
+    {
+        StartCoroutine(routine);
+    }
+
+    void IPlayableCharacter.StartCoroutine(IEnumerator enumerator)
+    {
+        StartCoroutine(enumerator);
     }
 }
 
