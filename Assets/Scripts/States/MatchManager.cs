@@ -1,4 +1,5 @@
 ﻿using GGJ26.Input;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -119,7 +120,13 @@ namespace GGJ26.StateMachine
             playableCharacter.SetInputHandler(handler);
         }
 
-
+        internal IPlayableCharacter OpponentOf(IPlayableCharacter character)
+        {
+            if(character.Equals(player1))
+                return player2;
+            else
+                return player1;
+        }
     }
 
 
