@@ -11,12 +11,13 @@ namespace GGJ26.StateMachine
        
         private int maxFrame = 30;
         private int frame = 0;
-
-        public Down(IPlayableCharacter character, StateMachineBehaviour sm)
+        private Motion hitByMotion;
+        public Down(IPlayableCharacter character, StateMachineBehaviour sm,Motion hitByMotion)
         {
             this.character = character;
             this.sm = sm;
-            
+
+            this.hitByMotion = hitByMotion;
         }
 
         public void OnEnter()
@@ -28,7 +29,7 @@ namespace GGJ26.StateMachine
         {
             frame++;
 
-            if (frame >= maxFrame)
+            if (frame >= hitByMotion.hitStunFrames)
             {
                 sm.ChangeState(new Standing(character, sm));
             }
