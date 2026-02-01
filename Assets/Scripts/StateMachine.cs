@@ -29,11 +29,11 @@ namespace GGJ26.StateMachine
             return null;
         }
 
-        public void GotHit(Motion hitByMotion,IPlayableCharacter character)
+        public void GotHit(Motion hitByMotion, IPlayableCharacter character)
         {
             if (current is Block block)
             {
-                //BlockStun
+                ChangeState(new BlockStun(character, this, hitByMotion));
             }
             else 
             {
