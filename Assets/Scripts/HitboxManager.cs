@@ -12,10 +12,13 @@ public class HitboxManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetupColliderFromDB(BoxCollider2D collider)
     {
-        
+        if(collider == null) return;
+        HitboxCollider.offset = collider.offset;
+        HitboxCollider.size = (collider).size;
+        HitboxCollider.edgeRadius = collider.edgeRadius;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)

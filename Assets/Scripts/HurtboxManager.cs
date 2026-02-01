@@ -11,10 +11,13 @@ public class HurtboxManager : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void SetupColliderFromDB(BoxCollider2D collider)
     {
-        
+        if(collider == null) return;
+        HurtboxCollider.offset = collider.offset;
+        HurtboxCollider.size = (collider).size;
+        HurtboxCollider.edgeRadius = collider.edgeRadius;
+
     }
 
     // Update is called once per frame
