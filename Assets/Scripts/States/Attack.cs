@@ -17,6 +17,7 @@ namespace GGJ26.StateMachine
         private int frame;
         private int phase; // 0=startup, 1=active, 2=recovery
         private string motionName;
+        private int lastSpriteIndex = -1; // Per evitare di chiamare ChangeSprite se non cambia
 
         public Attack(Motion motion, IPlayableCharacter character, StateMachineBehaviour sm)
         {
@@ -46,6 +47,9 @@ namespace GGJ26.StateMachine
                            frame < motion.activeEnd ? 1 :
                            frame < motion.totalFrames ? 2 : 3;
 
+            // Calcola l'indice dello sprite in base alla fase e al frame corrente
+            int spriteIndex = CalculateSpriteIndex(newPhase);
+
             // Log fase solo quando cambia
             if (newPhase != phase)
             {
@@ -56,24 +60,66 @@ namespace GGJ26.StateMachine
                         break;
                     case 1: 
                         Debug.Log($"Active {motionName}");
-                        character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 1);
                         break;
                     case 2: 
                         Debug.Log($"Recovery {motionName}");
-                        character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 2,true);
-                        
                         break;
                 }
                 phase = newPhase;
             }
 
-            if(frame == motion.recoveryFrameSwitch)
-                character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 2);
+            // Cambia sprite solo se l'indice è cambiato
+            if (spriteIndex != lastSpriteIndex && newPhase < 3)
+            {
+                // Durante recovery, changeOnlyHitbox solo se motion ha 1 solo sprite per fase (mosse normali)
+                bool isMultiFrameMotion = motion.startupSpriteCount > 1 || motion.activeSpriteCount > 1 || motion.recoverySpriteCount > 1;
+                bool changeOnlyHitbox = (newPhase == 2) && !isMultiFrameMotion;
+                character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, spriteIndex, changeOnlyHitbox);
+                lastSpriteIndex = spriteIndex;
+            }
 
             // Fine attacco → ritorno a Move
             if (newPhase == 3)
             {
                 sm.ChangeState(new Move(character, sm));
+            }
+        }
+
+        /// <summary>
+        /// Calcola l'indice dello sprite in base alla fase corrente e al frame.
+        /// Distribuisce i frame della fase equamente tra gli sprite disponibili.
+        /// </summary>
+        private int CalculateSpriteIndex(int currentPhase)
+        {
+            switch (currentPhase)
+            {
+                case 0: // Startup
+                    {
+                        int startupFrames = motion.startupEnd;
+                        int framesPerSprite = Mathf.Max(1, startupFrames / motion.startupSpriteCount);
+                        int index = Mathf.Min(frame / framesPerSprite, motion.startupSpriteCount - 1);
+                        return index;
+                    }
+                case 1: // Active
+                    {
+                        int activeStart = motion.startupEnd;
+                        int activeFrames = motion.activeEnd - activeStart;
+                        int frameInPhase = frame - activeStart;
+                        int framesPerSprite = Mathf.Max(1, activeFrames / motion.activeSpriteCount);
+                        int index = Mathf.Min(frameInPhase / framesPerSprite, motion.activeSpriteCount - 1);
+                        return motion.startupSpriteCount + index;
+                    }
+                case 2: // Recovery
+                    {
+                        int recoveryStart = motion.activeEnd;
+                        int recoveryFrames = motion.totalFrames - recoveryStart;
+                        int frameInPhase = frame - recoveryStart;
+                        int framesPerSprite = Mathf.Max(1, recoveryFrames / motion.recoverySpriteCount);
+                        int index = Mathf.Min(frameInPhase / framesPerSprite, motion.recoverySpriteCount - 1);
+                        return motion.startupSpriteCount + motion.activeSpriteCount + index;
+                    }
+                default:
+                    return 0;
             }
         }
 

@@ -132,14 +132,17 @@ public class CharacterSelectController : MonoBehaviour
                 ChangeSelection(ref player1SelectedIndex, horizontal > 0 ? 1 : -1);
                 player1InputTimer = inputCooldown;
                 UpdateCharacterDisplay();
+                return; // Blocca ulteriori input in questa frame
             }
 
             // Conferma: Spazio o Gamepad South Button (A/X)
+            // Solo se non sta premendo tasti di movimento
             bool confirmPressed = (keyboard != null && keyboard.spaceKey.wasPressedThisFrame) ||
                                   (player1Gamepad != null && player1Gamepad.buttonSouth.wasPressedThisFrame);
-            if (confirmPressed)
+            if (confirmPressed && Mathf.Abs(horizontal) < 0.5f)
             {
                 ConfirmPlayer1Selection();
+                return;
             }
         }
         else
@@ -187,14 +190,17 @@ public class CharacterSelectController : MonoBehaviour
                 ChangeSelection(ref player2SelectedIndex, horizontal > 0 ? 1 : -1);
                 player2InputTimer = inputCooldown;
                 UpdateCharacterDisplay();
+                return; // Blocca ulteriori input in questa frame
             }
 
             // Conferma: Enter o Gamepad South Button (A/X)
+            // Solo se non sta premendo tasti di movimento
             bool confirmPressed = (keyboard != null && keyboard.enterKey.wasPressedThisFrame) ||
                                   (player2Gamepad != null && player2Gamepad.buttonSouth.wasPressedThisFrame);
-            if (confirmPressed)
+            if (confirmPressed && Mathf.Abs(horizontal) < 0.5f)
             {
                 ConfirmPlayer2Selection();
+                return;
             }
         }
         else
