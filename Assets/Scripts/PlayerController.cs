@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpforce = 5f;
     [SerializeField] private float baseMoveSpeed = 5f;
-    [SerializeField] private float power = 5f;
+    [SerializeField] private float power = 1f;
 
     [Header("Visual")]
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
             // Applicare i modificatori da CharacterData
             maxHP = baseMaxHP + character.hp;
             moveSpeed = baseMoveSpeed + (0.2f * character.speed);
-            power = 5f + character.power;
+            power =  character.power;
 
             if (spriteRenderer != null && character.characterImage != null)
             {

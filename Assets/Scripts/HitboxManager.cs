@@ -12,22 +12,29 @@ public class HitboxManager : MonoBehaviour
 
     }
 
+    public void ClearCollider()
+    {
+        //clear collider
+        HitboxCollider.offset = Vector2.zero;
+        HitboxCollider.size = Vector2.zero;
+
+    }
+
     public void SetupColliderFromDB(BoxCollider2D collider)
     {
         if (collider == null) return;
 
         if (MatchManager.Instance.IsFacingRight(PlayerController))
         {
-            
             HitboxCollider.offset = collider.offset;
-            HitboxCollider.size = (collider).size; 
         }
         else
         {
-            
+            // Solo l'offset viene negato per il flip, la size deve rimanere positiva
             HitboxCollider.offset = new Vector2(-collider.offset.x, collider.offset.y);
-            HitboxCollider.size = new Vector2(-collider.size.x, collider.size.y);
         }
+        // La size è sempre positiva
+        HitboxCollider.size = collider.size;
         HitboxCollider.edgeRadius = collider.edgeRadius;
 
     }
@@ -39,6 +46,7 @@ public class HitboxManager : MonoBehaviour
             Motion attack = PlayerController.stateMachine.GetMotion();
             if (attack != null)
             {
+                attack.damage = (int)(attack.damage * PlayerController.GetPower());
                 Debug.Log($"{PlayerController.name} hit {hurtboxManager.PlayerController.name} with {attack.name} for {attack.damage} damage!");
                 hurtboxManager.PlayerController.stateMachine.GotHit(attack, hurtboxManager.PlayerController);
             }

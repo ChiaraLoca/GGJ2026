@@ -18,19 +18,36 @@ MonoBehaviour:
     characterPortrait: {fileID: -218390781391320259, guid: a327e9afc91f0244e8e05bb19d25a6bb, type: 3}
     characterId: 0
     movementSprites:
-    - {fileID: 0}
-    blockSprites: []
-    crouchSprites: []
-    jumpSprites: []
-    hitSprites: []
-    downSprites: []
-    standingSprites: []
-    punchSprites: []
-    kickSprites: []
-    lowhitSprites: []
+    - {fileID: 4741238997123618329, guid: 890d40bbb6c8f75498bd5873d4e76807, type: 3}
+    blockSprites:
+    - {fileID: 8603814972420610461, guid: cf90813dd5a5d0f44867ec8a3bb2349d, type: 3}
+    crouchSprites:
+    - {fileID: 8910220269318005630, guid: b92a9d971a866b64999337fb100e6410, type: 3}
+    jumpSprites:
+    - {fileID: 9088676808887347343, guid: 282e84135efaf1949af59f1abafe7bf5, type: 3}
+    - {fileID: 1771108631874929897, guid: f86fa8875870b60458d0736fb9dd45c8, type: 3}
+    hitSprites:
+    - {fileID: 1814336502112444237, guid: e350bf96db724ac46ad0df2497405009, type: 3}
+    downSprites:
+    - {fileID: 8770508845719098149, guid: 39880ca3cd861294998c95ad31a31ba3, type: 3}
+    standingSprites:
+    - {fileID: 4741238997123618329, guid: ebdf3f222d224bc47924eb7214c87e5b, type: 3}
+    punchSprites:
+    - {fileID: 1854636421667274103, guid: 080fd36379b9fde4f895748d6c39af95, type: 3}
+    - {fileID: 871591086528271897, guid: ab03893e526d6894592910e2410ee128, type: 3}
+    - {fileID: 5914177704232961089, guid: 2cf621b82eb0a3f41b2fd2add6a0ef60, type: 3}
+    kickSprites:
+    - {fileID: 1339799145304381802, guid: 30fcc7342706647459e375e70ff13873, type: 3}
+    - {fileID: 7696660464945962983, guid: fe96395f3d9d8424986fba5d4273f311, type: 3}
+    - {fileID: 2343759900677460291, guid: 60eb1df13f1855c4cb7780810013c1c7, type: 3}
+    lowhitSprites:
+    - {fileID: 2222513863768082743, guid: c864be219b3bc154e859830208e3b3a5, type: 3}
+    - {fileID: 513359847921296476, guid: 152278141fb43ea4a887ec4da71a33ee, type: 3}
+    - {fileID: 7519532527851756879, guid: 1034c99de7714ef4699e1df84c723c0f, type: 3}
     specialSprites: []
-    idleSprites: []
-    characterSpecialSprite: {fileID: 0}
+    idleSprites:
+    - {fileID: 4741238997123618329, guid: b571517517e336047bbd7177a876e3e1, type: 3}
+    characterSpecialSprite: {fileID: -2363117888368897163, guid: fa39d7c8c057b5e41a6b3df6e268807d, type: 3}
     description: TIZIO
     speed: 5
     power: 5

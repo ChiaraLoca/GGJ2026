@@ -7,9 +7,12 @@ public class HurtboxManager : MonoBehaviour
     public BoxCollider2D HurtboxCollider;
     public PlayerController PlayerController;
 
-    internal void TakeDamage(int v)
+    public void ClearCollider()
     {
-        throw new NotImplementedException();
+        //clear collider
+        HurtboxCollider.offset = Vector2.zero;
+        HurtboxCollider.size = Vector2.zero;
+        
     }
 
     public void SetupColliderFromDB(BoxCollider2D collider)
@@ -18,16 +21,15 @@ public class HurtboxManager : MonoBehaviour
 
         if (MatchManager.Instance.IsFacingRight(PlayerController))
         {
-            
             HurtboxCollider.offset = collider.offset;
-            HurtboxCollider.size = (collider).size;
         }
         else
         {
-            
+            // Solo l'offset viene negato per il flip, la size deve rimanere positiva
             HurtboxCollider.offset = new Vector2(-collider.offset.x, collider.offset.y);
-            HurtboxCollider.size = new Vector2(-collider.size.x, collider.size.y);
         }
+        // La size è sempre positiva
+        HurtboxCollider.size = collider.size;
         HurtboxCollider.edgeRadius = collider.edgeRadius;
 
     }
