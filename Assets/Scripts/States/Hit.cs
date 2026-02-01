@@ -34,7 +34,7 @@ namespace GGJ26.StateMachine
 
             if (frame >= hitByMotion.blockStunFrames)
             {
-                sm.ChangeState(new Standing(character, sm));
+                sm.ChangeState(new Neutral(character, sm));
             }
         }
         public void OnExit()

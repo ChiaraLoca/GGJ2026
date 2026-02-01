@@ -20,7 +20,7 @@ public class MotionCreator
     {
         InputData[] inputs = { new InputData(NumpadDirection.Down, true) };
         InputData[] flippedInputs = { new InputData(NumpadDirection.Down, true) };
-        return new Motion("lowHit",inputs, flippedInputs, 20, 12, 14, 0, 5, 5, 3, true, 1f,17, 0, 5, 12);
+        return new Motion("lowHit",inputs, flippedInputs, 20, 12, 14, 0, 5, 5, 3, false, 1f,17, 0, 5, 12);
     }
 
 
