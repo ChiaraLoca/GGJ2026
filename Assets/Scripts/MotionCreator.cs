@@ -58,4 +58,46 @@ public class MotionCreator
             cancelWindowStart: 5, 
             cancelWindowEnd: 12);
     }
+
+    /// <summary>
+    /// Special move con proiettile (per Character ID 1 - Punto di Domanda)
+    /// </summary>
+    public static Motion getProjectileSpecialMove()
+    {
+        InputData[] inputs = {
+            new InputData(NumpadDirection.Down, false),
+            new InputData(NumpadDirection.DownRight, false),
+            new InputData(NumpadDirection.Right, true),
+        };
+        InputData[] flippedInputs = {
+            new InputData(NumpadDirection.Down, false),
+            new InputData(NumpadDirection.DownLeft, false),
+            new InputData(NumpadDirection.Left, true),
+        };
+        
+        Motion motion = new Motion("special", inputs, flippedInputs, 
+            totalFrames: 60, 
+            startupEnd: 15, 
+            activeEnd: 36, 
+            priority: 2, 
+            damage: 0,  // Il danno lo fa il proiettile, non la mossa
+            hitStunFrames: 10, 
+            blockStunFrames: 5, 
+            knockDown: false, 
+            knockBack: 0f, 
+            recoveryFrameSwitch: 50, 
+            specialRequiredPower: 100,
+            startupSpriteCount: 2,   // sprite 0, 1
+            activeSpriteCount: 4,    // sprite 2, 3, 4, 5
+            recoverySpriteCount: 2,  // sprite 6, 7
+            cancelWindowStart: -1, 
+            cancelWindowEnd: -1);
+        
+        // Configura il proiettile
+        motion.spawnsProjectile = true;
+        motion.projectileSpawnFrame = 15; // Spawna all'inizio della fase active
+        motion.projectileDamage = 20;
+        
+        return motion;
+    }
 }

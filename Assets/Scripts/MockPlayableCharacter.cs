@@ -23,6 +23,9 @@ namespace GGJ26.Input
         public void TakeDamage(int damage);
 
         public int GetSpecialEnergy();
+        
+        public CharacterData GetCharacterData();
+        public void SpawnProjectile(int damage);
     }
 
 

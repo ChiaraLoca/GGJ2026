@@ -25,6 +25,11 @@ public class Motion
     public int startupSpriteCount { get; set; } = 1;
     public int activeSpriteCount { get; set; } = 1;
     public int recoverySpriteCount { get; set; } = 1;
+    
+    // Proiettile
+    public bool spawnsProjectile { get; set; } = false;
+    public int projectileSpawnFrame { get; set; } = 0; // Frame in cui spawnare il proiettile
+    public int projectileDamage { get; set; } = 20;
 
     // Costruttore originale (retrocompatibile)
     public Motion(string name,InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int damage, int hitStunFrames, int blockStunFrames, bool knockDown, float knockBack,int recoveryFrameSwitch, int specialRequiredPower, int cancelWindowStart = -1, int cancelWindowEnd = -1) 

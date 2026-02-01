@@ -9,9 +9,36 @@ public class InputCollector : MonoBehaviour
     InputHandler _inputHandler;
     private InputBuffer InputBuffer = new InputBuffer(60);
     private List<Motion> motions = new List<Motion>();
+    private int characterId = -1;
 
     //public TextMeshProUGUI buffer;
 
+    /// <summary>
+    /// Configura le mosse per un personaggio specifico
+    /// </summary>
+    public void SetupMovesForCharacter(int charId)
+    {
+        characterId = charId;
+        motions.Clear();
+        
+        // Mosse base comuni a tutti
+        motions.Add(MotionCreator.get6A());
+        motions.Add(MotionCreator.get2A());
+        motions.Add(MotionCreator.get5A());
+        
+        // Special move in base al personaggio
+        if (characterId == 1) // Punto di Domanda - usa proiettile
+        {
+            motions.Add(MotionCreator.getProjectileSpecialMove());
+            Debug.Log($"[InputCollector] Character {characterId}: Special con proiettile configurata");
+        }
+        else
+        {
+            motions.Add(MotionCreator.getSpecialMove());
+        }
+        
+        motions.Sort((a, b) => a.priority.CompareTo(b.priority));
+    }
 
     private void setupMoves()
     {

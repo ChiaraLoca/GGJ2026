@@ -18,6 +18,7 @@ namespace GGJ26.StateMachine
         private int phase; // 0=startup, 1=active, 2=recovery
         private string motionName;
         private int lastSpriteIndex = -1; // Per evitare di chiamare ChangeSprite se non cambia
+        private bool projectileSpawned = false; // Per evitare spawn multipli
 
         public Attack(Motion motion, IPlayableCharacter character, StateMachineBehaviour sm)
         {
@@ -76,6 +77,13 @@ namespace GGJ26.StateMachine
                 bool changeOnlyHitbox = (newPhase == 2) && !isMultiFrameMotion;
                 character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, spriteIndex, changeOnlyHitbox);
                 lastSpriteIndex = spriteIndex;
+            }
+
+            // Spawn proiettile se la motion lo richiede
+            if (motion.spawnsProjectile && !projectileSpawned && frame >= motion.projectileSpawnFrame)
+            {
+                character.SpawnProjectile(motion.projectileDamage);
+                projectileSpawned = true;
             }
 
             // Fine attacco → ritorno a Move

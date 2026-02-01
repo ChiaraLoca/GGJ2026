@@ -15,7 +15,7 @@ MonoBehaviour:
   characters:
   - characterName: ...
     characterImage: {fileID: 8793639957104055765, guid: 437b88df55324bc4eaf2c24f0bea3350, type: 3}
-    characterPortrait: {fileID: -218390781391320259, guid: a327e9afc91f0244e8e05bb19d25a6bb, type: 3}
+    characterPortrait: {fileID: 21300000, guid: d70f8e126740c844bb2b7901f3d20a51, type: 3}
     characterId: 0
     movementSprites:
     - {fileID: 4741238997123618329, guid: 890d40bbb6c8f75498bd5873d4e76807, type: 3}
@@ -48,6 +48,7 @@ MonoBehaviour:
     idleSprites:
     - {fileID: 4741238997123618329, guid: b571517517e336047bbd7177a876e3e1, type: 3}
     characterSpecialSprite: {fileID: -2363117888368897163, guid: fa39d7c8c057b5e41a6b3df6e268807d, type: 3}
+    projectilePrefab: {fileID: 0}
     description: TIZIO
     speed: 5
     power: 5
@@ -91,10 +92,11 @@ MonoBehaviour:
     idleSprites:
     - {fileID: 4741238997123618329, guid: 748bf2c70953ea84fb005c2a05da24e9, type: 3}
     characterSpecialSprite: {fileID: 6169051424762097521, guid: fa39d7c8c057b5e41a6b3df6e268807d, type: 3}
+    projectilePrefab: {fileID: 4741238997123618329, guid: 6e3610f796113784a9389d8ffffa0167, type: 3}
     description: CAIO
-    speed: 5
+    speed: 6
     power: 5
-    hp: 0
+    hp: 94
   - characterName: '@@@'
     characterImage: {fileID: 21300000, guid: a1b40364906d62c46bbeea4bc98b309b, type: 3}
     characterPortrait: {fileID: 4579442837771477331, guid: 6554f95f1827c93429b4ccdd95d8ee2c, type: 3}
@@ -138,10 +140,11 @@ MonoBehaviour:
     idleSprites:
     - {fileID: 4741238997123618329, guid: 5ccd4ce9bb360bd4682c605f0727fb14, type: 3}
     characterSpecialSprite: {fileID: 2107204452721565602, guid: 0c5ad38c0714fd8448f33259762ca58c, type: 3}
+    projectilePrefab: {fileID: 4741238997123618329, guid: 6e3610f796113784a9389d8ffffa0167, type: 3}
     description: SEMPRONIO
-    speed: 5
-    power: 5
-    hp: 0
+    speed: 2
+    power: 60
+    hp: 400
   - characterName: '!!!'
     characterImage: {fileID: 21300000, guid: dc7efbbdf1fabda498cee7cf2d98f46b, type: 3}
     characterPortrait: {fileID: -6580159268419754972, guid: c6050956c0b11f54b95b6af8cec0d667, type: 3}
@@ -185,7 +188,8 @@ MonoBehaviour:
     idleSprites:
     - {fileID: 4741238997123618329, guid: c3bed127e13cc1247b64a7e2332ee829, type: 3}
     characterSpecialSprite: {fileID: -4211581063009071647, guid: 1e298034834a73140860f3d39dd7ff3c, type: 3}
+    projectilePrefab: {fileID: 0}
     description: CACCA
-    speed: 5
-    power: 5
-    hp: 0
+    speed: 9
+    power: 77
+    hp: 40
