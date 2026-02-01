@@ -148,9 +148,8 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
             spriteRenderer.flipX = true;
         }
 
-
-
-        Debug.Log($"Player {playerNumber} inizializzato con: {character?.characterName}");
+        Debug.Log($"[Player {playerNumber}] Inizializzato: {character?.characterName}");
+        Debug.Log($"[Player {playerNumber}] HP: {currentHP}/{maxHP} | Power: {power} | Speed: {moveSpeed}");
     }
 
     public void TransformTo(CharacterData transformationCharacter)
@@ -245,11 +244,15 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     // Metodo per ricevere danno (da usare poi nel combat system)
     public void TakeDamage(int damage)
     {
+        float hpBefore = currentHP;
+        
         // Invoca il callback OnHit quando viene colpito
         currentCharacter?.OnHit?.Invoke(currentCharacter);
 
         currentHP -= damage;
         currentHP = Mathf.Max(0, currentHP);
+        
+        Debug.Log($"[Player {playerNumber}] TakeDamage: {damage} | HP: {hpBefore} -> {currentHP}/{maxHP}");
 
         // Guadagna special quando vieni colpito
         AddSpecial(specialGainOnDamage);

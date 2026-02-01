@@ -5,7 +5,7 @@ public class HitboxManager : MonoBehaviour
 {
     public BoxCollider2D HitboxCollider;
     public PlayerController PlayerController;
-
+    private bool HitCompleted = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,20 +36,24 @@ public class HitboxManager : MonoBehaviour
         // La size è sempre positiva
         HitboxCollider.size = collider.size;
         HitboxCollider.edgeRadius = collider.edgeRadius;
-
+        HitCompleted = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.TryGetComponent<HurtboxManager>(out HurtboxManager hurtboxManager) && !hurtboxManager.PlayerController.Equals(PlayerController))
+        if(HitCompleted) return;
+        if (other.gameObject.TryGetComponent<HurtboxManager>(out HurtboxManager hurtboxManager) && !hurtboxManager.PlayerController.Equals(PlayerController))
         {
             Motion attack = PlayerController.stateMachine.GetMotion();
             if (attack != null)
             {
                 // Calcola il danno finale senza modificare l'oggetto Motion originale
-                int finalDamage = attack.damage + (int)((attack.damage / 100f) * PlayerController.GetPower());
-                Debug.Log($"{PlayerController.name} hit {hurtboxManager.PlayerController.name} with {attack.name} for {finalDamage} damage!");
+                float powerMultiplier = (attack.damage / 100f) * PlayerController.GetPower();
+                int finalDamage = attack.damage + (int)powerMultiplier;
+                Debug.Log($"[HIT] {PlayerController.name} -> {hurtboxManager.PlayerController.name}");
+                Debug.Log($"[HIT] Attack: {attack.name} | Base Damage: {attack.damage} | Power: {PlayerController.GetPower()} | Bonus: +{(int)powerMultiplier} | TOTAL: {finalDamage}");
                 hurtboxManager.PlayerController.stateMachine.GotHit(attack, hurtboxManager.PlayerController, finalDamage);
+                HitCompleted = true;
             }
         }
     }
