@@ -41,7 +41,7 @@ public class InputCollector : MonoBehaviour
 
         InputBuffer.Enqueue(input);
 
-        Debug.Log(InputBuffer.print());
+       // Debug.Log(InputBuffer.print());
         //  buffer.text = InputBuffer.print();
 
 

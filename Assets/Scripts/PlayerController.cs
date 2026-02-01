@@ -132,8 +132,9 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
         {
             // Applicare i modificatori da CharacterData
             maxHP = baseMaxHP + character.hp;
+            currentHP = maxHP; // Imposta HP corrente al massimo dopo aver calcolato maxHP
             moveSpeed = baseMoveSpeed + (0.2f * character.speed);
-            power =  character.power;
+            power = character.power;
 
             if (spriteRenderer != null && character.characterImage != null)
             {
@@ -147,24 +148,44 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
             spriteRenderer.flipX = true;
         }
 
-
-
-        Debug.Log($"Player {playerNumber} inizializzato con: {character?.characterName}");
+        Debug.Log($"[Player {playerNumber}] Inizializzato: {character?.characterName}");
+        Debug.Log($"[Player {playerNumber}] HP: {currentHP}/{maxHP} | Power: {power} | Speed: {moveSpeed}");
     }
 
     public void TransformTo(CharacterData transformationCharacter)
     {
         if (isTransformed) return;
+        if (transformationCharacter == null)
+        {
+            Debug.LogError($"[Player {playerNumber}] TransformTo: CharacterData è null!");
+            return;
+        }
 
         currentCharacter = transformationCharacter;
         isTransformed = true;
 
+        // Aggiorna le stats del personaggio (mantenendo l'HP attuale proporzionalmente)
+        float hpPercentage = currentHP / maxHP;
+        maxHP = baseMaxHP + transformationCharacter.hp;
+        currentHP = maxHP * hpPercentage; // Mantiene la stessa percentuale di HP
+        moveSpeed = baseMoveSpeed + (0.2f * transformationCharacter.speed);
+        power = transformationCharacter.power;
+
+        // Aggiorna PlayerSpriteUpdater con il nuovo personaggio (indice 0 = trasformazione)
+        PlayerSpriteUpdater spriteUpdater = GetPlayerSpriteUpdater();
+        if (spriteUpdater != null)
+        {
+            spriteUpdater.SetCharacterData(transformationCharacter, 0); // 0 è l'indice del personaggio trasformazione
+        }
+
+        // Aggiorna lo sprite principale
         if (spriteRenderer != null && transformationCharacter.characterImage != null)
         {
             spriteRenderer.sprite = transformationCharacter.characterImage;
         }
 
-        Debug.Log($"Player {playerNumber} si è trasformato in: {transformationCharacter.characterName}");
+        Debug.Log($"[Player {playerNumber}] TRASFORMAZIONE COMPLETATA in: {transformationCharacter.characterName}");
+        Debug.Log($"[Player {playerNumber}] Nuove stats - HP: {currentHP}/{maxHP} | Power: {power} | Speed: {moveSpeed}");
     }
 
     private void Update()
@@ -244,11 +265,15 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     // Metodo per ricevere danno (da usare poi nel combat system)
     public void TakeDamage(int damage)
     {
+        float hpBefore = currentHP;
+        
         // Invoca il callback OnHit quando viene colpito
         currentCharacter?.OnHit?.Invoke(currentCharacter);
 
         currentHP -= damage;
         currentHP = Mathf.Max(0, currentHP);
+        
+        Debug.Log($"[Player {playerNumber}] TakeDamage: {damage} | HP: {hpBefore} -> {currentHP}/{maxHP}");
 
         // Guadagna special quando vieni colpito
         AddSpecial(specialGainOnDamage);

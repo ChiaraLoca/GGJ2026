@@ -51,12 +51,13 @@ namespace GGJ26.StateMachine
        
         private int frame = 0;
         private Motion hitByMotion;
-        public Hit(IPlayableCharacter character, StateMachineBehaviour sm, Motion hitByMotion)
+        private int finalDamage;
+        public Hit(IPlayableCharacter character, StateMachineBehaviour sm, Motion hitByMotion, int finalDamage)
         {
             this.character = character;
             this.sm = sm;
             this.hitByMotion = hitByMotion;
-
+            this.finalDamage = finalDamage;
         }
 
         public void OnEnter()
@@ -64,7 +65,7 @@ namespace GGJ26.StateMachine
             Debug.Log($"Hit Enter");
             character.GetPlayerSpriteUpdater().ChangeSprite("hit", 0);
             frame = 0;
-            character.TakeDamage(hitByMotion.damage);
+            character.TakeDamage(finalDamage);
             KnockBackHelper.ApplyKnockBack(character, hitByMotion);
 
         }

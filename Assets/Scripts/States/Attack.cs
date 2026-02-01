@@ -51,23 +51,19 @@ namespace GGJ26.StateMachine
             {
                 switch (newPhase)
                 {
-                    case 0: Debug.Log($"Startup {motionName}"); break;
-                    case 1: Debug.Log($"Active {motionName}"); break;
-                    case 2: Debug.Log($"Recovery {motionName}"); break;
+                    case 0: 
+                        Debug.Log($"Startup {motionName}"); 
+                        break;
+                    case 1: 
+                        Debug.Log($"Active {motionName}");
+                        character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 1);
+                        break;
+                    case 2: 
+                        Debug.Log($"Recovery {motionName}");
+                        character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 2);
+                        break;
                 }
                 phase = newPhase;
-            }
-
-            // Durante active puoi gestire hitbox qui
-            if (phase == 1)
-            {
-                character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 1);
-                // character.SpawnHitbox(motion.hitboxData);
-            }
-            if (phase == 2)
-            {
-                character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 2);
-                // character.SpawnHitbox(motion.hitboxData);
             }
 
             // Fine attacco → ritorno a Move

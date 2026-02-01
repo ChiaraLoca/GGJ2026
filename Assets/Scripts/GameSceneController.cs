@@ -161,7 +161,8 @@ public class GameSceneController : MonoBehaviour
     private void UpdateCombatUI()
     {
         if (combatUI == null) return;
-
+        Debug.Log(player1Controller.GetCurrentHP() + " " + player1Controller.GetMaxHP());
+        Debug.Log(player2Controller.GetCurrentHP() + " " + player2Controller.GetMaxHP());
         // Aggiorna HP
         if (player1Controller != null)
             combatUI.SetPlayer1HP(player1Controller.GetCurrentHP(), player1Controller.GetMaxHP());
@@ -178,6 +179,7 @@ public class GameSceneController : MonoBehaviour
     // Metodo per trasformare un player quando HP scende sotto soglia
     public void TransformPlayer(int playerNumber)
     {
+        Debug.Log($"Trasformazione del giocatore {playerNumber} in corso...");
         var transformationCharacter = characterDatabase.GetCharacter(TRANSFORMATION_CHARACTER_INDEX);
         if (transformationCharacter == null)
         {

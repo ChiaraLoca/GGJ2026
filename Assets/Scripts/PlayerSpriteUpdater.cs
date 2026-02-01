@@ -36,6 +36,33 @@ public class PlayerSpriteUpdater : MonoBehaviour
         animationSetController.SetAnimationSet(index);
     }
 
+    /// <summary>
+    /// Imposta direttamente un CharacterData (usato per la trasformazione)
+    /// </summary>
+    public void SetCharacterData(CharacterData newCharacterData, int animationSetIndex)
+    {
+        characterData = newCharacterData;
+        
+        if (characterData == null)
+        {
+            Debug.LogError($"[PlayerSpriteUpdater] CharacterData è null durante trasformazione!");
+            return;
+        }
+        
+        Debug.Log($"[PlayerSpriteUpdater] Trasformazione in: {characterData.characterName}");
+
+        if (animationSetController == null)
+            animationSetController = GetComponent<AnimationSetController>();
+        
+        animationSetController.SetAnimationSet(animationSetIndex);
+        
+        // Aggiorna lo sprite corrente con l'idle del nuovo personaggio
+        if (characterData.idleSprites != null && characterData.idleSprites.Count > 0)
+        {
+            ChangeSprite("idle", 0);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
