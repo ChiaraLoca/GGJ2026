@@ -28,7 +28,7 @@ namespace GGJ26.StateMachine
         public void OnEnter()
         {
             Debug.Log($"Move Enter:");
-            //character.SetAnimation("Idle");
+            character.GetPlayerSpriteUpdater().ChangeSprite("movement", 0);
         }
 
         public void OnFrame()

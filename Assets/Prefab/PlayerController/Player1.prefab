@@ -172,10 +172,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 4085578798485939739}
   - component: {fileID: 2827619915002237379}
   - component: {fileID: 9131074060983683400}
+  - component: {fileID: 8164694875758726474}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -229,7 +230,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8.6, y: -9.2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4743739117895735779}
   - {fileID: 2783923400073794041}
@@ -355,7 +356,7 @@ Animator:
   m_GameObject: {fileID: 4183950100303551478}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: db5a8a548d057b44381d11c23decfe08, type: 2}
+  m_Controller: {fileID: 9100000, guid: 15691c53b2801b3439b5f641db8e3bd3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -421,6 +422,25 @@ MonoBehaviour:
   CharacterDatabase: {fileID: 11400000, guid: aa564e0aab900ce49b31f39d33214d86, type: 2}
   HitboxManager: {fileID: 1408091760847507829}
   HurtboxManager: {fileID: 8905207997112417911}
+--- !u!114 &8164694875758726474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4183950100303551478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb1d82af6762a44c85696c914e59850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GGJ26.StateMachine.AnimationSetController
+  animator: {fileID: 1269425982830944464}
+  animationSets:
+  - {fileID: 22100000, guid: 551ce37f2ef061e4c85cd62b102d90a5, type: 2}
+  - {fileID: 22100000, guid: 9b483f4ed411c9b46abe3ace8cdcea58, type: 2}
+  - {fileID: 22100000, guid: 95664081ae09f89478936c84f982264d, type: 2}
+  - {fileID: 22100000, guid: 6a516efb0f2534f47a27e9e8f638f119, type: 2}
+  currentSetIndex: -1
 --- !u!1 &6062480153118894742
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,10 +511,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
