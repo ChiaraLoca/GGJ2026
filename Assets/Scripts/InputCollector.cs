@@ -50,7 +50,7 @@ public class InputCollector : MonoBehaviour
 
     public Motion GetMotion(bool isFacingRight, int playerSpecialPower)
     {
-        Motion res = InputBuffer.FindBestMatch(motions.ToArray(), isFacingRight, playerSpecialPower);
+        Motion res = InputBuffer.FindBestMatch(motions.ToArray(), isFacingRight, 8, playerSpecialPower);
         if (res != null)
         {
             // Consuma solo i frame utilizzati da questo motion
