@@ -82,10 +82,11 @@ public class InputBuffer
     /// - Gli input devono essere in ordine dal più vecchio al più recente
     /// - Permette frame "neutri" tra un input e l'altro
     /// </summary>
-    public bool Matches(Motion motion, bool isFacingRight, int leniencyFrames = 8)
+    public bool Matches(Motion motion, bool isFacingRight, int leniencyFrames = 8, int playerSpecialPower = 0)
     {
-        if (count == 0) return false;
         
+        if (count == 0) return false;
+        if (motion.specialRequiredPower > playerSpecialPower) return false;
         InputData[] requiredInputs = isFacingRight ? motion.Inputs : motion.FlippedInputs;
         
         if (requiredInputs == null || requiredInputs.Length == 0) return false;
@@ -194,14 +195,14 @@ public class InputBuffer
     /// <summary>
     /// Cerca la motion con priorità più alta tra quelle matchate
     /// </summary>
-    public Motion FindBestMatch(Motion[] motions, bool isFacingRight, int leniencyFrames = 8)
+    public Motion FindBestMatch(Motion[] motions, bool isFacingRight, int leniencyFrames = 8,int  playerSpecialPower = 0 )
     {
         Motion bestMatch = null;
         int highestPriority = int.MinValue;
         
         foreach (var motion in motions)
         {
-            if (Matches(motion, isFacingRight, leniencyFrames))
+            if (Matches(motion, isFacingRight, leniencyFrames, playerSpecialPower))
             {
                 if (motion.priority > highestPriority)
                 {

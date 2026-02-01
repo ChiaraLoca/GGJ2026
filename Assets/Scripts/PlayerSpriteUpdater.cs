@@ -167,7 +167,8 @@ public class PlayerSpriteUpdater : MonoBehaviour
                     PlayerSprite.sprite = characterData.idleSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     HitboxManager.SetupColliderFromDB(GetBoxCollider2D("HitBox", characterData.idleSprites[index].transform));
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.idleSprites[index].transform));
-                    break;  
+                    break;
+
                 default:
                     Debug.LogWarning("Unknown state: " + state);
                     break;

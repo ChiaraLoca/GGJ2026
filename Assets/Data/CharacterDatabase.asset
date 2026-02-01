@@ -54,7 +54,7 @@ MonoBehaviour:
     hp: 5
   - characterName: ???
     characterImage: {fileID: 21300000, guid: 9fbbdeac174ee944db73958843e7ac5d, type: 3}
-    characterPortrait: {fileID: -5670608011827506249, guid: a327e9afc91f0244e8e05bb19d25a6bb, type: 3}
+    characterPortrait: {fileID: -218390781391320259, guid: a327e9afc91f0244e8e05bb19d25a6bb, type: 3}
     characterId: 1
     movementSprites:
     - {fileID: 8603814972420610461, guid: 8f7681e05caccd747bd5cd80918908fe, type: 3}
@@ -83,7 +83,11 @@ MonoBehaviour:
     - {fileID: 2222513863768082743, guid: 1673e227e50bb0e448a3ff24be4b6365, type: 3}
     - {fileID: 513359847921296476, guid: 7156b96e815bee9479855875418dd583, type: 3}
     - {fileID: 7519532527851756879, guid: fee32bff41573b646a88b75fc7115a21, type: 3}
-    specialSprites: []
+    specialSprites:
+    - {fileID: 8603814972420610461, guid: c00c78ccfadd21b47be9cfacd7dcf6c8, type: 3}
+    - {fileID: 8603814972420610461, guid: 0681635e3f7eb45429c65dadbf882f56, type: 3}
+    - {fileID: 8603814972420610461, guid: 7d946c3d66c9c604a98f2ba6a2af22f4, type: 3}
+    - {fileID: 8603814972420610461, guid: df43e04083bf19d488d9b92ddf4352bb, type: 3}
     idleSprites:
     - {fileID: 4741238997123618329, guid: 748bf2c70953ea84fb005c2a05da24e9, type: 3}
     characterSpecialSprite: {fileID: 6169051424762097521, guid: fa39d7c8c057b5e41a6b3df6e268807d, type: 3}
@@ -129,10 +133,10 @@ MonoBehaviour:
     description: SEMPRONIO
     speed: 5
     power: 5
-    hp: 5
+    hp: 0
   - characterName: '!!!'
     characterImage: {fileID: 21300000, guid: dc7efbbdf1fabda498cee7cf2d98f46b, type: 3}
-    characterPortrait: {fileID: -6440471216836430238, guid: c6050956c0b11f54b95b6af8cec0d667, type: 3}
+    characterPortrait: {fileID: -6580159268419754972, guid: c6050956c0b11f54b95b6af8cec0d667, type: 3}
     characterId: 3
     movementSprites:
     - {fileID: 8603814972420610461, guid: b25a9ec573d196d47a04478cb9a3e3aa, type: 3}
@@ -161,11 +165,19 @@ MonoBehaviour:
     - {fileID: 2222513863768082743, guid: f2dfd3c62db10f046b915b59db9cc833, type: 3}
     - {fileID: 513359847921296476, guid: d339daf2cba6e9f4baf8d9d4b462e03a, type: 3}
     - {fileID: 7519532527851756879, guid: 4c8f32f6d3fec6344aa285f2a3d4d593, type: 3}
-    specialSprites: []
+    specialSprites:
+    - {fileID: 8603814972420610461, guid: dec4a0c41f4c61944b9b2e96c4203707, type: 3}
+    - {fileID: 8603814972420610461, guid: 25b2d7ac5220b4f4d82783d61535cc85, type: 3}
+    - {fileID: 8603814972420610461, guid: f83de1f901c4ef1409a2927e835d75ae, type: 3}
+    - {fileID: 8603814972420610461, guid: b1c82c7d3cdd57443829e9288914e708, type: 3}
+    - {fileID: 8603814972420610461, guid: 094adc78822d1ca419fce52784edc963, type: 3}
+    - {fileID: 8603814972420610461, guid: 29a0624c2561af64aa76fbba94920cb8, type: 3}
+    - {fileID: 8603814972420610461, guid: 9bb5d85f113b7f546bff7c25ff872112, type: 3}
+    - {fileID: 8603814972420610461, guid: 9b2db082a99988348828e8185fe02eeb, type: 3}
     idleSprites:
     - {fileID: 4741238997123618329, guid: c3bed127e13cc1247b64a7e2332ee829, type: 3}
     characterSpecialSprite: {fileID: -4211581063009071647, guid: 1e298034834a73140860f3d39dd7ff3c, type: 3}
     description: CACCA
     speed: 5
     power: 5
-    hp: 5
+    hp: 0

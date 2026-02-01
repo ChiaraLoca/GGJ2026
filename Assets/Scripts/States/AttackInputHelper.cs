@@ -49,7 +49,7 @@ namespace GGJ26.StateMachine
             {
                 if (inputCollector.AttackPressedThisFrame() && !character.IsAttacking() && !(sm.current is Attack))
                 {
-                    Motion motion = inputCollector.GetMotion(MatchManager.Instance.IsFacingRight(character));
+                    Motion motion = inputCollector.GetMotion(MatchManager.Instance.IsFacingRight(character), character.GetSpecialEnergy() );
                     if (motion != null)
                         return new Attack(motion, character, sm);
                 }

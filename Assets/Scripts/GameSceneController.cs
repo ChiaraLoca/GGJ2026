@@ -79,7 +79,12 @@ public class GameSceneController : MonoBehaviour
             // Carica da PlayerPrefs (impostati dalla schermata di selezione)
             player1CharacterIndex = PlayerPrefs.GetInt("Player1CharacterIndex", 1);
             player2CharacterIndex = PlayerPrefs.GetInt("Player2CharacterIndex", 2);
-            Debug.Log($"Personaggi caricati da PlayerPrefs: P1={player1CharacterIndex}, P2={player2CharacterIndex}");
+            Debug.Log($"[GameScene] Personaggi caricati da PlayerPrefs: P1={player1CharacterIndex}, P2={player2CharacterIndex}");
+            
+            // Debug: verifica i nomi salvati
+            string p1Name = PlayerPrefs.GetString("Player1CharacterName", "N/A");
+            string p2Name = PlayerPrefs.GetString("Player2CharacterName", "N/A");
+            Debug.Log($"[GameScene] Nomi salvati: P1={p1Name}, P2={p2Name}");
         }
 
         player1Controller.SetCharacterIndex(player1CharacterIndex);
@@ -190,10 +195,20 @@ public class GameSceneController : MonoBehaviour
         if (playerNumber == 1 && player1Controller != null)
         {
             player1Controller.TransformTo(transformationCharacter);
+            // Aggiorna la portrait UI
+            if (combatUI != null)
+            {
+                combatUI.SetPlayer1Portrait(transformationCharacter);
+            }
         }
         else if (playerNumber == 2 && player2Controller != null)
         {
             player2Controller.TransformTo(transformationCharacter);
+            // Aggiorna la portrait UI
+            if (combatUI != null)
+            {
+                combatUI.SetPlayer2Portrait(transformationCharacter);
+            }
         }
     }
 

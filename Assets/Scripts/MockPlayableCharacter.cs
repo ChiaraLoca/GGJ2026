@@ -21,6 +21,8 @@ namespace GGJ26.Input
         public float GetJumpForce();
         public PlayerSpriteUpdater GetPlayerSpriteUpdater();
         public void TakeDamage(int damage);
+
+        public int GetSpecialEnergy();
     }
 
 
