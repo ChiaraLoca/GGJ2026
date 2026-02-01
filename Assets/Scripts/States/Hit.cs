@@ -9,7 +9,7 @@ namespace GGJ26.StateMachine
         private IPlayableCharacter character;
         private StateMachineBehaviour sm;
 
-        private int maxFrame = 30;
+        
         private int frame = 0;
         private Motion hitByMotion;
         public BlockStun(IPlayableCharacter character, StateMachineBehaviour sm, Motion hitByMotion)
@@ -31,7 +31,7 @@ namespace GGJ26.StateMachine
         {
             frame++;
 
-            if (frame >= maxFrame)
+            if (frame >= hitByMotion.blockStunFrames)
             {
                 sm.ChangeState(new Standing(character, sm));
             }
@@ -47,7 +47,7 @@ namespace GGJ26.StateMachine
         private IPlayableCharacter character;
         private StateMachineBehaviour sm;
        
-        private int maxFrame = 30;
+       
         private int frame = 0;
         private Motion hitByMotion;
         public Hit(IPlayableCharacter character, StateMachineBehaviour sm, Motion hitByMotion)
@@ -70,7 +70,7 @@ namespace GGJ26.StateMachine
         {
             frame++;
 
-            if (frame>=maxFrame)
+            if (frame>=hitByMotion.hitStunFrames)
             {
                 sm.ChangeState(new Standing(character, sm));
             }
