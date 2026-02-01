@@ -24,6 +24,7 @@ namespace GGJ26.StateMachine
         {
             Debug.Log($"BlockStun Enter");
             character.GetPlayerSpriteUpdater().ChangeSprite("block", 0);
+            KnockBackHelper.ApplyKnockBack(character, hitByMotion);
 
 
         }
@@ -64,6 +65,7 @@ namespace GGJ26.StateMachine
             character.GetPlayerSpriteUpdater().ChangeSprite("hit", 0);
 
             character.TakeDamage(hitByMotion.damage);
+            KnockBackHelper.ApplyKnockBack(character, hitByMotion);
 
         }
         public void OnFrame()
