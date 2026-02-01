@@ -10,7 +10,7 @@ namespace GGJ26.StateMachine
         public static void ApplyKnockBack(IPlayableCharacter character, Motion hitByMotion)
         {
             Rigidbody2D rb = character.GetRigidbody2D();
-            float knockBackForce = 5f;
+            float knockBackForce = hitByMotion.knockBack;
 
             Vector2 knockBackDirection;
 

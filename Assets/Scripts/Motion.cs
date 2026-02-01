@@ -14,7 +14,7 @@ public class Motion
     public int hitStunFrames { get; set; }
     public int blockStunFrames { get; set; }
     public bool knockDown { get; set; }
-    public bool knockBack { get; set; }
+    public float knockBack { get; set; }
     public int priority { get; set; }
     public string name { get; set; }
 
