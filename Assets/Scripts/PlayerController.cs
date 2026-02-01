@@ -143,6 +143,12 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
             {
                 spriteRenderer.sprite = character.characterImage;
             }
+            
+            // Configura le mosse specifiche per questo personaggio
+            if (inputCollector != null)
+            {
+                inputCollector.SetupMovesForCharacter(character.characterId);
+            }
         }
 
         // Flip dello sprite per player 2 (guarda a sinistra)
@@ -397,6 +403,41 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     internal int GetCharacterIndex()
     {
         return  characterIndex;
+    }
+
+    public CharacterData GetCharacterData()
+    {
+        return currentCharacter;
+    }
+
+    public void SpawnProjectile(int damage)
+    {
+        if (currentCharacter == null || currentCharacter.projectilePrefab == null)
+        {
+            Debug.LogWarning($"[Player {playerNumber}] Nessun prefab proiettile configurato!");
+            return;
+        }
+
+        // Calcola la posizione di spawn (davanti al player)
+        bool facingRight = MatchManager.Instance.IsFacingRight(this);
+        Vector3 spawnOffset = facingRight ? new Vector3(1f, 0.5f, 0) : new Vector3(-1f, 0.5f, 0);
+        Vector3 spawnPosition = transform.position + spawnOffset;
+
+        // Istanzia il proiettile
+        GameObject projectileObj = Instantiate(currentCharacter.projectilePrefab, spawnPosition, Quaternion.identity);
+        
+        // Inizializza il proiettile
+        Projectile projectile = projectileObj.GetComponent<Projectile>();
+        if (projectile != null)
+        {
+            Vector2 direction = facingRight ? Vector2.right : Vector2.left;
+            projectile.Initialize(direction, this, damage);
+            Debug.Log($"[Player {playerNumber}] Proiettile spawnato! Direzione: {direction}, Danno: {damage}");
+        }
+        else
+        {
+            Debug.LogError($"[Player {playerNumber}] Il prefab proiettile non ha il component Projectile!");
+        }
     }
 
     public void StartCharacterCoroutine(IEnumerator routine)

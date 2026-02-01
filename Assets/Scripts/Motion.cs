@@ -25,6 +25,12 @@ public class Motion
     public int startupSpriteCount { get; set; } = 1;
     public int activeSpriteCount { get; set; } = 1;
     public int recoverySpriteCount { get; set; } = 1;
+    
+    // Proiettile
+    public bool spawnsProjectile { get; set; } = false;
+    public int projectileSpawnFrame { get; set; } = 0; // Frame in cui spawnare il proiettile
+    public int projectileDamage { get; set; } = 20;
+
     public bool isGrab { get; set; } = false;
     public bool isLauncher { get; set; } = false;
 

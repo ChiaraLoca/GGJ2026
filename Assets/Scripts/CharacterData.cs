@@ -25,6 +25,9 @@ public class CharacterData
 
     public Sprite characterSpecialSprite; // Sprite speciale per mosse o trasformazioni
     
+    [Header("Projectile")]
+    public GameObject projectilePrefab; // Prefab del proiettile per la special (opzionale)
+    
     [TextArea(2, 4)]
     public string description; // Descrizione opzionale del personaggio
     
