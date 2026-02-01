@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
         AssignGamepad();
         currentHP = maxHP;
         currentSpecial = 0f; // Special parte da 0
-        jumpforce = 30;
+        jumpforce = 20;
 
 
 
