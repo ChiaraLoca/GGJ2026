@@ -32,6 +32,7 @@ public class Motion
         this.hitStunFrames = hitStunFrames; 
         this.blockStunFrames = blockStunFrames; 
         this.knockDown = knockDown;
+        this.knockBack = knockBack;
         this.cancelWindowStart = cancelWindowStart;
         this.cancelWindowEnd = cancelWindowEnd;
         this.recoveryFrameSwitch = recoveryFrameSwitch;

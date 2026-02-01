@@ -60,11 +60,15 @@ namespace GGJ26.StateMachine
                         break;
                     case 2: 
                         Debug.Log($"Recovery {motionName}");
-                        character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 2);
+                        character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 2,true);
+                        
                         break;
                 }
                 phase = newPhase;
             }
+
+            if(frame == motion.recoveryFrameSwitch)
+                character.GetPlayerSpriteUpdater().ChangeSprite(motion.name, 2);
 
             // Fine attacco → ritorno a Move
             if (newPhase == 3)
