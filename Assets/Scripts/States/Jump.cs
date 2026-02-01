@@ -99,6 +99,5 @@ public class Jump : IState
         Debug.Log("Jump Exit");
         rb.transform.position = new Vector2(rb.transform.position.x, character.GetStartingYPosition());
 
-       
     }
 }
