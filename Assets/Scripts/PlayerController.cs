@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
 {
     private Rigidbody2D rb;
     private InputHandler inputHandler;
-    private StateMachineBehaviour stateMachine;
+    public StateMachineBehaviour stateMachine { get; set; }
     private InputCollector inputCollector;
     public bool isAttacking = false;
 
