@@ -37,7 +37,10 @@ namespace GGJ26.StateMachine
             }
             else 
             {
-                ChangeState(new Hit(character, this, hitByMotion));
+                if(hitByMotion.knockDown)
+                    ChangeState(new Down(character, this, hitByMotion));
+                else
+                    ChangeState(new Hit(character, this, hitByMotion));
             }
         }
 
