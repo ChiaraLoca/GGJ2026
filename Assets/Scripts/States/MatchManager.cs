@@ -1,4 +1,5 @@
 ﻿using GGJ26.Input;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -59,6 +60,32 @@ namespace GGJ26.StateMachine
                 return t1.position.x < t2.position.x;
             else
                 return t2.position.x < t1.position.x;
+        }
+
+        IPlayableCharacter playerFacingRight;
+
+        private void Update()
+        {
+            if (playerFacingRight == null)
+            { 
+                if(IsFacingRight(player1))
+                    playerFacingRight = player1;
+                else
+                    playerFacingRight = player2;
+            }
+
+            if (!IsFacingRight(playerFacingRight))
+            {
+                playerFacingRight.GetPlayerSpriteUpdater().FlipSprite();
+
+                if (playerFacingRight.Equals(player1))
+                    playerFacingRight = player2;
+                else
+                    playerFacingRight = player1;
+
+                playerFacingRight.GetPlayerSpriteUpdater().FlipSprite();
+            }
+            
         }
 
         internal void RegisterPlayer(IPlayableCharacter character)

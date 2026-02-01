@@ -7,20 +7,25 @@ namespace GGJ26.StateMachine
 
     public class KnockBackHelper
     { 
-        public static void ApplyKnockBack(IPlayableCharacter character, Motion hitByMotion)
+        public static void ApplyKnockBack(IPlayableCharacter character,Motion hitByMotion)
         {
+
+            
+            float distance = hitByMotion.knockBack;
+            Debug.Log($"Applying KnockBack of {distance}");
             Rigidbody2D rb = character.GetRigidbody2D();
-            float knockBackForce = hitByMotion.knockBack;
 
-            Vector2 knockBackDirection;
+            Vector2 dir;
 
-            if(MatchManager.Instance.IsFacingRight(character))
-                knockBackDirection = new Vector2(-1, 0).normalized;
+            if (MatchManager.Instance.IsFacingRight(character))
+                dir = Vector2.left;
             else
-                knockBackDirection = new Vector2(1, 0).normalized;
+                dir = Vector2.right;
 
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Reset horizontal velocity
-            rb.AddForce(new Vector2(knockBackDirection.x * knockBackForce, knockBackDirection.y), ForceMode2D.Impulse);
+            Vector2 targetPosition = rb.position + dir * distance;
+
+            rb.linearVelocity = Vector2.zero;
+            rb.MovePosition(targetPosition);
         }
     }
 

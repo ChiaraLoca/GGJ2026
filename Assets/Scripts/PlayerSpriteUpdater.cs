@@ -1,4 +1,5 @@
 using GGJ26.StateMachine;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,7 +47,7 @@ public class PlayerSpriteUpdater : MonoBehaviour
         // Debug: verifica che characterData sia valido
         if (characterData == null)
         {
-            Debug.LogError($"[PlayerSpriteUpdater] ChangeSprite chiamato ma characterData è NULL! State: {state}, Index: {index}, GameObject: {gameObject.name}");
+            Debug.LogWarning($"[PlayerSpriteUpdater] ChangeSprite chiamato ma characterData è NULL! State: {state}, Index: {index}, GameObject: {gameObject.name}");
             return;
         }
         if (animationSetController)
@@ -161,5 +162,10 @@ public class PlayerSpriteUpdater : MonoBehaviour
         }
 
         return null;
+    }
+
+    internal void FlipSprite()
+    {
+        PlayerSprite.flipX = !PlayerSprite.flipX;
     }
 }
