@@ -49,7 +49,7 @@ namespace GGJ26.StateMachine
             Vector2 move = Vector2.zero;
 
             if (input != null)
-                move = NumpadHelper.NumpadToMove(input.Movement) * 1;
+                move = NumpadHelper.NumpadToMove(input.Movement) * character.GetMoveSpeed();
 
             rb.linearVelocity = move;
 
