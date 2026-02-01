@@ -344,12 +344,19 @@ public class CharacterSelectController : MonoBehaviour
             return;
         }
 
+        Debug.Log($"[CharacterSelect] Salvando selezione - P1 Index: {player1SelectedIndex} ({p1Char.characterName}), P2 Index: {player2SelectedIndex} ({p2Char.characterName})");
+
         // Salva le selezioni
         PlayerPrefs.SetInt("Player1CharacterIndex", player1SelectedIndex);
         PlayerPrefs.SetInt("Player2CharacterIndex", player2SelectedIndex);
         PlayerPrefs.SetString("Player1CharacterName", p1Char.characterName);
         PlayerPrefs.SetString("Player2CharacterName", p2Char.characterName);
         PlayerPrefs.Save();
+
+        // Verifica che siano stati salvati correttamente
+        int savedP1 = PlayerPrefs.GetInt("Player1CharacterIndex", -1);
+        int savedP2 = PlayerPrefs.GetInt("Player2CharacterIndex", -1);
+        Debug.Log($"[CharacterSelect] Verifica salvataggio - P1: {savedP1}, P2: {savedP2}");
 
         Debug.Log($"Avvio partita: {p1Char.characterName} vs {p2Char.characterName}");
         

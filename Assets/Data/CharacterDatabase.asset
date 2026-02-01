@@ -54,7 +54,7 @@ MonoBehaviour:
     hp: 5
   - characterName: ???
     characterImage: {fileID: 21300000, guid: 9fbbdeac174ee944db73958843e7ac5d, type: 3}
-    characterPortrait: {fileID: -5670608011827506249, guid: a327e9afc91f0244e8e05bb19d25a6bb, type: 3}
+    characterPortrait: {fileID: -218390781391320259, guid: a327e9afc91f0244e8e05bb19d25a6bb, type: 3}
     characterId: 1
     movementSprites:
     - {fileID: 8603814972420610461, guid: 8f7681e05caccd747bd5cd80918908fe, type: 3}
@@ -129,10 +129,10 @@ MonoBehaviour:
     description: SEMPRONIO
     speed: 5
     power: 5
-    hp: 5
+    hp: 0
   - characterName: '!!!'
     characterImage: {fileID: 21300000, guid: dc7efbbdf1fabda498cee7cf2d98f46b, type: 3}
-    characterPortrait: {fileID: -6440471216836430238, guid: c6050956c0b11f54b95b6af8cec0d667, type: 3}
+    characterPortrait: {fileID: -6580159268419754972, guid: c6050956c0b11f54b95b6af8cec0d667, type: 3}
     characterId: 3
     movementSprites:
     - {fileID: 8603814972420610461, guid: b25a9ec573d196d47a04478cb9a3e3aa, type: 3}
@@ -168,4 +168,4 @@ MonoBehaviour:
     description: CACCA
     speed: 5
     power: 5
-    hp: 5
+    hp: 0
