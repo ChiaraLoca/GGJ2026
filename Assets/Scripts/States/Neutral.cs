@@ -4,14 +4,13 @@ using UnityEngine;
 
 namespace GGJ26.StateMachine
 {
-
-    public class Crouch : IState
+    public class Neutral : IState
     {
         private IPlayableCharacter character;
         private StateMachineBehaviour sm;
         private AttackInputHelper attackInputHandler;
 
-        public Crouch(IPlayableCharacter character, StateMachineBehaviour sm)
+        public Neutral(IPlayableCharacter character, StateMachineBehaviour sm)
         {
             this.character = character;
             this.sm = sm;
@@ -20,12 +19,14 @@ namespace GGJ26.StateMachine
 
         public void OnEnter()
         {
-            Debug.Log($"Crouch Enter");
-            character.GetPlayerSpriteUpdater().ChangeSprite("crouch", 0);
+            Debug.Log($"Neutral Enter");
+            character.GetPlayerSpriteUpdater().ChangeSprite("idle", 0);
         }
         public void OnFrame()
         {
             IState newState = attackInputHandler.CheckAttackInput(sm);
+            
+
             if (newState != null)
             {
                 sm.ChangeState(newState);
@@ -34,7 +35,7 @@ namespace GGJ26.StateMachine
         }
         public void OnExit()
         {
-            Debug.Log($"Crouch Exit");
+            Debug.Log($"Neutral Exit");
         }
     }
 }

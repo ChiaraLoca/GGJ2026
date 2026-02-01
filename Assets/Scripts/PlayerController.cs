@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
 {
     private Rigidbody2D rb;
     private InputHandler inputHandler;
-    private StateMachineBehaviour stateMachine;
+    public StateMachineBehaviour stateMachine { get; set; }
     private InputCollector inputCollector;
     public bool isAttacking = false;
 
@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     }
 
     // Metodo per ricevere danno (da usare poi nel combat system)
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         // Invoca il callback OnHit quando viene colpito
         currentCharacter?.OnHit?.Invoke(currentCharacter);

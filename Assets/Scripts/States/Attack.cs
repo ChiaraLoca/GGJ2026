@@ -9,7 +9,7 @@ namespace GGJ26.StateMachine
     {
         private IPlayableCharacter character;
         private StateMachineBehaviour sm;
-        private Motion motion;
+        public Motion motion;
         private int frame;
         private int phase; // 0=startup, 1=active, 2=recovery
         private string motionName;
