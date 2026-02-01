@@ -1135,7 +1135,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "..,/\xA3%$))A"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2b3aa5e3148341045b86835e029fcfa7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f9d45d844177dae44a48f66a5bbd5045, type: 2}
   m_sharedMaterial: {fileID: 7924223083353922119, guid: 2b3aa5e3148341045b86835e029fcfa7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

@@ -172,7 +172,7 @@ MonoBehaviour:
     - {fileID: 8603814972420610461, guid: b1c82c7d3cdd57443829e9288914e708, type: 3}
     - {fileID: 8603814972420610461, guid: 094adc78822d1ca419fce52784edc963, type: 3}
     - {fileID: 8603814972420610461, guid: 29a0624c2561af64aa76fbba94920cb8, type: 3}
-    - {fileID: 8603814972420610461, guid: 9bb5d85f113b7f546bff7c25ff872112, type: 3}
+    - {fileID: 8603814972420610461, guid: 29a0624c2561af64aa76fbba94920cb8, type: 3}
     - {fileID: 8603814972420610461, guid: 9b2db082a99988348828e8185fe02eeb, type: 3}
     idleSprites:
     - {fileID: 4741238997123618329, guid: c3bed127e13cc1247b64a7e2332ee829, type: 3}
