@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDatabase
   characters:
   - characterName: NORAMLE
-    characterImage: {fileID: 9146828156179646807, guid: ff54e7e5d2e40e647b54f12b2875536f, type: 3}
-    characterPortrait: {fileID: -3218519891966651117, guid: 87254c37f88789b45b063c9f3a395ee4, type: 3}
+    characterImage: {fileID: 8793639957104055765, guid: 437b88df55324bc4eaf2c24f0bea3350, type: 3}
+    characterPortrait: {fileID: -218390781391320259, guid: a327e9afc91f0244e8e05bb19d25a6bb, type: 3}
     characterId: 0
-    movementSprites: []
+    movementSprites:
+    - {fileID: 0}
     blockSprites: []
     crouchSprites: []
     jumpSprites: []

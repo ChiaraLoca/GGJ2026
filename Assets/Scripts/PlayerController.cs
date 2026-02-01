@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
     [Header("HP Settings")]
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float baseMaxHP = 100f;
-    [SerializeField] private float transformationThreshold = 20f; // HP sotto il quale si trasforma
+    [SerializeField] private float transformationThreshold = 50f; // HP sotto il quale si trasforma
 
     [Header("Special Settings")]
     [SerializeField] private float maxSpecial = 100f;
