@@ -537,7 +537,7 @@ PrefabInstance:
     - target: {fileID: 2484896054656015279, guid: abcffbbd1d4048949b1d78afb8d10b70, type: 3}
       propertyPath: player2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4603680898914043564}
     - target: {fileID: 2773463018408669617, guid: abcffbbd1d4048949b1d78afb8d10b70, type: 3}
       propertyPath: m_Name
       value: Scena_v2
@@ -571,6 +571,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abcffbbd1d4048949b1d78afb8d10b70, type: 3}
+--- !u!4 &4603680898914043564 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8928963357426138365, guid: abcffbbd1d4048949b1d78afb8d10b70, type: 3}
+  m_PrefabInstance: {fileID: 4603680898914043563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7744630845517312818 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5353134496534864217, guid: abcffbbd1d4048949b1d78afb8d10b70, type: 3}

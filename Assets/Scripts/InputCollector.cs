@@ -18,6 +18,7 @@ public class InputCollector : MonoBehaviour
         motions.Add(MotionCreator.get6A());
         motions.Add(MotionCreator.get2A());
         motions.Add(MotionCreator.get5A());
+        motions.Add(MotionCreator.getSpecialMove());
         motions.Sort((a, b) => a.priority.CompareTo(b.priority));
     }
 
@@ -47,9 +48,9 @@ public class InputCollector : MonoBehaviour
 
     }
 
-    public Motion GetMotion(bool isFacingRight)
+    public Motion GetMotion(bool isFacingRight, int playerSpecialPower)
     {
-        Motion res = InputBuffer.FindBestMatch(motions.ToArray(), isFacingRight);
+        Motion res = InputBuffer.FindBestMatch(motions.ToArray(), isFacingRight, playerSpecialPower);
         if (res != null)
         {
             // Consuma solo i frame utilizzati da questo motion

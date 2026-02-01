@@ -205,6 +205,11 @@ public class PlayerController : MonoBehaviour, IPlayableCharacter
         }
     }
 
+    public int GetSpecialEnergy()
+    {
+        return (int)currentSpecial;
+    }
+
     /*private void HandleInput()
     {
         var keyboard = Keyboard.current;
