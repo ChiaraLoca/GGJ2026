@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class PlayerSpriteUpdater : MonoBehaviour
@@ -19,8 +18,17 @@ public class PlayerSpriteUpdater : MonoBehaviour
 
     public void SetCharacterIndex(int index)
     {
+        // Usa l'indice dell'array invece di cercare per characterId
+        characterData = CharacterDatabase.GetCharacter(index);
         
-        characterData = CharacterDatabase.GetAllCharacters().FirstOrDefault(obj => obj.characterId == index);
+        if (characterData == null)
+        {
+            Debug.LogError($"[PlayerSpriteUpdater] Personaggio non trovato all'indice {index}");
+        }
+        else
+        {
+            Debug.Log($"[PlayerSpriteUpdater] Personaggio caricato: {characterData.characterName} (indice: {index})");
+        }
     }
 
     // Update is called once per frame
@@ -31,8 +39,29 @@ public class PlayerSpriteUpdater : MonoBehaviour
 
     public void ChangeSprite(string state, int index)
     {
+        // Debug: verifica che characterData sia valido
+        if (characterData == null)
+        {
+            Debug.LogError($"[PlayerSpriteUpdater] ChangeSprite chiamato ma characterData è NULL! State: {state}, Index: {index}, GameObject: {gameObject.name}");
+            return;
+        }
+        
         try
         {
+            // Debug: verifica che i manager siano assegnati
+            if (HitboxManager == null)
+            {
+                Debug.LogError($"[PlayerSpriteUpdater] HitboxManager è NULL! GameObject: {gameObject.name}");
+                return;
+            }
+            if (HurtboxManager == null)
+            {
+                Debug.LogError($"[PlayerSpriteUpdater] HurtboxManager è NULL! GameObject: {gameObject.name}");
+                return;
+            }
+            
+            HitboxManager.ClearCollider();
+            HurtboxManager.ClearCollider();
             switch (state)
             {
                 case "block":
