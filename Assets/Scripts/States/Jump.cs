@@ -1,7 +1,7 @@
 ﻿using GGJ26.Input;
 using GGJ26.StateMachine;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
+
 using StateMachineBehaviour = GGJ26.StateMachine.StateMachineBehaviour;
 
 public class Jump : IState
