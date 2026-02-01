@@ -17,9 +17,10 @@ public class Motion
     public float knockBack { get; set; }
     public int priority { get; set; }
     public string name { get; set; }
+    public int recoveryFrameSwitch { get; set; }
 
 
-    public Motion(string name,InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int damage, int hitStunFrames, int blockStunFrames, bool knockDown, int knockBack, int cancelWindowStart = -1, int cancelWindowEnd = -1) {         
+    public Motion(string name,InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int damage, int hitStunFrames, int blockStunFrames, bool knockDown, float knockBack,int recoveryFrameSwitch, int cancelWindowStart = -1, int cancelWindowEnd = -1) {         
         this.name = name;
         this.Inputs = inputs;
         this.FlippedInputs = flippedInputs;
@@ -31,8 +32,10 @@ public class Motion
         this.hitStunFrames = hitStunFrames; 
         this.blockStunFrames = blockStunFrames; 
         this.knockDown = knockDown;
+        this.knockBack = knockBack;
         this.cancelWindowStart = cancelWindowStart;
         this.cancelWindowEnd = cancelWindowEnd;
+        this.recoveryFrameSwitch = recoveryFrameSwitch;
     }
 
     public bool isCancellable(int frame) {

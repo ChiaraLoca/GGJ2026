@@ -64,7 +64,7 @@ namespace GGJ26.StateMachine
         {
             Debug.Log($"Hit Enter");
             character.GetPlayerSpriteUpdater().ChangeSprite("hit", 0);
-
+            frame = 0;
             character.TakeDamage(finalDamage);
             KnockBackHelper.ApplyKnockBack(character, hitByMotion);
 
@@ -75,7 +75,7 @@ namespace GGJ26.StateMachine
 
             if (frame>=hitByMotion.hitStunFrames)
             {
-                sm.ChangeState(new Standing(character, sm));
+                sm.ChangeState(new Neutral(character, sm));
             }
         }
         public void OnExit()

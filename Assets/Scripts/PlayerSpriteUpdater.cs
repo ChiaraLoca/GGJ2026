@@ -1,4 +1,5 @@
 using GGJ26.StateMachine;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -68,12 +69,12 @@ public class PlayerSpriteUpdater : MonoBehaviour
         
     }
 
-    public void ChangeSprite(string state, int index)
+    public void ChangeSprite(string state, int index,bool changeOnlyHitBox = false)
     {
         // Debug: verifica che characterData sia valido
         if (characterData == null)
         {
-            Debug.LogError($"[PlayerSpriteUpdater] ChangeSprite chiamato ma characterData è NULL! State: {state}, Index: {index}, GameObject: {gameObject.name}");
+            Debug.LogWarning($"[PlayerSpriteUpdater] ChangeSprite chiamato ma characterData è NULL! State: {state}, Index: {index}, GameObject: {gameObject.name}");
             return;
         }
         if (animationSetController)
@@ -137,22 +138,26 @@ public class PlayerSpriteUpdater : MonoBehaviour
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.standingSprites[index].transform));
                     break;
                 case "punch":
-                    PlayerSprite.sprite = characterData.punchSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    if(!changeOnlyHitBox)
+                        PlayerSprite.sprite = characterData.punchSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     HitboxManager.SetupColliderFromDB(GetBoxCollider2D("HitBox", characterData.punchSprites[index].transform));
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.punchSprites[index].transform));
                     break;
                 case "kick":
-                    PlayerSprite.sprite = characterData.kickSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    if (!changeOnlyHitBox)
+                        PlayerSprite.sprite = characterData.kickSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     HitboxManager.SetupColliderFromDB(GetBoxCollider2D("HitBox", characterData.kickSprites[index].transform));
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.kickSprites[index].transform));
                     break;
                 case "lowHit":
-                    PlayerSprite.sprite = characterData.lowhitSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    if (!changeOnlyHitBox)
+                        PlayerSprite.sprite = characterData.lowhitSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     HitboxManager.SetupColliderFromDB(GetBoxCollider2D("HitBox", characterData.lowhitSprites[index].transform));
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.lowhitSprites[index].transform));
                     break;
                 case "special":
-                    PlayerSprite.sprite = characterData.specialSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    if (!changeOnlyHitBox)
+                        PlayerSprite.sprite = characterData.specialSprites[index].gameObject.GetComponent<SpriteRenderer>().sprite;
                     HitboxManager.SetupColliderFromDB(GetBoxCollider2D("HitBox", characterData.specialSprites[index].transform));
                     HurtboxManager.SetupColliderFromDB(GetBoxCollider2D("HurtBOx", characterData.specialSprites[index].transform));
                     break;
@@ -189,5 +194,10 @@ public class PlayerSpriteUpdater : MonoBehaviour
         }
 
         return null;
+    }
+
+    internal void FlipSprite()
+    {
+        PlayerSprite.flipX = !PlayerSprite.flipX;
     }
 }
