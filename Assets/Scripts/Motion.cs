@@ -14,11 +14,12 @@ public class Motion
     public int hitStunFrames { get; set; }
     public int blockStunFrames { get; set; }
     public bool knockDown { get; set; }
+    public bool knockBack { get; set; }
     public int priority { get; set; }
     public string name { get; set; }
 
 
-    public Motion(string name,InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int damage, int hitStunFrames, int blockStunFrames, bool knockDown, int cancelWindowStart = -1, int cancelWindowEnd = -1) {         
+    public Motion(string name,InputData[] inputs, InputData[] flippedInputs, int totalFrames, int startupEnd, int activeEnd, int priority, int damage, int hitStunFrames, int blockStunFrames, bool knockDown, int knockBack, int cancelWindowStart = -1, int cancelWindowEnd = -1) {         
         this.name = name;
         this.Inputs = inputs;
         this.FlippedInputs = flippedInputs;
