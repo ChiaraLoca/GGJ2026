@@ -46,7 +46,7 @@ public class HitboxManager : MonoBehaviour
             Motion attack = PlayerController.stateMachine.GetMotion();
             if (attack != null)
             {
-                attack.damage = (int)(attack.damage * PlayerController.GetPower());
+                attack.damage = attack.damage + (int)( (attack.damage / 100) * PlayerController.GetPower());
                 Debug.Log($"{PlayerController.name} hit {hurtboxManager.PlayerController.name} with {attack.name} for {attack.damage} damage!");
                 hurtboxManager.PlayerController.stateMachine.GotHit(attack, hurtboxManager.PlayerController);
             }
